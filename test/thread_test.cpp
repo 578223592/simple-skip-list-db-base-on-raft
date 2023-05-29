@@ -5,31 +5,52 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-
+#include <memory>
 using  namespace  std;
 class MyClass {
 public:
     int menber_num ;
     void a() {
-        int num = 1;
+        std::shared_ptr<int> num = std::make_shared<int>(10); // 使用 make_shared 函数初始化
         menber_num = 1;
         cout<<"befor b,  num:"<<num<<endl;
         cout<<"befor b,  menber_num:"<<menber_num<<endl;
-        std::thread t(&MyClass::b, this, &num); // 创建新线程并执行b函数，并传递参数
-        t.join(); // 等待新线程执行完毕
+        cout<<"num address:"<<num<<"    *num :"<<&num<<endl;
+        std::thread t(&MyClass::b, this, num); // 创建新线程并执行b函数，并传递参数
+        t.detach();
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        cout<<"num.use_count()"<<num.use_count()<<endl;
         cout<<"after b,  num:"<<num<<endl;
         cout<<"after b,  menber_num:"<<menber_num<<endl;
     }
 
-    void b( int* num) { // 在b函数中接收参数
+    void b( std::shared_ptr<int> num) { // 在b函数中接收参数  //相当于复制拷贝，这样的话就会增加引用技术了
+        cout<<"thread b sleep ..."<<endl;
+        cout<<"num.use_count()"<<num.use_count()<<endl;
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+        cout<<"thread b start wake up"<<endl;
+        cout<<"num.use_count()"<<num.use_count()<<endl;
         *num = 2;
         menber_num = 2;
+        cout<<"num address:"<<num<<"    *num :"<<*num<<endl;
     }
 };
 
 int main() {
-    MyClass obj;
+    MyClass obj{};
     obj.a(); // 执行a函数
+    while (true){
+
+    }
     return 0;
 }
 
+//输出很奇怪，为：
+//befor b,  num:1
+//befor b,  menber_num:1
+//num address:1    *num :0x7ffdffd744a4
+//after b,  num:1
+//after b,  menber_num:1
+//thread b sleep ...
+//        thread b start wake up
+//num address:0x7ffdffd744a4    *num :2

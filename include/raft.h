@@ -9,12 +9,14 @@
 #include <vector>
 #include "config.h"
 #include <string>
+#include <memory>
 /// @brief //////////// 网络状态表示  todo：可以在rpc中删除该字段，实际生产中是用不到的.
 const int Disconnected = 0; // 方便网络分区的时候debug，网络异常的时候为disconnected，只要网络正常就为AppNormal，防止matchIndex[]数组异常减小
 const int AppNormal = 1;
 
 class Raft : mprrpc::raftRpc
 {
+
 private:
     std::mutex m_mtx;
     // 日志实体，因为可能涉及rpc通信，为了避免错误排查，直接设置成大写开头
@@ -78,6 +80,9 @@ public:
     int GetRaftStateSize();
     int getSlicesIndexFromLogIndex(int logIndex);
 
+
+    bool sendRequestVote(int server , std::shared_ptr<RequestVoteArgs> args ,  std::shared_ptr<RequestVoteReply> reply,   std::shared_ptr<int> votedNum) ;
+    bool sendAppendEntries(int server ,std::shared_ptr<AppendEntriesArgs> args , std::shared_ptr<AppendEntriesReply> reply , std::shared_ptr<int> appendNums ) ;
 public:
     // 重写基类方法,因为rpc远程调用真正调用的是这个方法
     void AppendEntries(google::protobuf::RpcController *controller,

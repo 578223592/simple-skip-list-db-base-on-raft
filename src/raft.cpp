@@ -2,7 +2,7 @@
 #include <util.h>
 
 void Raft::AppendEntries1(AppendEntriesArgs *args, AppendEntriesReply *reply) {
-    std::lock_guard <std::mutex> locker(m_mtx);
+    std::lock_guard<std::mutex> locker(m_mtx);
     reply->set_appstate(AppNormal);// 能接收到代表网络是正常的
     // Your code here (2A, 2B).
 //	不同的人收到AppendEntries的反应是不同的，要注意无论什么时候收到rpc请求和响应都要检查term
@@ -89,15 +89,15 @@ void Raft::AppendEntries1(AppendEntriesArgs *args, AppendEntriesReply *reply) {
         // if len(args.Entries) > 0 {
         //	fmt.Printf("[func-AppendEntries  rf:{%v}] ] : args.term:%v, rf.term:%v  ,rf.logs的长度：%v\n", rf.me, args.Term, rf.currentTerm, len(rf.logs))
         // }
-        if(args->leadercommit()>m_commitIndex){
-            m_commitIndex = std::min(args->leadercommit() ,getLastLogIndex()) ;// 这个地方不能无脑跟上
+        if (args->leadercommit() > m_commitIndex) {
+            m_commitIndex = std::min(args->leadercommit(), getLastLogIndex());// 这个地方不能无脑跟上
         }
 
 
         // 领导会一次发送完所有的日志
         myAssert(getLastLogIndex() >= m_commitIndex,
                  format("[func-AppendEntries1-rf{%d}]  rf.getLastLogIndex{%d} < rf.commitIndex{%d}", m_me,
-                           getLastLogIndex(), m_commitIndex));
+                        getLastLogIndex(), m_commitIndex));
         reply->set_success(true);
         reply->set_term(m_currentTerm);
 
@@ -112,9 +112,9 @@ void Raft::AppendEntries1(AppendEntriesArgs *args, AppendEntriesReply *reply) {
         // ？什么时候term会矛盾呢？很多情况，比如leader接收了日志之后马上就崩溃等等
         reply->set_updatenextindex(args->prevlogindex());
 
-        for (int index = args->prevlogindex(); index >= m_lastSnapshotIncludeIndex ; --index) {
-            if(getLogTermFromLogIndex(index) != getLogTermFromLogIndex(args->prevlogindex())){
-                reply->set_updatenextindex(index+1);
+        for (int index = args->prevlogindex(); index >= m_lastSnapshotIncludeIndex; --index) {
+            if (getLogTermFromLogIndex(index) != getLogTermFromLogIndex(args->prevlogindex())) {
+                reply->set_updatenextindex(index + 1);
                 break;
             }
         }
@@ -137,7 +137,7 @@ void Raft::applierTicker() {
     auto applyMsgs = getApplyLogs();
     m_mtx.unlock();
     //使用匿名函数是因为传递管道的时候不用拿锁   todo:好像必须拿锁，因为不拿锁的话如果调用多次applyLog函数，可能会导致应用的顺序不一样
-    for (auto& message:applyMsgs) {
+    for (auto &message: applyMsgs) {
         applyChan->Push(message);
     }
     sleepNMilliseconds(ApplyInterval);
@@ -185,38 +185,91 @@ void Raft::doElection() {
         m_currentTerm += 1;
         m_votedFor = m_me;//即是自己给自己投，也避免candidate给同辈的candidate投
         persist();
-        votedNum := 1
+        std::shared_ptr<int> votedNum = std::make_shared<int>(1); // 使用 make_shared 函数初始化 !! 亮点
         //	重新设置定时器
-        rf.lastResetElectionTime = time.Now()
+        m_lastResetElectionTime = now();
         //	发布RequestVote RPC
-        for
-        i := 0;
-        i < len(rf.peers);
-        i++
-        {
-            if i == rf.me
-            {
-                continue
+        for (int i = 0; i < m_peers.size(); i++) {
+            if (i == m_me) {
+                continue;
             }
-            lastLogIndex, lastLogTerm := rf.getLastLogIndexAndTerm() //获取最后一个log的term和下标
-            requestVoteArgs := RequestVoteArgs{
-                    Term:         rf.currentTerm,
-                    CandidateId:  rf.me,
-                    LastLogIndex: lastLogIndex,
-                    LastLogTerm:  lastLogTerm,
-            }
-            requestVoteReply := RequestVoteReply{}
+            int lastLogIndex = -1, lastLogTerm = -1;
+            getLastLogIndexAndTerm(&lastLogIndex, &lastLogTerm);//获取最后一个log的term和下标
+
+            std::shared_ptr<RequestVoteArgs> requestVoteArgs = std::make_shared<RequestVoteArgs>();
+            requestVoteArgs->set_term(m_currentTerm);
+            requestVoteArgs->set_candidateid(m_me);
+            requestVoteArgs->set_lastlogindex(lastLogIndex);
+            requestVoteArgs->set_lastlogterm(lastLogTerm);
+            std::shared_ptr<RequestVoteReply> requestVoteReply = std::make_shared<RequestVoteReply>();
+
             //使用匿名函数执行避免其拿到锁
             //使用 go 语句在每个迭代中都执行一个函数，并将循环变量作为参数传递进去。由于 go 语句会异步地执行函数，因此无法保证每次调用
             //函数时循环变量的值是相同的。这就可能导致函数不符合预期地处理某些参数，因为它们的值可能已经被修改或者还没有更新到期望的值。
-            i := i
-            go func() {
-                rf.sendRequestVote(i, &requestVoteArgs, &requestVoteReply, &votedNum) //放到后台！！！
-            }
-            ()
-        }
-        }
-    rf.mu.Unlock()
+            std::thread t(&Raft::sendRequestVote, this, i, requestVoteArgs, requestVoteReply,
+                          votedNum); // 创建新线程并执行b函数，并传递参数
+                          t.detach();
 
+        }
+    }
+    m_mtx.unlock();
 
+}
+
+void Raft::doHeartBeat() {
+    m_mtx.lock();
+
+    if ( m_status == Leader) {
+//                DPrintf("Leader: {%v} 的心跳定时器触发了\n", rf.me)
+        auto appendNums = std::make_shared<int>(1); //正确返回的节点的数量
+
+                //对Follower（除了自己外的所有节点发送AE）
+                //todo 这里肯定是要修改的，最好使用一个单独的goruntime来负责管理发送log，因为后面的log发送涉及优化之类的
+                //最少要单独写一个函数来管理，而不是在这一坨
+                for (int i = 0; i < m_peers.size(); i++ ){
+                    myAssert(m_nextIndex[i]>=1, format("rf.nextIndex[%d] = {%d}", i, m_nextIndex[i]));
+                    //日志压缩加入后要判断是发送快照还是发送AE
+                    if(m_nextIndex[i] <= m_lastSnapshotIncludeIndex){
+//                        DPrintf("[func-ticker()-rf{%v}]rf.nextIndex[%v] {%v} <= rf.lastSnapshotIncludeIndex{%v},so leaderSendSnapShot", rf.me, i, rf.nextIndex[i], rf.lastSnapshotIncludeIndex)
+                        std::thread t(&Raft::leaderSendSnapShot, this, i); // 创建新线程并执行b函数，并传递参数
+                        t.detach();
+                        continue;
+                    }
+                    //构造发送值
+                    int preLogIndex = -1 ;int PrevLogTerm = -1;
+                    getPrevLogInfo(i,&preLogIndex,&PrevLogTerm);
+                    std::shared_ptr<AppendEntriesArgs> appendEntriesArgs= std::make_shared<AppendEntriesArgs>();
+                    appendEntriesArgs->set_term(m_currentTerm);
+                    appendEntriesArgs->set_leaderid(m_me);
+                    appendEntriesArgs->set_prevlogindex(preLogIndex);
+                    appendEntriesArgs->set_prevlogterm(PrevLogTerm);
+                    appendEntriesArgs->clear_entries();
+                    appendEntriesArgs->set_leadercommit(m_commitIndex);
+                    if (preLogIndex != m_lastSnapshotIncludeIndex) {
+                        for (int j = getSlicesIndexFromLogIndex(preLogIndex) + 1; j < m_logs.size(); ++j) {
+                            LogEntry *sendEntryPtr = appendEntriesArgs->add_entries();
+                            *sendEntryPtr = m_logs[j];  //=是可以点进去的，可以点进去看下protobuf如何重写这个的
+                        }
+                    } else {
+                        for (auto& item:m_logs) {
+                            LogEntry *sendEntryPtr = appendEntriesArgs->add_entries();
+                            *sendEntryPtr = item;  //=是可以点进去的，可以点进去看下protobuf如何重写这个的
+                        }
+                    }
+                    int lastLogIndex = getLastLogIndex();
+                    //leader对每个节点发送的日志长短不一，但是都保证从prevIndex发送直到最后
+                    myAssert(appendEntriesArgs->prevlogindex()+appendEntriesArgs->entries_size() == lastLogIndex,
+                             format("appendEntriesArgs.PrevLogIndex{%d}+len(appendEntriesArgs.Entries){%d} != lastLogIndex{%d}", appendEntriesArgs->prevlogindex(),appendEntriesArgs->entries_size(),lastLogIndex));
+                    //构造返回值
+                    const std::shared_ptr<AppendEntriesReply> appendEntriesReply = std::make_shared<AppendEntriesReply>();
+                    appendEntriesReply->set_appstate(Disconnected);
+
+                    std::thread t(&Raft::sendAppendEntries, this, i, appendEntriesArgs, appendEntriesReply,
+                                  appendNums); // 创建新线程并执行b函数，并传递参数
+                    t.detach();
+
+                }
+                m_lastResetHearBeatTime = now(); //leader发送心跳，就不是随机时间了
+    }
+    m_mtx.unlock();
 }
