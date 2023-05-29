@@ -5,14 +5,18 @@
 #include <chrono>
 #include <thread>
 #include "ApplyMsg.h"
+#include "util.h"
 #include <vector>
-/// @brief //////////// 网络状态表示  todo：可以删除
+#include "config.h"
+#include <string>
+/// @brief //////////// 网络状态表示  todo：可以在rpc中删除该字段，实际生产中是用不到的.
 const int Disconnected = 0; // 方便网络分区的时候debug，网络异常的时候为disconnected，只要网络正常就为AppNormal，防止matchIndex[]数组异常减小
 const int AppNormal = 1;
 
 class Raft : mprrpc::raftRpc
 {
 private:
+    std::mutex m_mtx;
     // 日志实体，因为可能涉及rpc通信，为了避免错误排查，直接设置成大写开头
     std::vector<RaftRpc *> m_peers;
     int m_me;
@@ -35,7 +39,7 @@ private:
     // 身份
     Status m_status;
 
-    // applyChan chan ApplyMsg         // client从这里取日志（2B），client与raft通信的接口
+    LockQueue<ApplyMsg>* applyChan  ;     // client从这里取日志（2B），client与raft通信的接口
     // ApplyMsgQueue chan ApplyMsg // raft内部使用的chan，applyChan是用于和服务层交互，最后好像没用上
 
     // 选举超时
@@ -52,7 +56,7 @@ private:
 public:
     void AppendEntries1(AppendEntriesArgs *args, AppendEntriesReply *reply);
     void applierTicker();
-    bool CondInstallSnapshot(int lastIncludedTerm, int lastIncludedIndex, string snapshot);
+    bool CondInstallSnapshot(int lastIncludedTerm, int lastIncludedIndex, std::string snapshot);
     void doElection();
     void doHeartBeat();
     void electionTimeOutTicker();
@@ -62,7 +66,6 @@ public:
     void GetState(int *term, bool *isLeader);
     void InstallSnapshot(InstallSnapshotRequest *args, InstallSnapshotResponse *reply);
     void leaderHearBeatTicker();
-    void doHeartBeat();
     void leaderSendSnapShot(int server);
     void leaderUpdateCommitIndex();
     bool matchLog(int logIndex, int logTerm);

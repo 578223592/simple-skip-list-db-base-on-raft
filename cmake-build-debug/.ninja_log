@@ -1,0 +1,7 @@
+# ninja log v5
+0	44	1685344354607318782	build.ninja	46626afe3d1d8390
+1	3134	1685344357751348043	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/calluserservice.cc.o	2b5e8e99651fb7af
+2	3163	1685344357779348303	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/hs/hash1.cpp.o	1fbefeb565b3e71e
+0	3362	1685344357979350161	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/userservice.cc.o	6a911ec062f182aa
+1	3584	1685344358195352164	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/user.pb.cc.o	614cd09c890c7881
+1	3769	1685344358383353908	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/raftRPC.pb.cc.o	3be94e35e99bd78e

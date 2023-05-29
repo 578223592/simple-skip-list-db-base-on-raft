@@ -1,0 +1,3 @@
+/home/swx/skip_list_on_raft/cmake-build-debug/CMakeFiles/skip_list_on_raft.dir
+/home/swx/skip_list_on_raft/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/swx/skip_list_on_raft/cmake-build-debug/CMakeFiles/rebuild_cache.dir
