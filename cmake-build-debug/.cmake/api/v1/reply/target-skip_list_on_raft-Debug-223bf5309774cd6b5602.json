@@ -161,7 +161,8 @@
 				50,
 				51,
 				52,
-				54
+				54,
+				55
 			]
 		}
 	],
@@ -219,7 +220,8 @@
 				50,
 				51,
 				52,
-				54
+				54,
+				55
 			]
 		},
 		{
@@ -254,7 +256,8 @@
 				46,
 				47,
 				48,
-				53
+				53,
+				56
 			]
 		}
 	],
@@ -560,6 +563,17 @@
 			"compileGroupIndex" : 0,
 			"path" : "test/thread_test.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "test/random_test.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/Persister.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

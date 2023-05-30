@@ -6,8 +6,8 @@
 #include <mutex> // pthread_mutex_t
 #include <condition_variable> // pthread_condition_t
 #include <sstream>
-
-
+#include "config.h"
+#include <random>
 
 class Defer final
 {
@@ -40,6 +40,14 @@ std::string format(const char *format_str, Args... args)
 
 std::chrono::_V2::system_clock::time_point now(){
     return std::chrono::high_resolution_clock::now();
+}
+
+std::chrono::milliseconds getRandomizedElectionTimeout(){
+    std::random_device rd;
+    std::mt19937 rng(rd());
+    std::uniform_int_distribution<int> dist(minRandomizedElectionTime, maxRandomizedElectionTime);
+
+    return std::chrono::milliseconds(dist(rng));
 }
 void sleepNMilliseconds(int N){
     std::this_thread::sleep_for(std::chrono::milliseconds(N));

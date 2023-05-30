@@ -1,6 +1,5 @@
 #include "raft.h"
 #include <util.h>
-
 void Raft::AppendEntries1(AppendEntriesArgs *args, AppendEntriesReply *reply) {
     std::lock_guard<std::mutex> locker(m_mtx);
     reply->set_appstate(AppNormal);// 能接收到代表网络是正常的
@@ -273,3 +272,199 @@ void Raft::doHeartBeat() {
     }
     m_mtx.unlock();
 }
+
+void Raft::electionTimeOutTicker() {
+    // Your code here (2A)
+    // Check if a Leader election should be started.
+    while(true){
+        m_mtx.lock();
+        auto nowTime =  now();
+        auto suitableSleepTime = getRandomizedElectionTimeout() + m_lastResetElectionTime- nowTime;
+        if(suitableSleepTime.count() < 1){
+            suitableSleepTime = std::chrono::milliseconds (1);
+        }
+        std::this_thread::sleep_for(suitableSleepTime);
+        if((m_lastResetElectionTime - nowTime).count()>0){  //说明睡眠的这段时间有重置定时器，那么就没有超时，再次睡眠
+            continue;
+        }
+        doElection();
+    }
+
+}
+
+std::vector<ApplyMsg> Raft::getApplyLogs() {
+
+    std::vector<ApplyMsg> applyMsgs ;
+    myAssert(m_commitIndex <= getLastLogIndex(), format("[func-getApplyLogs-rf{%d}] commitIndex{%d} >getLastLogIndex{%d}", m_me, m_commitIndex, getLastLogIndex()));
+
+    while(m_lastApplied<m_commitIndex){
+        m_lastApplied++;
+        myAssert(m_logs[getSlicesIndexFromLogIndex(m_lastApplied)].logindex()==m_lastApplied,
+                 format("rf.logs[rf.getSlicesIndexFromLogIndex(rf.lastApplied)].LogIndex{%d} != rf.lastApplied{%d} ", m_logs[getSlicesIndexFromLogIndex(m_lastApplied)].logindex(), m_lastApplied));
+        ApplyMsg  applyMsg ;
+        applyMsg.CommandValid = true;
+        applyMsg.SnapshotValid = false;
+        applyMsg.Command = m_logs[getSlicesIndexFromLogIndex(m_lastApplied)].command();
+        applyMsg.CommandIndex = m_lastApplied;
+        applyMsgs.emplace_back( applyMsg);
+//        DPrintf("[	applyLog func-rf{%v}	] apply Log,logIndex:%v  ，logTerm：{%v},command：{%v}\n", rf.me, rf.lastApplied, rf.logs[rf.getSlicesIndexFromLogIndex(rf.lastApplied)].LogTerm, rf.logs[rf.getSlicesIndexFromLogIndex(rf.lastApplied)].Command)
+    }
+    return applyMsgs;
+}
+// 获取新命令应该分配的Index
+int Raft::getNewCommandIndex() {
+    //	如果len(logs)==0,就为快照的index+1，否则为log最后一个日志+1
+    auto lastLogIndex = getLastLogIndex();
+    return lastLogIndex+1;
+}
+// getPrevLogInfo
+// leader调用，传入：服务器index，传出：发送的AE的preLogIndex和PrevLogTerm
+void Raft::getPrevLogInfo(int server, int *preIndex, int *preTerm) {
+    //logs长度为0返回0,0，不是0就根据nextIndex数组的数值返回
+    if(m_nextIndex[server] == m_lastSnapshotIncludeIndex + 1){ //要发送的日志是第一个日志，因此直接返回m_lastSnapshotIncludeIndex和m_lastSnapshotIncludeTerm
+        *preIndex = m_lastSnapshotIncludeIndex;
+        *preTerm = m_lastSnapshotIncludeTerm;
+        return;
+    }
+    auto nextIndex = m_nextIndex[server];
+    *preIndex = nextIndex -1;
+    *preTerm = m_logs[getSlicesIndexFromLogIndex(*preIndex)].logterm();
+}
+// GetState return currentTerm and whether this server
+// believes it is the Leader.
+void Raft::GetState(int *term, bool *isLeader) {
+    m_mtx.lock();
+    Defer ec1([this]()->void {   //todo 暂时不清楚会不会导致死锁
+       m_mtx.unlock();
+    });
+
+    // Your code here (2A).
+    *term = m_currentTerm;
+    *isLeader = (m_status == Leader);
+
+}
+
+void Raft::InstallSnapshot(InstallSnapshotRequest *args, InstallSnapshotResponse *reply) {
+    m_mtx.lock();
+    Defer ec1([this]()->void {
+       m_mtx.unlock();
+    });
+    if(args->term()<m_currentTerm){
+        reply->set_term(m_currentTerm);
+//        DPrintf("[func-InstallSnapshot-rf{%v}] leader{%v}.term{%v}<rf{%v}.term{%v} ", rf.me, args.LeaderId, args.Term, rf.me, rf.currentTerm)
+
+        return;
+    }
+    if(args->term()>m_currentTerm){ //后面两种情况都要接收日志
+        m_currentTerm = args->term();
+        m_votedFor = -1;
+        m_status = Follower;
+        persist();
+    }
+    m_status = Follower;
+    m_lastResetElectionTime = now();
+    // outdated snapshot
+    if(args->lastsnapshotincludeindex() <= m_lastSnapshotIncludeIndex){
+//        DPrintf("[func-InstallSnapshot-rf{%v}] leader{%v}.LastSnapShotIncludeIndex{%v} <= rf{%v}.lastSnapshotIncludeIndex{%v} ", rf.me, args.LeaderId, args.LastSnapShotIncludeIndex, rf.me, rf.lastSnapshotIncludeIndex)
+        return;
+    }
+    //截断日志，修改commitIndex和lastApplied
+    //截断日志包括：日志长了，截断一部分，日志短了，全部清空，其实两个是一种情况
+    //但是由于现在getSlicesIndexFromLogIndex的实现，不能传入不存在logIndex，否则会panic
+    auto lastLogIndex  = getLastLogIndex();
+
+    if (lastLogIndex > args->lastsnapshotincludeindex()) {
+        m_logs.erase(m_logs.begin(),m_logs.begin()+ getSlicesIndexFromLogIndex(args->lastsnapshotincludeindex())+1);
+
+    } else {
+        m_logs.clear();
+    }
+    m_commitIndex = std::max(m_commitIndex,args->lastsnapshotincludeindex());
+    m_lastApplied = std::max(m_lastApplied,args->lastsnapshotincludeindex());
+    m_lastSnapshotIncludeIndex = args->lastsnapshotincludeindex();
+    m_lastSnapshotIncludeTerm = args->lastsnapshotincludeterm();
+
+    reply->set_term(m_currentTerm);
+    ApplyMsg msg;
+    msg.SnapshotValid = true;
+    msg .Snapshot = args->data();
+    msg.SnapshotTerm = args->lastsnapshotincludeterm();
+    msg.SnapshotIndex = args->lastsnapshotincludeindex();
+
+    applyChan->Push(msg);
+    std::thread t(&Raft::pushMsgToKvServer, this, msg); // 创建新线程并执行b函数，并传递参数
+    t.detach();
+    //看下这里能不能再优化
+//    DPrintf("[func-InstallSnapshot-rf{%v}] receive snapshot from {%v} ,LastSnapShotIncludeIndex ={%v} ", rf.me, args.LeaderId, args.LastSnapShotIncludeIndex)
+    //持久化
+    m_persister->Save(persistData(),args->data());
+
+}
+
+void Raft::pushMsgToKvServer(ApplyMsg msg) {
+    applyChan->Push(msg);
+}
+//todo : 等待实现，因为序列化稍微比较复杂.
+std::string Raft::persistData() {
+    return std::string();
+}
+
+void Raft::leaderHearBeatTicker() {
+    while(true){
+        // Your code here (2A)
+        auto nowTime  = now();
+        m_mtx.lock();
+
+        auto suitableSleepTime = std::chrono::milliseconds(HeartBeatTimeout) + m_lastResetHearBeatTime- nowTime;
+        m_mtx.unlock();
+        if (suitableSleepTime.count() < 1 ){
+            suitableSleepTime = std::chrono::milliseconds (1);
+        }
+        std::this_thread::sleep_for(suitableSleepTime);
+        if((m_lastResetHearBeatTime - nowTime).count()>0){ //说明睡眠的这段时间有重置定时器，那么就没有超时，再次睡眠
+            continue;
+        }
+        doHeartBeat();
+    }
+
+}
+
+void Raft::leaderSendSnapShot(int server) {
+
+    m_mtx.lock();
+    InstallSnapshotRequest args ;
+    args.set_leaderid(m_me);
+    args.set_term(m_currentTerm);
+    args.set_lastsnapshotincludeindex(m_lastSnapshotIncludeIndex);
+    args.set_lastsnapshotincludeterm(m_lastSnapshotIncludeTerm);
+    args.set_data(m_persister->ReadSnapshot());
+
+    InstallSnapshotResponse reply;
+    m_mtx.unlock();
+    m_peers[server]->InstallSnapshot(&args,&reply);
+    //todo 2023-05-30 写到这了
+    ok := rf.peers[server].Call("Raft.InstallSnapshot", args, reply)
+    rf.mu.Lock()
+    defer rf.mu.Unlock()
+    if !ok {
+                return
+        }
+    if rf.status != Leader || rf.currentTerm != args.Term {
+        return //中间释放过锁，可能状态已经改变了
+    }
+    //	无论什么时候都要判断term
+    if reply.Term > rf.currentTerm {
+        //三变
+        rf.currentTerm = reply.Term
+        rf.votedFor = -1
+        rf.status = Follower
+        rf.persist()
+        rf.lastResetElectionTime = time.Now()
+        return
+    }
+    rf.matchIndex[server] = args.LastSnapShotIncludeIndex
+    rf.nextIndex[server] = rf.matchIndex[server] + 1
+
+}
+
+

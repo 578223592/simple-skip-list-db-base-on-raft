@@ -10,6 +10,8 @@
 #include "config.h"
 #include <string>
 #include <memory>
+#include <math.h>
+#include "Persister.h"
 /// @brief //////////// 网络状态表示  todo：可以在rpc中删除该字段，实际生产中是用不到的.
 const int Disconnected = 0; // 方便网络分区的时候debug，网络异常的时候为disconnected，只要网络正常就为AppNormal，防止matchIndex[]数组异常减小
 const int AppNormal = 1;
@@ -21,6 +23,7 @@ private:
     std::mutex m_mtx;
     // 日志实体，因为可能涉及rpc通信，为了避免错误排查，直接设置成大写开头
     std::vector<RaftRpc *> m_peers;
+    Persister* m_persister;
     int m_me;
     int m_currentTerm;
     int m_votedFor;
@@ -61,6 +64,8 @@ public:
     bool CondInstallSnapshot(int lastIncludedTerm, int lastIncludedIndex, std::string snapshot);
     void doElection();
     void doHeartBeat();
+    // 每隔一段时间检查睡眠时间内有没有重置定时器，没有则说明超时了
+// 如果有则设置合适睡眠时间：睡眠到重置时间+超时时间
     void electionTimeOutTicker();
     std::vector<ApplyMsg> getApplyLogs();
     int getNewCommandIndex();
@@ -83,8 +88,15 @@ public:
 
     bool sendRequestVote(int server , std::shared_ptr<RequestVoteArgs> args ,  std::shared_ptr<RequestVoteReply> reply,   std::shared_ptr<int> votedNum) ;
     bool sendAppendEntries(int server ,std::shared_ptr<AppendEntriesArgs> args , std::shared_ptr<AppendEntriesReply> reply , std::shared_ptr<int> appendNums ) ;
+
+
+    //rf.applyChan <- msg //不拿锁执行  可以单独创建一个线程执行，但是为了同意使用std:thread ，避免使用pthread_create，因此专门写一个函数来执行
+    void pushMsgToKvServer(ApplyMsg msg);
+
+    std::string persistData();
 public:
     // 重写基类方法,因为rpc远程调用真正调用的是这个方法
+    //序列化，反序列化等操作rpc框架都已经做完了，因此这里只需要获取值然后真正调用本地方法即可。
     void AppendEntries(google::protobuf::RpcController *controller,
                        const ::mprrpc::AppendEntriesArgs *request,
                        ::mprrpc::AppendEntriesReply *response,

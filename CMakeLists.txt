@@ -65,4 +65,4 @@ add_executable(skip_list_on_raft
         src/raft.cpp
         test/defer_test.cpp
         test/format.cpp
-        test/sleep_test.cpp include/config.h test/thread_test.cpp)
+        test/sleep_test.cpp include/config.h test/thread_test.cpp test/random_test.cpp include/Persister.h)

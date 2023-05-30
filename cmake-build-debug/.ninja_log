@@ -1,7 +1,12 @@
 # ninja log v5
 2	3163	1685344357779348303	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/hs/hash1.cpp.o	1fbefeb565b3e71e
 0	3362	1685344357979350161	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/userservice.cc.o	6a911ec062f182aa
-0	44	1685362329139484198	build.ninja	46626afe3d1d8390
+0	44	1685437860806603477	build.ninja	46626afe3d1d8390
+4	6327	1685433858183758031	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/lock_free_queue/main.cpp.o	1d6bcb6afbf94e28
+3	6340	1685433858183758031	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/callfriendservice.cc.o	6843e0f9e1fcb91d
 1	3584	1685344358195352164	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/user.pb.cc.o	614cd09c890c7881
 1	3769	1685344358383353908	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/raftRPC.pb.cc.o	3be94e35e99bd78e
+2	6329	1685433858183758031	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/friend.pb.cc.o	55910cc4ced4d96a
+3	6350	1685433858203758254	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/friendservice.cc.o	39e0707ba2b8ce5b
 1	3134	1685344357751348043	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/calluserservice.cc.o	2b5e8e99651fb7af
+4	6342	1685433858195758166	CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcconfig.cc.o	d0402309975cdc82
