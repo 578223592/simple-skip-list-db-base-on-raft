@@ -16,6 +16,13 @@
 const int Disconnected = 0; // 方便网络分区的时候debug，网络异常的时候为disconnected，只要网络正常就为AppNormal，防止matchIndex[]数组异常减小
 const int AppNormal = 1;
 
+///////////////投票状态
+
+const int Killed = 0;
+const int Voted = 1;//本轮已经投过票了
+const int Expire = 2; //投票（消息、竞选者）过期
+const int Normal = 3;
+
 class Raft : mprrpc::raftRpc
 {
 
@@ -59,7 +66,7 @@ private:
     int m_lastSnapshotIncludeTerm;
 
 public:
-    void AppendEntries1(AppendEntriesArgs *args, AppendEntriesReply *reply);
+    void AppendEntries1(const AppendEntriesArgs *args, AppendEntriesReply *reply);
     void applierTicker();
     bool CondInstallSnapshot(int lastIncludedTerm, int lastIncludedIndex, std::string snapshot);
     void doElection();
@@ -71,13 +78,13 @@ public:
     int getNewCommandIndex();
     void getPrevLogInfo(int server, int *preIndex, int *preTerm);
     void GetState(int *term, bool *isLeader);
-    void InstallSnapshot(InstallSnapshotRequest *args, InstallSnapshotResponse *reply);
+    void InstallSnapshot( const InstallSnapshotRequest *args, InstallSnapshotResponse *reply);
     void leaderHearBeatTicker();
     void leaderSendSnapShot(int server);
     void leaderUpdateCommitIndex();
     bool matchLog(int logIndex, int logTerm);
     void persist();
-    void RequestVote(RequestVoteArgs *args, RequestVoteReply *reply);
+    void RequestVote(const RequestVoteArgs *args, RequestVoteReply *reply);
     bool UpToDate(int index, int term);
     int getLastLogIndex();
     void getLastLogIndexAndTerm(int *lastLogIndex, int *lastLogTerm);
@@ -92,7 +99,7 @@ public:
 
     //rf.applyChan <- msg //不拿锁执行  可以单独创建一个线程执行，但是为了同意使用std:thread ，避免使用pthread_create，因此专门写一个函数来执行
     void pushMsgToKvServer(ApplyMsg msg);
-
+    void readPersist(std::string data);
     std::string persistData();
 public:
     // 重写基类方法,因为rpc远程调用真正调用的是这个方法
@@ -100,13 +107,13 @@ public:
     void AppendEntries(google::protobuf::RpcController *controller,
                        const ::mprrpc::AppendEntriesArgs *request,
                        ::mprrpc::AppendEntriesReply *response,
-                       ::google::protobuf::Closure *done);
+                       ::google::protobuf::Closure *done) override;
     void InstallSnapshot(google::protobuf::RpcController *controller,
                          const ::mprrpc::InstallSnapshotRequest *request,
                          ::mprrpc::InstallSnapshotResponse *response,
-                         ::google::protobuf::Closure *done);
+                         ::google::protobuf::Closure *done) override;
     void RequestVote(google::protobuf::RpcController *controller,
                      const ::mprrpc::RequestVoteArgs *request,
                      ::mprrpc::RequestVoteReply *response,
-                     ::google::protobuf::Closure *done);
+                     ::google::protobuf::Closure *done) override;
 };

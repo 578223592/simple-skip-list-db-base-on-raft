@@ -17,9 +17,10 @@
 
 ## todoList
 - [ ] rpc的改造 预计今天实现 2023-5-26     实际实现：未完成，先延后，因为需要先完成cmake编译项目的学习。
-- [ ] raft迁移，预计两天  2023-5-28开始                实际实现：
+- [x] raft迁移，预计两天  2023-5-28开始                实际实现： 2023年05月31日
 - [ ] kvserver迁移，预计半天   
 - [ ] 配置整个项目的cmake，cmake需要学习  cmake学习参考：https://www.bilibili.com/video/BV18R4y127UV/?spm_id_from=333.337.search-card.all.click&vd_source=b39a7d56e3c8769f8d478b0c4cac403e 和同门哈哈哈
 - [ ] goruntime更加优雅的实现，使用线程池
 - [ ] 添加跳表，预计两天
 - [ ] 使用智能指针和范围锁保证良好的资源管理 https://blog.csdn.net/yu_xiaoxian_2018/article/details/112689345
+- [ ] 持久化方案，备选：手动实现|protobuf|boost的序列化库

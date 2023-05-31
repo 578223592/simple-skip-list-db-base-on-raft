@@ -43,7 +43,7 @@ inline bool RaftRpc::RequestVote(RequestVoteArgs *args, RequestVoteReply *respon
     return !controller.Failed();
 }
 //先开启服务器，再尝试连接其他的节点，中间给一个间隔时间，等待其他的rpc服务器节点启动
-RaftRpc::RaftRpc(string ip,short port)
+RaftRpc::RaftRpc(std::string ip,short port)
 {
     //*********************************************  */
     // 接收rpc设置

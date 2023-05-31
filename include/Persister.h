@@ -13,6 +13,8 @@ private:
 public:
     void Save(const std::string raftstate , const std::string snapshot );
     std::string ReadSnapshot();
+    void SaveRaftState(std::string data);
+    int RaftStateSize();
 };
 
 
