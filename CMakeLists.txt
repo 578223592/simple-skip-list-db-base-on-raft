@@ -10,7 +10,7 @@ include_directories(rpc/mprpc/lib)
 include_directories(rpc/mprpc/lib/include)
 include_directories(rpc/mprpc/src/include)
 include_directories(rpc/mprpc/test/protobuf)
-include_directories(include)
+include_directories(raft/include)
 
 add_executable(skip_list_on_raft
         rpc/mprpc/example/callee/friendservice.cc
@@ -58,11 +58,11 @@ add_executable(skip_list_on_raft
         rpc/mprpc/test/protobuf/main.cc
         rpc/mprpc/test/protobuf/test.pb.cc
         rpc/mprpc/test/protobuf/test.pb.h
-        include/ApplyMsg.h
-        include/raft.h
-        include/raftrpc.h
-        include/util.h
-        src/raft.cpp
+        raft/include/ApplyMsg.h
+        raft/include/raft.h
+        raft/include/raftrpc.h
+        raft/include/util.h
+        raft/raft.cpp
         test/defer_test.cpp
         test/format.cpp
-        test/sleep_test.cpp include/config.h test/thread_test.cpp test/random_test.cpp include/Persister.h)
+        test/sleep_test.cpp raft/include/config.h test/thread_test.cpp test/random_test.cpp raft/include/Persister.h raft/include/kvServer.h raft/kvServer.cpp test/timout_pop.cpp)

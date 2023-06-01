@@ -101,6 +101,10 @@ public:
     void pushMsgToKvServer(ApplyMsg msg);
     void readPersist(std::string data);
     std::string persistData();
+
+
+    void Start(Op command,int* newLogIndex,int* newLogTerm,bool* isLeader ) ;
+
 public:
     // 重写基类方法,因为rpc远程调用真正调用的是这个方法
     //序列化，反序列化等操作rpc框架都已经做完了，因此这里只需要获取值然后真正调用本地方法即可。
@@ -116,4 +120,9 @@ public:
                      const ::mprrpc::RequestVoteArgs *request,
                      ::mprrpc::RequestVoteReply *response,
                      ::google::protobuf::Closure *done) override;
+
+
+public:
+    //todo :raft节点的创建过程
+    Raft();
 };

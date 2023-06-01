@@ -52,189 +52,203 @@ build cmake_object_order_depends_target_skip_list_on_raft: phony || CMakeFiles/s
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/friendservice.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/example/callee/friendservice.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/friendservice.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/userservice.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/example/callee/userservice.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/userservice.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/callfriendservice.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/example/caller/callfriendservice.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/callfriendservice.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/calluserservice.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/example/caller/calluserservice.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/calluserservice.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/friend.pb.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/example/friend.pb.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/friend.pb.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/raftRPC.pb.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/example/raftRPC.pb.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/raftRPC.pb.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/user.pb.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/example/user.pb.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/user.pb.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/hs/hash1.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/experiment/hs/hash1.cpp || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/hs/hash1.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/hs
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/lock_free_queue/main.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue/main.cpp || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/lock_free_queue/main.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/lock_free_queue
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils/zk_cpp.cpp || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/logger.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/src/logger.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/logger.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcapplication.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/src/mprpcapplication.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcapplication.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcchannel.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/src/mprpcchannel.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcchannel.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcconfig.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/src/mprpcconfig.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcconfig.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpccontroller.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/src/mprpccontroller.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpccontroller.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcheader.pb.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/src/rpcheader.pb.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcheader.pb.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcprovider.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/src/rpcprovider.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcprovider.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/zookeeperutil.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/src/zookeeperutil.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/zookeeperutil.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/main.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf/main.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/main.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf
 
 build CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/test.pb.cc.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf/test.pb.cc || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/test.pb.cc.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf
 
-build CMakeFiles/skip_list_on_raft.dir/src/raft.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/src/raft.cpp || cmake_object_order_depends_target_skip_list_on_raft
-  DEP_FILE = CMakeFiles/skip_list_on_raft.dir/src/raft.cpp.o.d
+build CMakeFiles/skip_list_on_raft.dir/raft/raft.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/raft/raft.cpp || cmake_object_order_depends_target_skip_list_on_raft
+  DEP_FILE = CMakeFiles/skip_list_on_raft.dir/raft/raft.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
-  OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/src
+  OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/raft
 
 build CMakeFiles/skip_list_on_raft.dir/test/defer_test.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/test/defer_test.cpp || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/test/defer_test.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/test
 
 build CMakeFiles/skip_list_on_raft.dir/test/format.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/test/format.cpp || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/test/format.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/test
 
 build CMakeFiles/skip_list_on_raft.dir/test/sleep_test.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/test/sleep_test.cpp || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/test/sleep_test.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/test
 
 build CMakeFiles/skip_list_on_raft.dir/test/thread_test.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/test/thread_test.cpp || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/test/thread_test.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/test
 
 build CMakeFiles/skip_list_on_raft.dir/test/random_test.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/test/random_test.cpp || cmake_object_order_depends_target_skip_list_on_raft
   DEP_FILE = CMakeFiles/skip_list_on_raft.dir/test/random_test.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/include
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
+  OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
+  OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/test
+
+build CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/raft/kvServer.cpp || cmake_object_order_depends_target_skip_list_on_raft
+  DEP_FILE = CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
+  OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
+  OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/raft
+
+build CMakeFiles/skip_list_on_raft.dir/test/timout_pop.cpp.o: CXX_COMPILER__skip_list_on_raft_Debug /home/swx/skip_list_on_raft/test/timout_pop.cpp || cmake_object_order_depends_target_skip_list_on_raft
+  DEP_FILE = CMakeFiles/skip_list_on_raft.dir/test/timout_pop.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/swx/skip_list_on_raft/rpc/mprpc/example -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/skip_list_on_raft/rpc/mprpc/experiment/zkutils -I/home/swx/skip_list_on_raft/rpc/mprpc/lib -I/home/swx/skip_list_on_raft/rpc/mprpc/lib/include -I/home/swx/skip_list_on_raft/rpc/mprpc/src/include -I/home/swx/skip_list_on_raft/rpc/mprpc/test/protobuf -I/home/swx/skip_list_on_raft/raft/include
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   OBJECT_FILE_DIR = CMakeFiles/skip_list_on_raft.dir/test
 
@@ -246,7 +260,7 @@ build CMakeFiles/skip_list_on_raft.dir/test/random_test.cpp.o: CXX_COMPILER__ski
 #############################################
 # Link the executable skip_list_on_raft
 
-build skip_list_on_raft: CXX_EXECUTABLE_LINKER__skip_list_on_raft_Debug CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/friendservice.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/userservice.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/callfriendservice.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/calluserservice.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/friend.pb.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/raftRPC.pb.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/user.pb.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/hs/hash1.cpp.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/lock_free_queue/main.cpp.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp.cpp.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/logger.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcapplication.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcchannel.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcconfig.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpccontroller.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcheader.pb.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcprovider.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/zookeeperutil.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/main.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/test.pb.cc.o CMakeFiles/skip_list_on_raft.dir/src/raft.cpp.o CMakeFiles/skip_list_on_raft.dir/test/defer_test.cpp.o CMakeFiles/skip_list_on_raft.dir/test/format.cpp.o CMakeFiles/skip_list_on_raft.dir/test/sleep_test.cpp.o CMakeFiles/skip_list_on_raft.dir/test/thread_test.cpp.o CMakeFiles/skip_list_on_raft.dir/test/random_test.cpp.o
+build skip_list_on_raft: CXX_EXECUTABLE_LINKER__skip_list_on_raft_Debug CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/friendservice.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/userservice.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/callfriendservice.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/calluserservice.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/friend.pb.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/raftRPC.pb.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/user.pb.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/hs/hash1.cpp.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/lock_free_queue/main.cpp.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp.cpp.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/logger.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcapplication.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcchannel.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcconfig.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpccontroller.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcheader.pb.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcprovider.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/zookeeperutil.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/main.cc.o CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/test.pb.cc.o CMakeFiles/skip_list_on_raft.dir/raft/raft.cpp.o CMakeFiles/skip_list_on_raft.dir/test/defer_test.cpp.o CMakeFiles/skip_list_on_raft.dir/test/format.cpp.o CMakeFiles/skip_list_on_raft.dir/test/sleep_test.cpp.o CMakeFiles/skip_list_on_raft.dir/test/thread_test.cpp.o CMakeFiles/skip_list_on_raft.dir/test/random_test.cpp.o CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o CMakeFiles/skip_list_on_raft.dir/test/timout_pop.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/skip_list_on_raft.dir
   POST_BUILD = :

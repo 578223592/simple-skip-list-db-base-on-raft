@@ -1,5 +1,5 @@
 #include "raft.h"
-#include <util.h>
+#include "util.h"
 
 void Raft::AppendEntries1(const  AppendEntriesArgs *args,  AppendEntriesReply *reply) {
     std::lock_guard<std::mutex> locker(m_mtx);
@@ -820,6 +820,36 @@ void Raft::RequestVote(google::protobuf::RpcController *controller, const ::mprr
     RequestVote(request,response);
     done->Run();
 }
+
+void Raft::Start(Op command, int *newLogIndex, int *newLogTerm, bool *isLeader) {
+    m_mtx.lock();
+    Defer ec1([this]()->void {
+       m_mtx.unlock();
+    });
+    if(m_status != Leader){
+        *newLogIndex = -1;*newLogTerm = -1;*isLeader = false;
+        return ;
+    }
+
+    LogEntry newLogEntry;
+    newLogEntry.set_command(command.asString());
+    newLogEntry.set_logterm(m_currentTerm);
+    newLogEntry.set_logindex(getNewCommandIndex());
+    m_logs.emplace_back( newLogEntry);
+
+
+
+    int lastLogIndex = getLastLogIndex();
+
+    //leader应该不停的向各个Follower发送AE来维护心跳和保持日志同步，目前的做法是新的命令来了不会直接执行，而是等待leader的心跳触发
+//    DPrintf("[func-Start-rf{%v}]  lastLogIndex:%v,command:%v\n", rf.me, lastLogIndex, command)
+    //rf.timer.Reset(10) //接收到命令后马上给follower发送,改成这样不知为何会出现问题，待修正 todo
+    persist();
+    *newLogIndex = newLogEntry.logindex();*newLogTerm = newLogEntry.logterm();*isLeader = true;
+
+}
+
+
 
 
 
