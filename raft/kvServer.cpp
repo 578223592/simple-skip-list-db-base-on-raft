@@ -102,72 +102,94 @@ void KvServer::Get(const GetArgs *args, GetReply *reply) {
 
 
     // timeout
-    Op resOp;
+    Op raftCommitOp;
 
-    if(!chForRaftIndex->timeOutPop(CONSENSUS_TIMEOUT,&resOp)){
+    if(!chForRaftIndex->timeOutPop(CONSENSUS_TIMEOUT,&raftCommitOp)){
 
 //        DPrintf("[GET TIMEOUT!!!]From Client %d (Request %d) To Server %d, key %v, raftIndex %d", args.ClientId, args.RequestId, kv.me, op.Key, raftIndex)
         // todo 2023年06月01日
+        int  _ = -1; bool isLeader = false;
+        m_raftNode->GetState(&_,&isLeader);
 
-
-        _, isLeader := kv.rf.GetState()
-        if kv.ifRequestDuplicate(op.ClientId, int(op.RequestId)) && isLeader {
+        if (ifRequestDuplicate(op.ClientId, op.RequestId) && isLeader) {
                     //如果超时，代表raft集群不保证已经commitIndex该日志，但是如果是已经提交过的get请求，是可以再执行的。
                     // 不会违反线性一致性
-                    value, exist := kv.ExecuteGetOpOnKVDB(op)
-                    if exist {
-                        reply.Err = OK
-                        reply.Value = value
+            string value;bool exist = false;
+            ExecuteGetOpOnKVDB(op,&value,&exist);
+                    if (exist) {
+                        reply->set_err(OK);
+                        reply->set_value(value);
                     } else {
-                        reply.Err = ErrNoKey
-                        reply.Value = ""
+                        reply->set_err(ErrNoKey);
+                        reply->set_value("");
+
                     }
             } else {
-            reply.Err = ErrWrongLeader //返回这个，其实就是让clerk换一个节点重试
+            reply->set_err(ErrWrongLeader);  //返回这个，其实就是让clerk换一个节点重试
         }
     }else{
+        //raft已经提交了该command（op），可以正式开始执行了
+//        DPrintf("[WaitChanGetRaftApplyMessage<--]Server %d , get Command <-- Index:%d , ClientId %d, RequestId %d, Opreation %v, Key :%v, Value :%v", kv.me, raftIndex, op.ClientId, op.RequestId, op.Operation, op.Key, op.Value)
+        //todo 这里还要再次检验的原因：感觉不用检验，因为leader只要正确的提交了，那么这些肯定是符合的
+        if(raftCommitOp.ClientId == op.ClientId &&raftCommitOp.RequestId == op.RequestId){
+            string value;bool exist = false;
+            ExecuteGetOpOnKVDB(op,&value,&exist);
+            if (exist) {
+                reply->set_err(OK);
+                reply->set_value(value);
+                } else {
+                reply->set_err(ErrNoKey);
+                reply->set_value("");
+            }
+        } else {
+            reply->set_err(ErrWrongLeader);
+//            DPrintf("[GET ] 不满足：raftCommitOp.ClientId{%v} == op.ClientId{%v} && raftCommitOp.RequestId{%v} == op.RequestId{%v}", raftCommitOp.ClientId, op.ClientId, raftCommitOp.RequestId, op.RequestId)
+        }
+    }
+    m_mtx.lock();
+    auto tmp =  waitApplyCh[raftIndex];
+    waitApplyCh.erase(raftIndex);
+    delete tmp;
+    m_mtx.unlock();
 
+}
+
+void KvServer::GetCommandFromRaft(ApplyMsg message) {
+
+    Op op;
+    op.parseFromString(message.Command);
+
+
+
+
+//    DPrintf("[RaftApplyCommand]Server %d , Got Command --> Index:%d , ClientId %d, RequestId %d, Opreation %v, Key :%v, Value :%v",kv.me, message.CommandIndex, op.ClientId, op.RequestId, op.Operation, op.Key, op.Value)
+if(message.CommandIndex <= m_lastSnapShotRaftLogIndex){
+    return ;
+}
+
+    // State Machine (KVServer solute the duplicate problem)
+    // duplicate command will not be exed
+    if(!ifRequestDuplicate(op.ClientId,op.RequestId)){
+        // execute command
+        if (op.Operation == "Put") {
+            execute
+
+
+            kv.ExecutePutOpOnKVDB(op)
+        }
+        if (op.Operation == "Append" ){
+            kv.ExecuteAppendOpOnKVDB(op)
+        }
+        //  kv.lastRequestId[op.ClientId] = op.RequestId  在Executexxx函数里面更新的
+    }
+    //到这里kvDB已经制作了快照
+    if kv.maxraftstate != -1{
+        kv.IfNeedToSendSnapShotCommand(message.CommandIndex,9)
+        //如果raft的log太大就把制作快照
     }
 
-    select {
+    // Send message to the chan of op.ClientId
+    kv.SendMessageToWaitChan(op,message.CommandIndex)
 
-            case <-time.After(time.Millisecond * CONSENSUS_TIMEOUT):
-            DPrintf("[GET TIMEOUT!!!]From Client %d (Request %d) To Server %d, key %v, raftIndex %d", args.ClientId, args.RequestId, kv.me, op.Key, raftIndex)
 
-            _, isLeader := kv.rf.GetState()
-            if kv.ifRequestDuplicate(op.ClientId, int(op.RequestId)) && isLeader {
-                //如果超时，代表raft集群不保证已经commitIndex该日志，但是如果是已经提交过的get请求，是可以再执行的。
-                // 不会违反线性一致性
-                value, exist := kv.ExecuteGetOpOnKVDB(op)
-                if exist {
-                            reply.Err = OK
-                            reply.Value = value
-                    } else {
-                    reply.Err = ErrNoKey
-                    reply.Value = ""
-                }
-            } else {
-                reply.Err = ErrWrongLeader //返回这个，其实就是让clerk换一个节点重试
-            }
-
-            case raftCommitOp := <-chForRaftIndex: //raft已经提交了该command（op），可以正式开始执行了
-            DPrintf("[WaitChanGetRaftApplyMessage<--]Server %d , get Command <-- Index:%d , ClientId %d, RequestId %d, Opreation %v, Key :%v, Value :%v", kv.me, raftIndex, op.ClientId, op.RequestId, op.Operation, op.Key, op.Value)
-            //todo 这里还要再次检验的原因：感觉不用检验，因为leader只要正确的提交了，那么这些肯定是符合的
-            if raftCommitOp.ClientId == op.ClientId && raftCommitOp.RequestId == op.RequestId {
-                value, exist := kv.ExecuteGetOpOnKVDB(op)
-                if exist {
-                            reply.Err = OK
-                            reply.Value = value
-                    } else {
-                    reply.Err = ErrNoKey
-                    reply.Value = ""
-                }
-            } else {
-                reply.Err = ErrWrongLeader
-                DPrintf("[GET ] 不满足：raftCommitOp.ClientId{%v} == op.ClientId{%v} && raftCommitOp.RequestId{%v} == op.RequestId{%v}", raftCommitOp.ClientId, op.ClientId, raftCommitOp.RequestId, op.RequestId)
-            }
-    }
-    kv.mu.Lock()
-    delete(kv.waitApplyCh, raftIndex)
-    kv.mu.Unlock()
 }

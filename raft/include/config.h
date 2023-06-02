@@ -16,5 +16,5 @@ const int maxRandomizedElectionTime = 500; //ms
 
 
 
-const int CONSENSUS_TIMEOUT = 500 //ms
+const int CONSENSUS_TIMEOUT = 500 ;//ms
 #endif //SKIP_LIST_ON_RAFT_CONFIG_H

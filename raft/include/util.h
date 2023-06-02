@@ -130,6 +130,7 @@ public:
     // IfDuplicate bool // Duplicate command can't be applied twice , but only for PUT and APPEND
 
 public:
+    //todo
     //为了协调raftRPC中的command只设置成了string,这个的限制就是正常字符中不能包含|
     //当然后期可以换成更高级的序列化方法，比如protobuf
     std::string asString() const {
