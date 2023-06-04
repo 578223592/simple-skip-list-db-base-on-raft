@@ -1,5 +1,12 @@
 # simple-skip-list-db-base-on-raft
 
+## 项目简介
+本项目是一个基于raft分布式协议实现的kv数据库。
+
+## 使用方法
+### 使用
+### 压力测试
+
 
 完成任务：将go上的raft迁移到c++实现。
 需要的大步骤：
@@ -18,9 +25,30 @@
 ## todoList
 - [ ] rpc的改造 预计今天实现 2023-5-26     实际实现：未完成，先延后，因为需要先完成cmake编译项目的学习。
 - [x] raft迁移，预计两天  2023-5-28开始                实际实现： 2023年05月31日
-- [ ] kvserver迁移，预计半天   2023年06月01日开始
-- [ ] 配置整个项目的cmake，cmake需要学习  cmake学习参考：https://www.bilibili.com/video/BV18R4y127UV/?spm_id_from=333.337.search-card.all.click&vd_source=b39a7d56e3c8769f8d478b0c4cac403e 和同门哈哈哈
+- [x] kvserver迁移，预计半天   2023年06月01日开始  实际完成：2023年06月04日
+- [ ] 配置整个项目的cmake，cmake需要学习  cmake学习参考：https://www.bilibili.com/video/BV18R4y127UV/?spm_id_from=333.337.search-card.all.click&vd_source=b39a7d56e3c8769f8d478b0c4cac403e 和同门哈哈哈   
+ 开始日期：2023年06月04日      
 - [ ] goruntime更加优雅的实现，使用线程池
 - [ ] 添加跳表，预计两天
 - [ ] 使用智能指针和范围锁保证良好的资源管理 https://blog.csdn.net/yu_xiaoxian_2018/article/details/112689345
-- [ ] 持久化方案，备选：手动实现|protobuf|boost的序列化库
+- [ ] 持久化方案，persist类使用boost完成序列化 备选：手动实现|protobuf|boost的序列化库
+- [ ] 补充README文件，预计半天
+
+## 一些依赖的安装方法
+> 只在本机测试过
+
+机器配置：
+```bash
+> swx@swx-U820:~$  lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.2 LTS
+Release:	22.04
+Codename:	jammy
+```
+
+**boost库**
+```
+sudo apt-get install libboost-all-dev
+```
+boost库更多安装方法参考： https://blog.csdn.net/qq_41854911/article/details/119454212

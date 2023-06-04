@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="skip_list_on_raft"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="skip_list_on_raft">
+				<Option output="/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/skip_list_on_raft" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/lock_free_queue"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/zkutils"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/lib"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/lib/include"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/test/protobuf"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 skip_list_on_raft"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="skip_list_on_raft/fast">
+				<Option output="/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/skip_list_on_raft" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/lock_free_queue"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/zkutils"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/lib"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/lib/include"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/test/protobuf"/>
+					<Add directory="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 skip_list_on_raft/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/example/callerMain.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/example/raftKvDb.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/clerk.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/ApplyMsg.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/Persister.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/clerk.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/config.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/kvServer.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/raft.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/raftrpc.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/raftserverRpc.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/util.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/kvServer.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/raft.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example/callee/friendservice.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example/callee/userservice.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example/caller/callfriendservice.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example/caller/calluserservice.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example/friend.pb.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example/friend.pb.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example/raftRPC.pb.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example/raftRPC.pb.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example/user.pb.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example/user.pb.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/hs/hash1.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/lock_free_queue/lock_free.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/lock_free_queue/main.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/zkutils/zk_cpp.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/zkutils/zk_cpp.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include/lockqueue.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include/logger.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include/mprpcapplication.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include/mprpcchannel.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include/mprpcconfig.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include/mprpccontroller.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include/rpcheader.pb.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include/rpcprovider.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include/zookeeperutil.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/logger.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/mprpcapplication.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/mprpcchannel.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/mprpcconfig.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/mprpccontroller.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/rpcheader.pb.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/rpcprovider.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/zookeeperutil.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/test/protobuf/main.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/test/protobuf/test.pb.cc">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/test/protobuf/test.pb.h">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/test/defer_test.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/test/format.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/test/random_test.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/test/serialization.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/test/sleep_test.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/test/thread_test.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/test/timout_pop.cpp">
+			<Option target="skip_list_on_raft"/>
+		</Unit>
+		<Unit filename="/home/swx/2023_project/simple-skip-list-db-base-on-raft/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

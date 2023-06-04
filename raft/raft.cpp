@@ -1,4 +1,4 @@
-#include "raft.h"
+#include "./include/raft.h"  //todo  ： 这里为什么只能用相对路径
 #include "util.h"
 
 void Raft::AppendEntries1(const  AppendEntriesArgs *args,  AppendEntriesReply *reply) {
@@ -846,6 +846,65 @@ void Raft::Start(Op command, int *newLogIndex, int *newLogTerm, bool *isLeader) 
     //rf.timer.Reset(10) //接收到命令后马上给follower发送,改成这样不知为何会出现问题，待修正 todo
     persist();
     *newLogIndex = newLogEntry.logindex();*newLogTerm = newLogEntry.logterm();*isLeader = true;
+
+}
+// Make
+// the service or tester wants to create a Raft server. the ports
+// of all the Raft servers (including this one) are in peers[]. this
+// server's port is peers[me]. all the servers' peers[] arrays
+// have the same order. persister is a place for this server to
+// save its persistent state, and also initially holds the most
+// recent saved state, if any. applyCh is a channel on which the
+// tester or service expects Raft to send ApplyMsg messages.
+// Make() must return quickly, so it should start goroutines
+// for any long-running work.
+void Raft::init(std::vector<shared_ptr<RaftRpc>> peers, int me, std::shared_ptr<Persister> persister,
+                shared_ptr<LockQueue<ApplyMsg>> applyCh) {
+    m_peers = peers;
+    m_persister = persister;
+    m_me = me;
+    // Your initialization code here (2A, 2B, 2C).
+    m_mtx.lock();
+
+    //applier
+    this->applyChan = applyCh;
+//    rf.ApplyMsgQueue = make(chan ApplyMsg)
+    m_currentTerm = 0;
+    m_status = Follower;
+    m_commitIndex = 0;
+    m_lastApplied = 0;
+    m_logs.clear();
+    for (int i =0;i<m_peers.size();i++){
+        m_matchIndex.push_back(0);
+        m_nextIndex.push_back(0);
+    }
+    m_votedFor = -1;
+
+    m_lastSnapshotIncludeIndex =0;
+    m_lastSnapshotIncludeTerm = 0;
+    m_lastResetElectionTime = now();
+    m_lastResetHearBeatTime = now();
+
+
+    // initialize from state persisted before a crash
+    readPersist(m_persister->ReadRaftState());
+    if(m_lastSnapshotIncludeIndex > 0){
+        m_lastApplied = m_lastSnapshotIncludeIndex;
+        //rf.commitIndex = rf.lastSnapshotIncludeIndex   todo ：崩溃恢复为何不能读取commitIndex
+    }
+
+
+//    DPrintf("[Init&ReInit] Sever %d, term %d, lastSnapshotIncludeIndex {%d} , lastSnapshotIncludeTerm {%d}", rf.me, rf.currentTerm, rf.lastSnapshotIncludeIndex, rf.lastSnapshotIncludeTerm)
+    m_mtx.unlock();
+    // start ticker goroutine to start elections
+    std::thread t(&Raft::leaderHearBeatTicker, this); //马上向其他节点宣告自己就是leader
+    t.detach();
+
+    std::thread t2(&Raft::electionTimeOutTicker, this); //马上向其他节点宣告自己就是leader
+    t2.detach();
+
+    std::thread t3(&Raft::applierTicker, this); //马上向其他节点宣告自己就是leader
+    t3.detach();
 
 }
 

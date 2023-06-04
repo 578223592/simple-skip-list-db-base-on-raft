@@ -15,6 +15,7 @@ public:
     std::string ReadSnapshot();
     void SaveRaftState(std::string data);
     int RaftStateSize();
+    string ReadRaftState();
 };
 
 

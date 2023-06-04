@@ -10,7 +10,7 @@
 #include "config.h"
 #include <string>
 #include <memory>
-#include <math.h>
+#include <cmath>
 #include "Persister.h"
 /// @brief //////////// 网络状态表示  todo：可以在rpc中删除该字段，实际生产中是用不到的.
 const int Disconnected = 0; // 方便网络分区的时候debug，网络异常的时候为disconnected，只要网络正常就为AppNormal，防止matchIndex[]数组异常减小
@@ -23,14 +23,13 @@ const int Voted = 1;//本轮已经投过票了
 const int Expire = 2; //投票（消息、竞选者）过期
 const int Normal = 3;
 
-class Raft : mprrpc::raftRpc
+class Raft : public mprrpc::raftRpc
 {
 
 private:
     std::mutex m_mtx;
-    // 日志实体，因为可能涉及rpc通信，为了避免错误排查，直接设置成大写开头
-    std::vector<RaftRpc *> m_peers;
-    Persister* m_persister;
+    std::vector<shared_ptr< RaftRpc >> m_peers;
+    std::shared_ptr<Persister> m_persister;
     int m_me;
     int m_currentTerm;
     int m_votedFor;
@@ -51,7 +50,7 @@ private:
     // 身份
     Status m_status;
 
-    LockQueue<ApplyMsg>* applyChan  ;     // client从这里取日志（2B），client与raft通信的接口
+    shared_ptr<LockQueue<ApplyMsg>> applyChan  ;     // client从这里取日志（2B），client与raft通信的接口
     // ApplyMsgQueue chan ApplyMsg // raft内部使用的chan，applyChan是用于和服务层交互，最后好像没用上
 
     // 选举超时
@@ -105,6 +104,8 @@ public:
 
     void Start(Op command,int* newLogIndex,int* newLogTerm,bool* isLeader ) ;
 
+
+    void Snapshot(int index , std::string snapshot );
 public:
     // 重写基类方法,因为rpc远程调用真正调用的是这个方法
     //序列化，反序列化等操作rpc框架都已经做完了，因此这里只需要获取值然后真正调用本地方法即可。
@@ -123,6 +124,5 @@ public:
 
 
 public:
-    //todo :raft节点的创建过程
-    Raft();
+    void init(std::vector<shared_ptr< RaftRpc >> peers,int me,std::shared_ptr<Persister> persister,shared_ptr<LockQueue<ApplyMsg>> applyCh);
 };

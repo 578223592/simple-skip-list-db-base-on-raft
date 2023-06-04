@@ -8,18 +8,30 @@
 #include <mutex>
 #include "raft.h"
 #include <unordered_map>
-#include "kvServerRPC.pb.h"
-
+#include "../../rpc/example/include/kvServerRPC.pb.h"
+#include <iostream>
+#include <unordered_map>
+#include "boost/serialization/serialization.hpp"
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include "boost/archive/binary_oarchive.hpp"
+#include "boost/archive/binary_iarchive.hpp"
+#include <boost/serialization/export.hpp>
+#include "boost/foreach.hpp"
+#include "boost/any.hpp"
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/unordered_map.hpp>
 using string = std::string;
 
 
 
 class KvServer : mprrpc::kvServerRpc {
+
 private:
     std::mutex m_mtx;
     int m_me;
-    Raft * m_raftNode;
-    LockQueue<ApplyMsg> *applyChan;//kvServer和raft节点的通信管道
+    std::shared_ptr<Raft>  m_raftNode;
+    std::shared_ptr<LockQueue<ApplyMsg>> applyChan;//kvServer和raft节点的通信管道
     int m_maxRaftState; // snapshot if log grows this big
 
     // Your definitions here.
@@ -34,6 +46,9 @@ private:
 
 
 public:
+    KvServer() = delete;
+    KvServer(int me,int maxraftstate,std::string nodeInforFileName);
+    void StartKVServer();
     void DprintfKVDB();
 
     void ExecuteAppendOpOnKVDB(Op op);
@@ -47,27 +62,69 @@ public:
     void GetCommandFromRaft(ApplyMsg message);
 
     bool ifRequestDuplicate(string ClientId, int RequestId);
-
+    // clerk 使用RPC远程调用
     void PutAppend(const PutAppendArgs *args, PutAppendReply *reply);
 
-
+////一直等待raft传来的applyCh
     void ReadRaftApplyCommandLoop();
 
     void ReadSnapShotToInstall(string snapshot);
 
-    bool SendMessageToWaitChan( Op op,int raftIndex );
+    bool SendMessageToWaitChan( const Op& op,int raftIndex );
+    // 检查是否需要制作快照，需要的话就向raft之下制作快照
+    void IfNeedToSendSnapShotCommand(int raftIndex ,int  proportion );
+    // Handler the SnapShot from kv.rf.applyCh
+    void GetSnapShotFromRaft(ApplyMsg message );
 
-public:
+
+    string MakeSnapShot();
+
+public:   //for rpc
     virtual void PutAppend(google::protobuf::RpcController *controller,
                            const ::mprrpc::PutAppendArgs *request,
                            ::mprrpc::PutAppendReply *response,
-                           ::google::protobuf::Closure *done);
+                           ::google::protobuf::Closure *done) override;
 
     virtual void Get(google::protobuf::RpcController *controller,
                      const ::mprrpc::GetArgs *request,
                      ::mprrpc::GetReply *response,
-                     ::google::protobuf::Closure *done);
+                     ::google::protobuf::Closure *done) override;
+
+
+
+    /////////////////serialiazation start ///////////////////////////////
+    //notice ： func serialize
+private:
+
+    friend class boost::serialization::access;
+
+    // When the class Archive corresponds to an output archive, the
+    // & operator is defined similar to <<.  Likewise, when the class Archive
+    // is a type of input archive the & operator is defined similar to >>.
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)   //这里面写需要序列话和反序列化的字段
+    {
+        ar & m_kvDB;
+        ar & m_lastRequestId;
+    }
+    std::string getSnapshotData(){
+        std::stringstream ss;
+        boost::archive::text_oarchive oa(ss);
+        oa<< *this;
+        return ss.str();
+    }
+
+    void parseFromString(const string& str){
+        std::stringstream ss(str);
+        boost::archive::text_iarchive ia(ss);
+        ia>>*this;
+    }
+
+    /////////////////serialiazation end ///////////////////////////////
 };
+
+
+
 
 
 

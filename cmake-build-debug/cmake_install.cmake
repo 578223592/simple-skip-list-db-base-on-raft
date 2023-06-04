@@ -1,4 +1,4 @@
-# Install script for directory: /home/swx/skip_list_on_raft
+# Install script for directory: /home/swx/2023_project/simple-skip-list-db-base-on-raft
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/swx/skip_list_on_raft/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
