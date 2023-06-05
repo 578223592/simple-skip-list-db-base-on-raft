@@ -129,53 +129,55 @@ skip_list_on_raft/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/build
 .PHONY : skip_list_on_raft/fast
 
-example/callerMain.o: example/callerMain.cpp.o
-.PHONY : example/callerMain.o
+#=============================================================================
+# Target rules for targets named callerMain
+
+# Build rule for target.
+callerMain: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 callerMain
+.PHONY : callerMain
+
+# fast build rule for target.
+callerMain/fast:
+	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/callerMain.dir/build.make example/CMakeFiles/callerMain.dir/build
+.PHONY : callerMain/fast
+
+#=============================================================================
+# Target rules for targets named raftKvDb
+
+# Build rule for target.
+raftKvDb: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 raftKvDb
+.PHONY : raftKvDb
+
+# fast build rule for target.
+raftKvDb/fast:
+	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/raftKvDb.dir/build.make example/CMakeFiles/raftKvDb.dir/build
+.PHONY : raftKvDb/fast
+
+raft/Persister.o: raft/Persister.cpp.o
+.PHONY : raft/Persister.o
 
 # target to build an object file
-example/callerMain.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/example/callerMain.cpp.o
-.PHONY : example/callerMain.cpp.o
+raft/Persister.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/Persister.cpp.o
+.PHONY : raft/Persister.cpp.o
 
-example/callerMain.i: example/callerMain.cpp.i
-.PHONY : example/callerMain.i
-
-# target to preprocess a source file
-example/callerMain.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/example/callerMain.cpp.i
-.PHONY : example/callerMain.cpp.i
-
-example/callerMain.s: example/callerMain.cpp.s
-.PHONY : example/callerMain.s
-
-# target to generate assembly for a file
-example/callerMain.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/example/callerMain.cpp.s
-.PHONY : example/callerMain.cpp.s
-
-example/raftKvDb.o: example/raftKvDb.cpp.o
-.PHONY : example/raftKvDb.o
-
-# target to build an object file
-example/raftKvDb.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/example/raftKvDb.cpp.o
-.PHONY : example/raftKvDb.cpp.o
-
-example/raftKvDb.i: example/raftKvDb.cpp.i
-.PHONY : example/raftKvDb.i
+raft/Persister.i: raft/Persister.cpp.i
+.PHONY : raft/Persister.i
 
 # target to preprocess a source file
-example/raftKvDb.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/example/raftKvDb.cpp.i
-.PHONY : example/raftKvDb.cpp.i
+raft/Persister.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/Persister.cpp.i
+.PHONY : raft/Persister.cpp.i
 
-example/raftKvDb.s: example/raftKvDb.cpp.s
-.PHONY : example/raftKvDb.s
+raft/Persister.s: raft/Persister.cpp.s
+.PHONY : raft/Persister.s
 
 # target to generate assembly for a file
-example/raftKvDb.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/example/raftKvDb.cpp.s
-.PHONY : example/raftKvDb.cpp.s
+raft/Persister.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/Persister.cpp.s
+.PHONY : raft/Persister.cpp.s
 
 raft/clerk.o: raft/clerk.cpp.o
 .PHONY : raft/clerk.o
@@ -249,677 +251,293 @@ raft/raft.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/raft.cpp.s
 .PHONY : raft/raft.cpp.s
 
-rpc/mprpc/example/callee/friendservice.o: rpc/mprpc/example/callee/friendservice.cc.o
-.PHONY : rpc/mprpc/example/callee/friendservice.o
+raft/raftrpc.o: raft/raftrpc.cpp.o
+.PHONY : raft/raftrpc.o
 
 # target to build an object file
-rpc/mprpc/example/callee/friendservice.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/friendservice.cc.o
-.PHONY : rpc/mprpc/example/callee/friendservice.cc.o
+raft/raftrpc.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/raftrpc.cpp.o
+.PHONY : raft/raftrpc.cpp.o
 
-rpc/mprpc/example/callee/friendservice.i: rpc/mprpc/example/callee/friendservice.cc.i
-.PHONY : rpc/mprpc/example/callee/friendservice.i
+raft/raftrpc.i: raft/raftrpc.cpp.i
+.PHONY : raft/raftrpc.i
 
 # target to preprocess a source file
-rpc/mprpc/example/callee/friendservice.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/friendservice.cc.i
-.PHONY : rpc/mprpc/example/callee/friendservice.cc.i
+raft/raftrpc.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/raftrpc.cpp.i
+.PHONY : raft/raftrpc.cpp.i
 
-rpc/mprpc/example/callee/friendservice.s: rpc/mprpc/example/callee/friendservice.cc.s
-.PHONY : rpc/mprpc/example/callee/friendservice.s
+raft/raftrpc.s: raft/raftrpc.cpp.s
+.PHONY : raft/raftrpc.s
 
 # target to generate assembly for a file
-rpc/mprpc/example/callee/friendservice.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/friendservice.cc.s
-.PHONY : rpc/mprpc/example/callee/friendservice.cc.s
+raft/raftrpc.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/raftrpc.cpp.s
+.PHONY : raft/raftrpc.cpp.s
 
-rpc/mprpc/example/callee/userservice.o: rpc/mprpc/example/callee/userservice.cc.o
-.PHONY : rpc/mprpc/example/callee/userservice.o
+raft/raftserverRpc.o: raft/raftserverRpc.cpp.o
+.PHONY : raft/raftserverRpc.o
 
 # target to build an object file
-rpc/mprpc/example/callee/userservice.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/userservice.cc.o
-.PHONY : rpc/mprpc/example/callee/userservice.cc.o
+raft/raftserverRpc.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/raftserverRpc.cpp.o
+.PHONY : raft/raftserverRpc.cpp.o
 
-rpc/mprpc/example/callee/userservice.i: rpc/mprpc/example/callee/userservice.cc.i
-.PHONY : rpc/mprpc/example/callee/userservice.i
+raft/raftserverRpc.i: raft/raftserverRpc.cpp.i
+.PHONY : raft/raftserverRpc.i
 
 # target to preprocess a source file
-rpc/mprpc/example/callee/userservice.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/userservice.cc.i
-.PHONY : rpc/mprpc/example/callee/userservice.cc.i
+raft/raftserverRpc.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/raftserverRpc.cpp.i
+.PHONY : raft/raftserverRpc.cpp.i
 
-rpc/mprpc/example/callee/userservice.s: rpc/mprpc/example/callee/userservice.cc.s
-.PHONY : rpc/mprpc/example/callee/userservice.s
+raft/raftserverRpc.s: raft/raftserverRpc.cpp.s
+.PHONY : raft/raftserverRpc.s
 
 # target to generate assembly for a file
-rpc/mprpc/example/callee/userservice.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/callee/userservice.cc.s
-.PHONY : rpc/mprpc/example/callee/userservice.cc.s
+raft/raftserverRpc.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/raftserverRpc.cpp.s
+.PHONY : raft/raftserverRpc.cpp.s
 
-rpc/mprpc/example/caller/callfriendservice.o: rpc/mprpc/example/caller/callfriendservice.cc.o
-.PHONY : rpc/mprpc/example/caller/callfriendservice.o
+raft/util.o: raft/util.cpp.o
+.PHONY : raft/util.o
 
 # target to build an object file
-rpc/mprpc/example/caller/callfriendservice.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/callfriendservice.cc.o
-.PHONY : rpc/mprpc/example/caller/callfriendservice.cc.o
+raft/util.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/util.cpp.o
+.PHONY : raft/util.cpp.o
 
-rpc/mprpc/example/caller/callfriendservice.i: rpc/mprpc/example/caller/callfriendservice.cc.i
-.PHONY : rpc/mprpc/example/caller/callfriendservice.i
+raft/util.i: raft/util.cpp.i
+.PHONY : raft/util.i
 
 # target to preprocess a source file
-rpc/mprpc/example/caller/callfriendservice.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/callfriendservice.cc.i
-.PHONY : rpc/mprpc/example/caller/callfriendservice.cc.i
+raft/util.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/util.cpp.i
+.PHONY : raft/util.cpp.i
 
-rpc/mprpc/example/caller/callfriendservice.s: rpc/mprpc/example/caller/callfriendservice.cc.s
-.PHONY : rpc/mprpc/example/caller/callfriendservice.s
+raft/util.s: raft/util.cpp.s
+.PHONY : raft/util.s
 
 # target to generate assembly for a file
-rpc/mprpc/example/caller/callfriendservice.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/callfriendservice.cc.s
-.PHONY : rpc/mprpc/example/caller/callfriendservice.cc.s
+raft/util.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/raft/util.cpp.s
+.PHONY : raft/util.cpp.s
 
-rpc/mprpc/example/caller/calluserservice.o: rpc/mprpc/example/caller/calluserservice.cc.o
-.PHONY : rpc/mprpc/example/caller/calluserservice.o
+rpc/example/kvServerRPC.pb.o: rpc/example/kvServerRPC.pb.cc.o
+.PHONY : rpc/example/kvServerRPC.pb.o
 
 # target to build an object file
-rpc/mprpc/example/caller/calluserservice.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/calluserservice.cc.o
-.PHONY : rpc/mprpc/example/caller/calluserservice.cc.o
+rpc/example/kvServerRPC.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/example/kvServerRPC.pb.cc.o
+.PHONY : rpc/example/kvServerRPC.pb.cc.o
 
-rpc/mprpc/example/caller/calluserservice.i: rpc/mprpc/example/caller/calluserservice.cc.i
-.PHONY : rpc/mprpc/example/caller/calluserservice.i
+rpc/example/kvServerRPC.pb.i: rpc/example/kvServerRPC.pb.cc.i
+.PHONY : rpc/example/kvServerRPC.pb.i
 
 # target to preprocess a source file
-rpc/mprpc/example/caller/calluserservice.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/calluserservice.cc.i
-.PHONY : rpc/mprpc/example/caller/calluserservice.cc.i
+rpc/example/kvServerRPC.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/example/kvServerRPC.pb.cc.i
+.PHONY : rpc/example/kvServerRPC.pb.cc.i
 
-rpc/mprpc/example/caller/calluserservice.s: rpc/mprpc/example/caller/calluserservice.cc.s
-.PHONY : rpc/mprpc/example/caller/calluserservice.s
+rpc/example/kvServerRPC.pb.s: rpc/example/kvServerRPC.pb.cc.s
+.PHONY : rpc/example/kvServerRPC.pb.s
 
 # target to generate assembly for a file
-rpc/mprpc/example/caller/calluserservice.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/caller/calluserservice.cc.s
-.PHONY : rpc/mprpc/example/caller/calluserservice.cc.s
+rpc/example/kvServerRPC.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/example/kvServerRPC.pb.cc.s
+.PHONY : rpc/example/kvServerRPC.pb.cc.s
 
-rpc/mprpc/example/friend.pb.o: rpc/mprpc/example/friend.pb.cc.o
-.PHONY : rpc/mprpc/example/friend.pb.o
+rpc/example/raftRPC.pb.o: rpc/example/raftRPC.pb.cc.o
+.PHONY : rpc/example/raftRPC.pb.o
 
 # target to build an object file
-rpc/mprpc/example/friend.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/friend.pb.cc.o
-.PHONY : rpc/mprpc/example/friend.pb.cc.o
+rpc/example/raftRPC.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/example/raftRPC.pb.cc.o
+.PHONY : rpc/example/raftRPC.pb.cc.o
 
-rpc/mprpc/example/friend.pb.i: rpc/mprpc/example/friend.pb.cc.i
-.PHONY : rpc/mprpc/example/friend.pb.i
+rpc/example/raftRPC.pb.i: rpc/example/raftRPC.pb.cc.i
+.PHONY : rpc/example/raftRPC.pb.i
 
 # target to preprocess a source file
-rpc/mprpc/example/friend.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/friend.pb.cc.i
-.PHONY : rpc/mprpc/example/friend.pb.cc.i
+rpc/example/raftRPC.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/example/raftRPC.pb.cc.i
+.PHONY : rpc/example/raftRPC.pb.cc.i
 
-rpc/mprpc/example/friend.pb.s: rpc/mprpc/example/friend.pb.cc.s
-.PHONY : rpc/mprpc/example/friend.pb.s
+rpc/example/raftRPC.pb.s: rpc/example/raftRPC.pb.cc.s
+.PHONY : rpc/example/raftRPC.pb.s
 
 # target to generate assembly for a file
-rpc/mprpc/example/friend.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/friend.pb.cc.s
-.PHONY : rpc/mprpc/example/friend.pb.cc.s
+rpc/example/raftRPC.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/example/raftRPC.pb.cc.s
+.PHONY : rpc/example/raftRPC.pb.cc.s
 
-rpc/mprpc/example/raftRPC.pb.o: rpc/mprpc/example/raftRPC.pb.cc.o
-.PHONY : rpc/mprpc/example/raftRPC.pb.o
+rpc/frame_src/logger.o: rpc/frame_src/logger.cc.o
+.PHONY : rpc/frame_src/logger.o
 
 # target to build an object file
-rpc/mprpc/example/raftRPC.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/raftRPC.pb.cc.o
-.PHONY : rpc/mprpc/example/raftRPC.pb.cc.o
+rpc/frame_src/logger.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/logger.cc.o
+.PHONY : rpc/frame_src/logger.cc.o
 
-rpc/mprpc/example/raftRPC.pb.i: rpc/mprpc/example/raftRPC.pb.cc.i
-.PHONY : rpc/mprpc/example/raftRPC.pb.i
+rpc/frame_src/logger.i: rpc/frame_src/logger.cc.i
+.PHONY : rpc/frame_src/logger.i
 
 # target to preprocess a source file
-rpc/mprpc/example/raftRPC.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/raftRPC.pb.cc.i
-.PHONY : rpc/mprpc/example/raftRPC.pb.cc.i
+rpc/frame_src/logger.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/logger.cc.i
+.PHONY : rpc/frame_src/logger.cc.i
 
-rpc/mprpc/example/raftRPC.pb.s: rpc/mprpc/example/raftRPC.pb.cc.s
-.PHONY : rpc/mprpc/example/raftRPC.pb.s
+rpc/frame_src/logger.s: rpc/frame_src/logger.cc.s
+.PHONY : rpc/frame_src/logger.s
 
 # target to generate assembly for a file
-rpc/mprpc/example/raftRPC.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/raftRPC.pb.cc.s
-.PHONY : rpc/mprpc/example/raftRPC.pb.cc.s
+rpc/frame_src/logger.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/logger.cc.s
+.PHONY : rpc/frame_src/logger.cc.s
 
-rpc/mprpc/example/user.pb.o: rpc/mprpc/example/user.pb.cc.o
-.PHONY : rpc/mprpc/example/user.pb.o
+rpc/frame_src/mprpcapplication.o: rpc/frame_src/mprpcapplication.cc.o
+.PHONY : rpc/frame_src/mprpcapplication.o
 
 # target to build an object file
-rpc/mprpc/example/user.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/user.pb.cc.o
-.PHONY : rpc/mprpc/example/user.pb.cc.o
+rpc/frame_src/mprpcapplication.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcapplication.cc.o
+.PHONY : rpc/frame_src/mprpcapplication.cc.o
 
-rpc/mprpc/example/user.pb.i: rpc/mprpc/example/user.pb.cc.i
-.PHONY : rpc/mprpc/example/user.pb.i
+rpc/frame_src/mprpcapplication.i: rpc/frame_src/mprpcapplication.cc.i
+.PHONY : rpc/frame_src/mprpcapplication.i
 
 # target to preprocess a source file
-rpc/mprpc/example/user.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/user.pb.cc.i
-.PHONY : rpc/mprpc/example/user.pb.cc.i
+rpc/frame_src/mprpcapplication.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcapplication.cc.i
+.PHONY : rpc/frame_src/mprpcapplication.cc.i
 
-rpc/mprpc/example/user.pb.s: rpc/mprpc/example/user.pb.cc.s
-.PHONY : rpc/mprpc/example/user.pb.s
+rpc/frame_src/mprpcapplication.s: rpc/frame_src/mprpcapplication.cc.s
+.PHONY : rpc/frame_src/mprpcapplication.s
 
 # target to generate assembly for a file
-rpc/mprpc/example/user.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/example/user.pb.cc.s
-.PHONY : rpc/mprpc/example/user.pb.cc.s
+rpc/frame_src/mprpcapplication.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcapplication.cc.s
+.PHONY : rpc/frame_src/mprpcapplication.cc.s
 
-rpc/mprpc/experiment/hs/hash1.o: rpc/mprpc/experiment/hs/hash1.cpp.o
-.PHONY : rpc/mprpc/experiment/hs/hash1.o
+rpc/frame_src/mprpcchannel.o: rpc/frame_src/mprpcchannel.cc.o
+.PHONY : rpc/frame_src/mprpcchannel.o
 
 # target to build an object file
-rpc/mprpc/experiment/hs/hash1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/hs/hash1.cpp.o
-.PHONY : rpc/mprpc/experiment/hs/hash1.cpp.o
+rpc/frame_src/mprpcchannel.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcchannel.cc.o
+.PHONY : rpc/frame_src/mprpcchannel.cc.o
 
-rpc/mprpc/experiment/hs/hash1.i: rpc/mprpc/experiment/hs/hash1.cpp.i
-.PHONY : rpc/mprpc/experiment/hs/hash1.i
+rpc/frame_src/mprpcchannel.i: rpc/frame_src/mprpcchannel.cc.i
+.PHONY : rpc/frame_src/mprpcchannel.i
 
 # target to preprocess a source file
-rpc/mprpc/experiment/hs/hash1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/hs/hash1.cpp.i
-.PHONY : rpc/mprpc/experiment/hs/hash1.cpp.i
+rpc/frame_src/mprpcchannel.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcchannel.cc.i
+.PHONY : rpc/frame_src/mprpcchannel.cc.i
 
-rpc/mprpc/experiment/hs/hash1.s: rpc/mprpc/experiment/hs/hash1.cpp.s
-.PHONY : rpc/mprpc/experiment/hs/hash1.s
+rpc/frame_src/mprpcchannel.s: rpc/frame_src/mprpcchannel.cc.s
+.PHONY : rpc/frame_src/mprpcchannel.s
 
 # target to generate assembly for a file
-rpc/mprpc/experiment/hs/hash1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/hs/hash1.cpp.s
-.PHONY : rpc/mprpc/experiment/hs/hash1.cpp.s
+rpc/frame_src/mprpcchannel.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcchannel.cc.s
+.PHONY : rpc/frame_src/mprpcchannel.cc.s
 
-rpc/mprpc/experiment/lock_free_queue/main.o: rpc/mprpc/experiment/lock_free_queue/main.cpp.o
-.PHONY : rpc/mprpc/experiment/lock_free_queue/main.o
+rpc/frame_src/mprpcconfig.o: rpc/frame_src/mprpcconfig.cc.o
+.PHONY : rpc/frame_src/mprpcconfig.o
 
 # target to build an object file
-rpc/mprpc/experiment/lock_free_queue/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/lock_free_queue/main.cpp.o
-.PHONY : rpc/mprpc/experiment/lock_free_queue/main.cpp.o
+rpc/frame_src/mprpcconfig.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcconfig.cc.o
+.PHONY : rpc/frame_src/mprpcconfig.cc.o
 
-rpc/mprpc/experiment/lock_free_queue/main.i: rpc/mprpc/experiment/lock_free_queue/main.cpp.i
-.PHONY : rpc/mprpc/experiment/lock_free_queue/main.i
+rpc/frame_src/mprpcconfig.i: rpc/frame_src/mprpcconfig.cc.i
+.PHONY : rpc/frame_src/mprpcconfig.i
 
 # target to preprocess a source file
-rpc/mprpc/experiment/lock_free_queue/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/lock_free_queue/main.cpp.i
-.PHONY : rpc/mprpc/experiment/lock_free_queue/main.cpp.i
+rpc/frame_src/mprpcconfig.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcconfig.cc.i
+.PHONY : rpc/frame_src/mprpcconfig.cc.i
 
-rpc/mprpc/experiment/lock_free_queue/main.s: rpc/mprpc/experiment/lock_free_queue/main.cpp.s
-.PHONY : rpc/mprpc/experiment/lock_free_queue/main.s
+rpc/frame_src/mprpcconfig.s: rpc/frame_src/mprpcconfig.cc.s
+.PHONY : rpc/frame_src/mprpcconfig.s
 
 # target to generate assembly for a file
-rpc/mprpc/experiment/lock_free_queue/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/lock_free_queue/main.cpp.s
-.PHONY : rpc/mprpc/experiment/lock_free_queue/main.cpp.s
+rpc/frame_src/mprpcconfig.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcconfig.cc.s
+.PHONY : rpc/frame_src/mprpcconfig.cc.s
 
-rpc/mprpc/experiment/zkutils/zk_cpp.o: rpc/mprpc/experiment/zkutils/zk_cpp.cpp.o
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp.o
+rpc/frame_src/mprpccontroller.o: rpc/frame_src/mprpccontroller.cc.o
+.PHONY : rpc/frame_src/mprpccontroller.o
 
 # target to build an object file
-rpc/mprpc/experiment/zkutils/zk_cpp.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp.cpp.o
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp.cpp.o
+rpc/frame_src/mprpccontroller.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpccontroller.cc.o
+.PHONY : rpc/frame_src/mprpccontroller.cc.o
 
-rpc/mprpc/experiment/zkutils/zk_cpp.i: rpc/mprpc/experiment/zkutils/zk_cpp.cpp.i
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp.i
+rpc/frame_src/mprpccontroller.i: rpc/frame_src/mprpccontroller.cc.i
+.PHONY : rpc/frame_src/mprpccontroller.i
 
 # target to preprocess a source file
-rpc/mprpc/experiment/zkutils/zk_cpp.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp.cpp.i
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp.cpp.i
+rpc/frame_src/mprpccontroller.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpccontroller.cc.i
+.PHONY : rpc/frame_src/mprpccontroller.cc.i
 
-rpc/mprpc/experiment/zkutils/zk_cpp.s: rpc/mprpc/experiment/zkutils/zk_cpp.cpp.s
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp.s
+rpc/frame_src/mprpccontroller.s: rpc/frame_src/mprpccontroller.cc.s
+.PHONY : rpc/frame_src/mprpccontroller.s
 
 # target to generate assembly for a file
-rpc/mprpc/experiment/zkutils/zk_cpp.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp.cpp.s
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp.cpp.s
+rpc/frame_src/mprpccontroller.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpccontroller.cc.s
+.PHONY : rpc/frame_src/mprpccontroller.cc.s
 
-rpc/mprpc/experiment/zkutils/zk_cpp_test.o: rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.o
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp_test.o
+rpc/frame_src/rpcheader.pb.o: rpc/frame_src/rpcheader.pb.cc.o
+.PHONY : rpc/frame_src/rpcheader.pb.o
 
 # target to build an object file
-rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.o
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.o
+rpc/frame_src/rpcheader.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcheader.pb.cc.o
+.PHONY : rpc/frame_src/rpcheader.pb.cc.o
 
-rpc/mprpc/experiment/zkutils/zk_cpp_test.i: rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.i
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp_test.i
+rpc/frame_src/rpcheader.pb.i: rpc/frame_src/rpcheader.pb.cc.i
+.PHONY : rpc/frame_src/rpcheader.pb.i
 
 # target to preprocess a source file
-rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.i
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.i
+rpc/frame_src/rpcheader.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcheader.pb.cc.i
+.PHONY : rpc/frame_src/rpcheader.pb.cc.i
 
-rpc/mprpc/experiment/zkutils/zk_cpp_test.s: rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.s
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp_test.s
+rpc/frame_src/rpcheader.pb.s: rpc/frame_src/rpcheader.pb.cc.s
+.PHONY : rpc/frame_src/rpcheader.pb.s
 
 # target to generate assembly for a file
-rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.s
-.PHONY : rpc/mprpc/experiment/zkutils/zk_cpp_test.cpp.s
+rpc/frame_src/rpcheader.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcheader.pb.cc.s
+.PHONY : rpc/frame_src/rpcheader.pb.cc.s
 
-rpc/mprpc/src/logger.o: rpc/mprpc/src/logger.cc.o
-.PHONY : rpc/mprpc/src/logger.o
+rpc/frame_src/rpcprovider.o: rpc/frame_src/rpcprovider.cc.o
+.PHONY : rpc/frame_src/rpcprovider.o
 
 # target to build an object file
-rpc/mprpc/src/logger.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/logger.cc.o
-.PHONY : rpc/mprpc/src/logger.cc.o
+rpc/frame_src/rpcprovider.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcprovider.cc.o
+.PHONY : rpc/frame_src/rpcprovider.cc.o
 
-rpc/mprpc/src/logger.i: rpc/mprpc/src/logger.cc.i
-.PHONY : rpc/mprpc/src/logger.i
-
-# target to preprocess a source file
-rpc/mprpc/src/logger.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/logger.cc.i
-.PHONY : rpc/mprpc/src/logger.cc.i
-
-rpc/mprpc/src/logger.s: rpc/mprpc/src/logger.cc.s
-.PHONY : rpc/mprpc/src/logger.s
-
-# target to generate assembly for a file
-rpc/mprpc/src/logger.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/logger.cc.s
-.PHONY : rpc/mprpc/src/logger.cc.s
-
-rpc/mprpc/src/mprpcapplication.o: rpc/mprpc/src/mprpcapplication.cc.o
-.PHONY : rpc/mprpc/src/mprpcapplication.o
-
-# target to build an object file
-rpc/mprpc/src/mprpcapplication.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcapplication.cc.o
-.PHONY : rpc/mprpc/src/mprpcapplication.cc.o
-
-rpc/mprpc/src/mprpcapplication.i: rpc/mprpc/src/mprpcapplication.cc.i
-.PHONY : rpc/mprpc/src/mprpcapplication.i
+rpc/frame_src/rpcprovider.i: rpc/frame_src/rpcprovider.cc.i
+.PHONY : rpc/frame_src/rpcprovider.i
 
 # target to preprocess a source file
-rpc/mprpc/src/mprpcapplication.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcapplication.cc.i
-.PHONY : rpc/mprpc/src/mprpcapplication.cc.i
+rpc/frame_src/rpcprovider.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcprovider.cc.i
+.PHONY : rpc/frame_src/rpcprovider.cc.i
 
-rpc/mprpc/src/mprpcapplication.s: rpc/mprpc/src/mprpcapplication.cc.s
-.PHONY : rpc/mprpc/src/mprpcapplication.s
-
-# target to generate assembly for a file
-rpc/mprpc/src/mprpcapplication.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcapplication.cc.s
-.PHONY : rpc/mprpc/src/mprpcapplication.cc.s
-
-rpc/mprpc/src/mprpcchannel.o: rpc/mprpc/src/mprpcchannel.cc.o
-.PHONY : rpc/mprpc/src/mprpcchannel.o
-
-# target to build an object file
-rpc/mprpc/src/mprpcchannel.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcchannel.cc.o
-.PHONY : rpc/mprpc/src/mprpcchannel.cc.o
-
-rpc/mprpc/src/mprpcchannel.i: rpc/mprpc/src/mprpcchannel.cc.i
-.PHONY : rpc/mprpc/src/mprpcchannel.i
-
-# target to preprocess a source file
-rpc/mprpc/src/mprpcchannel.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcchannel.cc.i
-.PHONY : rpc/mprpc/src/mprpcchannel.cc.i
-
-rpc/mprpc/src/mprpcchannel.s: rpc/mprpc/src/mprpcchannel.cc.s
-.PHONY : rpc/mprpc/src/mprpcchannel.s
+rpc/frame_src/rpcprovider.s: rpc/frame_src/rpcprovider.cc.s
+.PHONY : rpc/frame_src/rpcprovider.s
 
 # target to generate assembly for a file
-rpc/mprpc/src/mprpcchannel.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcchannel.cc.s
-.PHONY : rpc/mprpc/src/mprpcchannel.cc.s
-
-rpc/mprpc/src/mprpcconfig.o: rpc/mprpc/src/mprpcconfig.cc.o
-.PHONY : rpc/mprpc/src/mprpcconfig.o
-
-# target to build an object file
-rpc/mprpc/src/mprpcconfig.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcconfig.cc.o
-.PHONY : rpc/mprpc/src/mprpcconfig.cc.o
-
-rpc/mprpc/src/mprpcconfig.i: rpc/mprpc/src/mprpcconfig.cc.i
-.PHONY : rpc/mprpc/src/mprpcconfig.i
-
-# target to preprocess a source file
-rpc/mprpc/src/mprpcconfig.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcconfig.cc.i
-.PHONY : rpc/mprpc/src/mprpcconfig.cc.i
-
-rpc/mprpc/src/mprpcconfig.s: rpc/mprpc/src/mprpcconfig.cc.s
-.PHONY : rpc/mprpc/src/mprpcconfig.s
-
-# target to generate assembly for a file
-rpc/mprpc/src/mprpcconfig.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpcconfig.cc.s
-.PHONY : rpc/mprpc/src/mprpcconfig.cc.s
-
-rpc/mprpc/src/mprpccontroller.o: rpc/mprpc/src/mprpccontroller.cc.o
-.PHONY : rpc/mprpc/src/mprpccontroller.o
-
-# target to build an object file
-rpc/mprpc/src/mprpccontroller.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpccontroller.cc.o
-.PHONY : rpc/mprpc/src/mprpccontroller.cc.o
-
-rpc/mprpc/src/mprpccontroller.i: rpc/mprpc/src/mprpccontroller.cc.i
-.PHONY : rpc/mprpc/src/mprpccontroller.i
-
-# target to preprocess a source file
-rpc/mprpc/src/mprpccontroller.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpccontroller.cc.i
-.PHONY : rpc/mprpc/src/mprpccontroller.cc.i
-
-rpc/mprpc/src/mprpccontroller.s: rpc/mprpc/src/mprpccontroller.cc.s
-.PHONY : rpc/mprpc/src/mprpccontroller.s
-
-# target to generate assembly for a file
-rpc/mprpc/src/mprpccontroller.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/mprpccontroller.cc.s
-.PHONY : rpc/mprpc/src/mprpccontroller.cc.s
-
-rpc/mprpc/src/rpcheader.pb.o: rpc/mprpc/src/rpcheader.pb.cc.o
-.PHONY : rpc/mprpc/src/rpcheader.pb.o
-
-# target to build an object file
-rpc/mprpc/src/rpcheader.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcheader.pb.cc.o
-.PHONY : rpc/mprpc/src/rpcheader.pb.cc.o
-
-rpc/mprpc/src/rpcheader.pb.i: rpc/mprpc/src/rpcheader.pb.cc.i
-.PHONY : rpc/mprpc/src/rpcheader.pb.i
-
-# target to preprocess a source file
-rpc/mprpc/src/rpcheader.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcheader.pb.cc.i
-.PHONY : rpc/mprpc/src/rpcheader.pb.cc.i
-
-rpc/mprpc/src/rpcheader.pb.s: rpc/mprpc/src/rpcheader.pb.cc.s
-.PHONY : rpc/mprpc/src/rpcheader.pb.s
-
-# target to generate assembly for a file
-rpc/mprpc/src/rpcheader.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcheader.pb.cc.s
-.PHONY : rpc/mprpc/src/rpcheader.pb.cc.s
-
-rpc/mprpc/src/rpcprovider.o: rpc/mprpc/src/rpcprovider.cc.o
-.PHONY : rpc/mprpc/src/rpcprovider.o
-
-# target to build an object file
-rpc/mprpc/src/rpcprovider.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcprovider.cc.o
-.PHONY : rpc/mprpc/src/rpcprovider.cc.o
-
-rpc/mprpc/src/rpcprovider.i: rpc/mprpc/src/rpcprovider.cc.i
-.PHONY : rpc/mprpc/src/rpcprovider.i
-
-# target to preprocess a source file
-rpc/mprpc/src/rpcprovider.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcprovider.cc.i
-.PHONY : rpc/mprpc/src/rpcprovider.cc.i
-
-rpc/mprpc/src/rpcprovider.s: rpc/mprpc/src/rpcprovider.cc.s
-.PHONY : rpc/mprpc/src/rpcprovider.s
-
-# target to generate assembly for a file
-rpc/mprpc/src/rpcprovider.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/rpcprovider.cc.s
-.PHONY : rpc/mprpc/src/rpcprovider.cc.s
-
-rpc/mprpc/src/zookeeperutil.o: rpc/mprpc/src/zookeeperutil.cc.o
-.PHONY : rpc/mprpc/src/zookeeperutil.o
-
-# target to build an object file
-rpc/mprpc/src/zookeeperutil.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/zookeeperutil.cc.o
-.PHONY : rpc/mprpc/src/zookeeperutil.cc.o
-
-rpc/mprpc/src/zookeeperutil.i: rpc/mprpc/src/zookeeperutil.cc.i
-.PHONY : rpc/mprpc/src/zookeeperutil.i
-
-# target to preprocess a source file
-rpc/mprpc/src/zookeeperutil.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/zookeeperutil.cc.i
-.PHONY : rpc/mprpc/src/zookeeperutil.cc.i
-
-rpc/mprpc/src/zookeeperutil.s: rpc/mprpc/src/zookeeperutil.cc.s
-.PHONY : rpc/mprpc/src/zookeeperutil.s
-
-# target to generate assembly for a file
-rpc/mprpc/src/zookeeperutil.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/src/zookeeperutil.cc.s
-.PHONY : rpc/mprpc/src/zookeeperutil.cc.s
-
-rpc/mprpc/test/protobuf/main.o: rpc/mprpc/test/protobuf/main.cc.o
-.PHONY : rpc/mprpc/test/protobuf/main.o
-
-# target to build an object file
-rpc/mprpc/test/protobuf/main.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/main.cc.o
-.PHONY : rpc/mprpc/test/protobuf/main.cc.o
-
-rpc/mprpc/test/protobuf/main.i: rpc/mprpc/test/protobuf/main.cc.i
-.PHONY : rpc/mprpc/test/protobuf/main.i
-
-# target to preprocess a source file
-rpc/mprpc/test/protobuf/main.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/main.cc.i
-.PHONY : rpc/mprpc/test/protobuf/main.cc.i
-
-rpc/mprpc/test/protobuf/main.s: rpc/mprpc/test/protobuf/main.cc.s
-.PHONY : rpc/mprpc/test/protobuf/main.s
-
-# target to generate assembly for a file
-rpc/mprpc/test/protobuf/main.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/main.cc.s
-.PHONY : rpc/mprpc/test/protobuf/main.cc.s
-
-rpc/mprpc/test/protobuf/test.pb.o: rpc/mprpc/test/protobuf/test.pb.cc.o
-.PHONY : rpc/mprpc/test/protobuf/test.pb.o
-
-# target to build an object file
-rpc/mprpc/test/protobuf/test.pb.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/test.pb.cc.o
-.PHONY : rpc/mprpc/test/protobuf/test.pb.cc.o
-
-rpc/mprpc/test/protobuf/test.pb.i: rpc/mprpc/test/protobuf/test.pb.cc.i
-.PHONY : rpc/mprpc/test/protobuf/test.pb.i
-
-# target to preprocess a source file
-rpc/mprpc/test/protobuf/test.pb.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/test.pb.cc.i
-.PHONY : rpc/mprpc/test/protobuf/test.pb.cc.i
-
-rpc/mprpc/test/protobuf/test.pb.s: rpc/mprpc/test/protobuf/test.pb.cc.s
-.PHONY : rpc/mprpc/test/protobuf/test.pb.s
-
-# target to generate assembly for a file
-rpc/mprpc/test/protobuf/test.pb.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/mprpc/test/protobuf/test.pb.cc.s
-.PHONY : rpc/mprpc/test/protobuf/test.pb.cc.s
-
-test/defer_test.o: test/defer_test.cpp.o
-.PHONY : test/defer_test.o
-
-# target to build an object file
-test/defer_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/defer_test.cpp.o
-.PHONY : test/defer_test.cpp.o
-
-test/defer_test.i: test/defer_test.cpp.i
-.PHONY : test/defer_test.i
-
-# target to preprocess a source file
-test/defer_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/defer_test.cpp.i
-.PHONY : test/defer_test.cpp.i
-
-test/defer_test.s: test/defer_test.cpp.s
-.PHONY : test/defer_test.s
-
-# target to generate assembly for a file
-test/defer_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/defer_test.cpp.s
-.PHONY : test/defer_test.cpp.s
-
-test/format.o: test/format.cpp.o
-.PHONY : test/format.o
-
-# target to build an object file
-test/format.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/format.cpp.o
-.PHONY : test/format.cpp.o
-
-test/format.i: test/format.cpp.i
-.PHONY : test/format.i
-
-# target to preprocess a source file
-test/format.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/format.cpp.i
-.PHONY : test/format.cpp.i
-
-test/format.s: test/format.cpp.s
-.PHONY : test/format.s
-
-# target to generate assembly for a file
-test/format.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/format.cpp.s
-.PHONY : test/format.cpp.s
-
-test/random_test.o: test/random_test.cpp.o
-.PHONY : test/random_test.o
-
-# target to build an object file
-test/random_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/random_test.cpp.o
-.PHONY : test/random_test.cpp.o
-
-test/random_test.i: test/random_test.cpp.i
-.PHONY : test/random_test.i
-
-# target to preprocess a source file
-test/random_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/random_test.cpp.i
-.PHONY : test/random_test.cpp.i
-
-test/random_test.s: test/random_test.cpp.s
-.PHONY : test/random_test.s
-
-# target to generate assembly for a file
-test/random_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/random_test.cpp.s
-.PHONY : test/random_test.cpp.s
-
-test/serialization.o: test/serialization.cpp.o
-.PHONY : test/serialization.o
-
-# target to build an object file
-test/serialization.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/serialization.cpp.o
-.PHONY : test/serialization.cpp.o
-
-test/serialization.i: test/serialization.cpp.i
-.PHONY : test/serialization.i
-
-# target to preprocess a source file
-test/serialization.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/serialization.cpp.i
-.PHONY : test/serialization.cpp.i
-
-test/serialization.s: test/serialization.cpp.s
-.PHONY : test/serialization.s
-
-# target to generate assembly for a file
-test/serialization.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/serialization.cpp.s
-.PHONY : test/serialization.cpp.s
-
-test/sleep_test.o: test/sleep_test.cpp.o
-.PHONY : test/sleep_test.o
-
-# target to build an object file
-test/sleep_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/sleep_test.cpp.o
-.PHONY : test/sleep_test.cpp.o
-
-test/sleep_test.i: test/sleep_test.cpp.i
-.PHONY : test/sleep_test.i
-
-# target to preprocess a source file
-test/sleep_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/sleep_test.cpp.i
-.PHONY : test/sleep_test.cpp.i
-
-test/sleep_test.s: test/sleep_test.cpp.s
-.PHONY : test/sleep_test.s
-
-# target to generate assembly for a file
-test/sleep_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/sleep_test.cpp.s
-.PHONY : test/sleep_test.cpp.s
-
-test/thread_test.o: test/thread_test.cpp.o
-.PHONY : test/thread_test.o
-
-# target to build an object file
-test/thread_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/thread_test.cpp.o
-.PHONY : test/thread_test.cpp.o
-
-test/thread_test.i: test/thread_test.cpp.i
-.PHONY : test/thread_test.i
-
-# target to preprocess a source file
-test/thread_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/thread_test.cpp.i
-.PHONY : test/thread_test.cpp.i
-
-test/thread_test.s: test/thread_test.cpp.s
-.PHONY : test/thread_test.s
-
-# target to generate assembly for a file
-test/thread_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/thread_test.cpp.s
-.PHONY : test/thread_test.cpp.s
-
-test/timout_pop.o: test/timout_pop.cpp.o
-.PHONY : test/timout_pop.o
-
-# target to build an object file
-test/timout_pop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/timout_pop.cpp.o
-.PHONY : test/timout_pop.cpp.o
-
-test/timout_pop.i: test/timout_pop.cpp.i
-.PHONY : test/timout_pop.i
-
-# target to preprocess a source file
-test/timout_pop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/timout_pop.cpp.i
-.PHONY : test/timout_pop.cpp.i
-
-test/timout_pop.s: test/timout_pop.cpp.s
-.PHONY : test/timout_pop.s
-
-# target to generate assembly for a file
-test/timout_pop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/test/timout_pop.cpp.s
-.PHONY : test/timout_pop.cpp.s
+rpc/frame_src/rpcprovider.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcprovider.cc.s
+.PHONY : rpc/frame_src/rpcprovider.cc.s
 
 # Help Target
 help:
@@ -929,13 +547,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... callerMain"
+	@echo "... raftKvDb"
 	@echo "... skip_list_on_raft"
-	@echo "... example/callerMain.o"
-	@echo "... example/callerMain.i"
-	@echo "... example/callerMain.s"
-	@echo "... example/raftKvDb.o"
-	@echo "... example/raftKvDb.i"
-	@echo "... example/raftKvDb.s"
+	@echo "... raft/Persister.o"
+	@echo "... raft/Persister.i"
+	@echo "... raft/Persister.s"
 	@echo "... raft/clerk.o"
 	@echo "... raft/clerk.i"
 	@echo "... raft/clerk.s"
@@ -945,90 +562,42 @@ help:
 	@echo "... raft/raft.o"
 	@echo "... raft/raft.i"
 	@echo "... raft/raft.s"
-	@echo "... rpc/mprpc/example/callee/friendservice.o"
-	@echo "... rpc/mprpc/example/callee/friendservice.i"
-	@echo "... rpc/mprpc/example/callee/friendservice.s"
-	@echo "... rpc/mprpc/example/callee/userservice.o"
-	@echo "... rpc/mprpc/example/callee/userservice.i"
-	@echo "... rpc/mprpc/example/callee/userservice.s"
-	@echo "... rpc/mprpc/example/caller/callfriendservice.o"
-	@echo "... rpc/mprpc/example/caller/callfriendservice.i"
-	@echo "... rpc/mprpc/example/caller/callfriendservice.s"
-	@echo "... rpc/mprpc/example/caller/calluserservice.o"
-	@echo "... rpc/mprpc/example/caller/calluserservice.i"
-	@echo "... rpc/mprpc/example/caller/calluserservice.s"
-	@echo "... rpc/mprpc/example/friend.pb.o"
-	@echo "... rpc/mprpc/example/friend.pb.i"
-	@echo "... rpc/mprpc/example/friend.pb.s"
-	@echo "... rpc/mprpc/example/raftRPC.pb.o"
-	@echo "... rpc/mprpc/example/raftRPC.pb.i"
-	@echo "... rpc/mprpc/example/raftRPC.pb.s"
-	@echo "... rpc/mprpc/example/user.pb.o"
-	@echo "... rpc/mprpc/example/user.pb.i"
-	@echo "... rpc/mprpc/example/user.pb.s"
-	@echo "... rpc/mprpc/experiment/hs/hash1.o"
-	@echo "... rpc/mprpc/experiment/hs/hash1.i"
-	@echo "... rpc/mprpc/experiment/hs/hash1.s"
-	@echo "... rpc/mprpc/experiment/lock_free_queue/main.o"
-	@echo "... rpc/mprpc/experiment/lock_free_queue/main.i"
-	@echo "... rpc/mprpc/experiment/lock_free_queue/main.s"
-	@echo "... rpc/mprpc/experiment/zkutils/zk_cpp.o"
-	@echo "... rpc/mprpc/experiment/zkutils/zk_cpp.i"
-	@echo "... rpc/mprpc/experiment/zkutils/zk_cpp.s"
-	@echo "... rpc/mprpc/experiment/zkutils/zk_cpp_test.o"
-	@echo "... rpc/mprpc/experiment/zkutils/zk_cpp_test.i"
-	@echo "... rpc/mprpc/experiment/zkutils/zk_cpp_test.s"
-	@echo "... rpc/mprpc/src/logger.o"
-	@echo "... rpc/mprpc/src/logger.i"
-	@echo "... rpc/mprpc/src/logger.s"
-	@echo "... rpc/mprpc/src/mprpcapplication.o"
-	@echo "... rpc/mprpc/src/mprpcapplication.i"
-	@echo "... rpc/mprpc/src/mprpcapplication.s"
-	@echo "... rpc/mprpc/src/mprpcchannel.o"
-	@echo "... rpc/mprpc/src/mprpcchannel.i"
-	@echo "... rpc/mprpc/src/mprpcchannel.s"
-	@echo "... rpc/mprpc/src/mprpcconfig.o"
-	@echo "... rpc/mprpc/src/mprpcconfig.i"
-	@echo "... rpc/mprpc/src/mprpcconfig.s"
-	@echo "... rpc/mprpc/src/mprpccontroller.o"
-	@echo "... rpc/mprpc/src/mprpccontroller.i"
-	@echo "... rpc/mprpc/src/mprpccontroller.s"
-	@echo "... rpc/mprpc/src/rpcheader.pb.o"
-	@echo "... rpc/mprpc/src/rpcheader.pb.i"
-	@echo "... rpc/mprpc/src/rpcheader.pb.s"
-	@echo "... rpc/mprpc/src/rpcprovider.o"
-	@echo "... rpc/mprpc/src/rpcprovider.i"
-	@echo "... rpc/mprpc/src/rpcprovider.s"
-	@echo "... rpc/mprpc/src/zookeeperutil.o"
-	@echo "... rpc/mprpc/src/zookeeperutil.i"
-	@echo "... rpc/mprpc/src/zookeeperutil.s"
-	@echo "... rpc/mprpc/test/protobuf/main.o"
-	@echo "... rpc/mprpc/test/protobuf/main.i"
-	@echo "... rpc/mprpc/test/protobuf/main.s"
-	@echo "... rpc/mprpc/test/protobuf/test.pb.o"
-	@echo "... rpc/mprpc/test/protobuf/test.pb.i"
-	@echo "... rpc/mprpc/test/protobuf/test.pb.s"
-	@echo "... test/defer_test.o"
-	@echo "... test/defer_test.i"
-	@echo "... test/defer_test.s"
-	@echo "... test/format.o"
-	@echo "... test/format.i"
-	@echo "... test/format.s"
-	@echo "... test/random_test.o"
-	@echo "... test/random_test.i"
-	@echo "... test/random_test.s"
-	@echo "... test/serialization.o"
-	@echo "... test/serialization.i"
-	@echo "... test/serialization.s"
-	@echo "... test/sleep_test.o"
-	@echo "... test/sleep_test.i"
-	@echo "... test/sleep_test.s"
-	@echo "... test/thread_test.o"
-	@echo "... test/thread_test.i"
-	@echo "... test/thread_test.s"
-	@echo "... test/timout_pop.o"
-	@echo "... test/timout_pop.i"
-	@echo "... test/timout_pop.s"
+	@echo "... raft/raftrpc.o"
+	@echo "... raft/raftrpc.i"
+	@echo "... raft/raftrpc.s"
+	@echo "... raft/raftserverRpc.o"
+	@echo "... raft/raftserverRpc.i"
+	@echo "... raft/raftserverRpc.s"
+	@echo "... raft/util.o"
+	@echo "... raft/util.i"
+	@echo "... raft/util.s"
+	@echo "... rpc/example/kvServerRPC.pb.o"
+	@echo "... rpc/example/kvServerRPC.pb.i"
+	@echo "... rpc/example/kvServerRPC.pb.s"
+	@echo "... rpc/example/raftRPC.pb.o"
+	@echo "... rpc/example/raftRPC.pb.i"
+	@echo "... rpc/example/raftRPC.pb.s"
+	@echo "... rpc/frame_src/logger.o"
+	@echo "... rpc/frame_src/logger.i"
+	@echo "... rpc/frame_src/logger.s"
+	@echo "... rpc/frame_src/mprpcapplication.o"
+	@echo "... rpc/frame_src/mprpcapplication.i"
+	@echo "... rpc/frame_src/mprpcapplication.s"
+	@echo "... rpc/frame_src/mprpcchannel.o"
+	@echo "... rpc/frame_src/mprpcchannel.i"
+	@echo "... rpc/frame_src/mprpcchannel.s"
+	@echo "... rpc/frame_src/mprpcconfig.o"
+	@echo "... rpc/frame_src/mprpcconfig.i"
+	@echo "... rpc/frame_src/mprpcconfig.s"
+	@echo "... rpc/frame_src/mprpccontroller.o"
+	@echo "... rpc/frame_src/mprpccontroller.i"
+	@echo "... rpc/frame_src/mprpccontroller.s"
+	@echo "... rpc/frame_src/rpcheader.pb.o"
+	@echo "... rpc/frame_src/rpcheader.pb.i"
+	@echo "... rpc/frame_src/rpcheader.pb.s"
+	@echo "... rpc/frame_src/rpcprovider.o"
+	@echo "... rpc/frame_src/rpcprovider.i"
+	@echo "... rpc/frame_src/rpcprovider.s"
 .PHONY : help
 
 

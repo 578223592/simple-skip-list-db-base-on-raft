@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/example -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/lock_free_queue -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/experiment/zkutils -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/lib -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/lib/include -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/src/include -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/mprpc/test/protobuf -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include
+CXX_INCLUDES = -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/include -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include -I/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include
 
 CXX_FLAGS = -g -fdiagnostics-color=always -std=gnu++14
 

@@ -2,7 +2,6 @@
 #include "mprpcapplication.h"
 #include "rpcheader.pb.h"
 #include "logger.h"
-#include "zookeeperutil.h"
 
 /*
 service_name =>  service描述
@@ -63,43 +62,6 @@ void RpcProvider::Run()
 
     // 设置muduo库的线程数量
     server.setThreadNum(4);
-
-    // 把当前rpc节点上要发布的服务全部注册到zk上面，让rpc client可以从zk上发现服务
-    // session timeout   30s     zkclient 网络I/O线程  1/3 * timeout 时间发送ping消息
-    ZkClient zkCli;
-    zkCli.Start();
-    // service_name为永久性节点    method_name为临时性节点
-    for (auto &sp : m_serviceMap)
-    {
-        // /service_name   /UserServiceRpc
-        std::string service_path = "/" + sp.first;
-        char service_data[128] = {0};
-        zkCli.Create(service_path.c_str(), nullptr, 0, 0);
-        for (auto &mp : sp.second.m_methodMap)
-        {
-            // /service_name/method_name   /UserServiceRpc/Login 存储当前这个rpc服务节点主机的ip和port
-            std::string method_path = service_path + "/" + mp.first;
-            char method_path_data[128] = {0};
-            sprintf(method_path_data, "%s:%d", ip.c_str(), port);
-            // ZOO_EPHEMERAL表示znode是一个临时性节点
-            zkCli.Create(method_path.c_str(), method_path_data, strlen(method_path_data), 0);
-
-            // 创建真正节点
-            // create函数的逻辑是节点存在就不创建了，因此这里要判断节点是不是已经存在，不存在才创建
-            // todo:创建过程中遇到多个节点共同创建好像会遇到问题诶，
-            while (true)
-            {
-                auto nodeName = method_path + "/" + to_string(random());
-                if (zkCli.exists_node(nodeName.c_str()) == z_no_node)
-                { // zok表示节点不存在，节点存在是z_node_exists
-                    zkCli.Create(nodeName.c_str(), method_path_data, strlen(method_path_data), ZOO_EPHEMERAL);
-                    break;
-                }else{
-                    std::cout<<"node: "<<nodeName<<" already exists .try again"<<std::endl;
-                }
-            }
-        }
-    }
 
     // rpc服务端准备启动，打印信息
     std::cout << "RpcProvider start service at ip:" << ip << " port:" << port << std::endl;

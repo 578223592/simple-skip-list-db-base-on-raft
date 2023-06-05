@@ -64,15 +64,103 @@ CMAKE_BINARY_DIR = /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake
 
 # The main recursive "all" target.
 all: CMakeFiles/skip_list_on_raft.dir/all
+all: raft/all
+all: rpc/all
+all: example/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: raft/preinstall
+preinstall: rpc/preinstall
+preinstall: example/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/skip_list_on_raft.dir/clean
+clean: raft/clean
+clean: rpc/clean
+clean: example/clean
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory example
+
+# Recursive "all" directory target.
+example/all: example/CMakeFiles/callerMain.dir/all
+example/all: example/CMakeFiles/raftKvDb.dir/all
+.PHONY : example/all
+
+# Recursive "preinstall" directory target.
+example/preinstall:
+.PHONY : example/preinstall
+
+# Recursive "clean" directory target.
+example/clean: example/CMakeFiles/callerMain.dir/clean
+example/clean: example/CMakeFiles/raftKvDb.dir/clean
+.PHONY : example/clean
+
+#=============================================================================
+# Directory level rules for directory raft
+
+# Recursive "all" directory target.
+raft/all:
+.PHONY : raft/all
+
+# Recursive "preinstall" directory target.
+raft/preinstall:
+.PHONY : raft/preinstall
+
+# Recursive "clean" directory target.
+raft/clean:
+.PHONY : raft/clean
+
+#=============================================================================
+# Directory level rules for directory rpc
+
+# Recursive "all" directory target.
+rpc/all: rpc/frame_src/all
+rpc/all: rpc/example/all
+.PHONY : rpc/all
+
+# Recursive "preinstall" directory target.
+rpc/preinstall: rpc/frame_src/preinstall
+rpc/preinstall: rpc/example/preinstall
+.PHONY : rpc/preinstall
+
+# Recursive "clean" directory target.
+rpc/clean: rpc/frame_src/clean
+rpc/clean: rpc/example/clean
+.PHONY : rpc/clean
+
+#=============================================================================
+# Directory level rules for directory rpc/example
+
+# Recursive "all" directory target.
+rpc/example/all:
+.PHONY : rpc/example/all
+
+# Recursive "preinstall" directory target.
+rpc/example/preinstall:
+.PHONY : rpc/example/preinstall
+
+# Recursive "clean" directory target.
+rpc/example/clean:
+.PHONY : rpc/example/clean
+
+#=============================================================================
+# Directory level rules for directory rpc/frame_src
+
+# Recursive "all" directory target.
+rpc/frame_src/all:
+.PHONY : rpc/frame_src/all
+
+# Recursive "preinstall" directory target.
+rpc/frame_src/preinstall:
+.PHONY : rpc/frame_src/preinstall
+
+# Recursive "clean" directory target.
+rpc/frame_src/clean:
+.PHONY : rpc/frame_src/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/skip_list_on_raft.dir
@@ -81,12 +169,12 @@ clean: CMakeFiles/skip_list_on_raft.dir/clean
 CMakeFiles/skip_list_on_raft.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34 "Built target skip_list_on_raft"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 "Built target skip_list_on_raft"
 .PHONY : CMakeFiles/skip_list_on_raft.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/skip_list_on_raft.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles 34
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles 17
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/skip_list_on_raft.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/skip_list_on_raft.dir/rule
@@ -99,6 +187,58 @@ skip_list_on_raft: CMakeFiles/skip_list_on_raft.dir/rule
 CMakeFiles/skip_list_on_raft.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skip_list_on_raft.dir/build.make CMakeFiles/skip_list_on_raft.dir/clean
 .PHONY : CMakeFiles/skip_list_on_raft.dir/clean
+
+#=============================================================================
+# Target rules for target example/CMakeFiles/callerMain.dir
+
+# All Build rule for target.
+example/CMakeFiles/callerMain.dir/all: CMakeFiles/skip_list_on_raft.dir/all
+	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/callerMain.dir/build.make example/CMakeFiles/callerMain.dir/depend
+	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/callerMain.dir/build.make example/CMakeFiles/callerMain.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target callerMain"
+.PHONY : example/CMakeFiles/callerMain.dir/all
+
+# Build rule for subdir invocation for target.
+example/CMakeFiles/callerMain.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles 19
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/CMakeFiles/callerMain.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles 0
+.PHONY : example/CMakeFiles/callerMain.dir/rule
+
+# Convenience name for target.
+callerMain: example/CMakeFiles/callerMain.dir/rule
+.PHONY : callerMain
+
+# clean rule for target.
+example/CMakeFiles/callerMain.dir/clean:
+	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/callerMain.dir/build.make example/CMakeFiles/callerMain.dir/clean
+.PHONY : example/CMakeFiles/callerMain.dir/clean
+
+#=============================================================================
+# Target rules for target example/CMakeFiles/raftKvDb.dir
+
+# All Build rule for target.
+example/CMakeFiles/raftKvDb.dir/all: CMakeFiles/skip_list_on_raft.dir/all
+	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/raftKvDb.dir/build.make example/CMakeFiles/raftKvDb.dir/depend
+	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/raftKvDb.dir/build.make example/CMakeFiles/raftKvDb.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target raftKvDb"
+.PHONY : example/CMakeFiles/raftKvDb.dir/all
+
+# Build rule for subdir invocation for target.
+example/CMakeFiles/raftKvDb.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles 19
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/CMakeFiles/raftKvDb.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles 0
+.PHONY : example/CMakeFiles/raftKvDb.dir/rule
+
+# Convenience name for target.
+raftKvDb: example/CMakeFiles/raftKvDb.dir/rule
+.PHONY : raftKvDb
+
+# clean rule for target.
+example/CMakeFiles/raftKvDb.dir/clean:
+	$(MAKE) $(MAKESILENT) -f example/CMakeFiles/raftKvDb.dir/build.make example/CMakeFiles/raftKvDb.dir/clean
+.PHONY : example/CMakeFiles/raftKvDb.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

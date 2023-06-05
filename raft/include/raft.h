@@ -33,7 +33,7 @@ private:
     int m_me;
     int m_currentTerm;
     int m_votedFor;
-    std::vector<LogEntry> m_logs; //// 日志条目数组，包含了状态机要执行的指令集，以及收到领导时的任期号
+    std::vector<mprrpc:: LogEntry> m_logs; //// 日志条目数组，包含了状态机要执行的指令集，以及收到领导时的任期号
                                   // 这两个状态所有结点都在维护，易失
     int m_commitIndex;
     int m_lastApplied; // 已经汇报给状态机（上层应用）的log 的index
@@ -65,7 +65,7 @@ private:
     int m_lastSnapshotIncludeTerm;
 
 public:
-    void AppendEntries1(const AppendEntriesArgs *args, AppendEntriesReply *reply);
+    void AppendEntries1(const mprrpc::AppendEntriesArgs *args, mprrpc::AppendEntriesReply *reply);
     void applierTicker();
     bool CondInstallSnapshot(int lastIncludedTerm, int lastIncludedIndex, std::string snapshot);
     void doElection();
@@ -77,13 +77,13 @@ public:
     int getNewCommandIndex();
     void getPrevLogInfo(int server, int *preIndex, int *preTerm);
     void GetState(int *term, bool *isLeader);
-    void InstallSnapshot( const InstallSnapshotRequest *args, InstallSnapshotResponse *reply);
+    void InstallSnapshot( const mprrpc::InstallSnapshotRequest *args, mprrpc::InstallSnapshotResponse *reply);
     void leaderHearBeatTicker();
     void leaderSendSnapShot(int server);
     void leaderUpdateCommitIndex();
     bool matchLog(int logIndex, int logTerm);
     void persist();
-    void RequestVote(const RequestVoteArgs *args, RequestVoteReply *reply);
+    void RequestVote(const mprrpc::RequestVoteArgs *args, mprrpc::RequestVoteReply *reply);
     bool UpToDate(int index, int term);
     int getLastLogIndex();
     void getLastLogIndexAndTerm(int *lastLogIndex, int *lastLogTerm);
@@ -92,8 +92,8 @@ public:
     int getSlicesIndexFromLogIndex(int logIndex);
 
 
-    bool sendRequestVote(int server , std::shared_ptr<RequestVoteArgs> args ,  std::shared_ptr<RequestVoteReply> reply,   std::shared_ptr<int> votedNum) ;
-    bool sendAppendEntries(int server ,std::shared_ptr<AppendEntriesArgs> args , std::shared_ptr<AppendEntriesReply> reply , std::shared_ptr<int> appendNums ) ;
+    bool sendRequestVote(int server , std::shared_ptr<mprrpc::RequestVoteArgs> args ,  std::shared_ptr<mprrpc::RequestVoteReply> reply,   std::shared_ptr<int> votedNum) ;
+    bool sendAppendEntries(int server ,std::shared_ptr<mprrpc::AppendEntriesArgs> args , std::shared_ptr<mprrpc::AppendEntriesReply> reply , std::shared_ptr<int> appendNums ) ;
 
 
     //rf.applyChan <- msg //不拿锁执行  可以单独创建一个线程执行，但是为了同意使用std:thread ，避免使用pthread_create，因此专门写一个函数来执行

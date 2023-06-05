@@ -1,6 +1,9 @@
 
 
+# 获取当前源文件所在目录的绝对路径
+get_filename_component(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)
 
-## 原来是将一个src目录下所有文件打包成mprrpc库，但是现在是将多个分散的文件夹里面的文件打包成库
-aux_source_directory(. SRC_LIST)
-add_library(raft ${SRC_LIST})
+# 将该目录下所有源文件添加到 SRC_LIST 变量中
+aux_source_directory(${SRC_DIR} SRC_LIST)
+
+set(raftsource ${SRC_LIST} CACHE INTERNAL "Description of the variable")

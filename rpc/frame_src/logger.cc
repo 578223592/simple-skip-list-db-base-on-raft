@@ -1,5 +1,5 @@
 #include "logger.h"
-#include <time.h>
+#include <ctime>
 #include <iostream>
 
 // 获取日志的单例

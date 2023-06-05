@@ -8,14 +8,14 @@
 #include <mutex>
 #include "raft.h"
 #include <unordered_map>
-#include "../../rpc/example/include/kvServerRPC.pb.h"
+#include "kvServerRPC.pb.h"
 #include <iostream>
 #include <unordered_map>
-#include "boost/serialization/serialization.hpp"
+#include <boost/serialization/serialization.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
-#include "boost/archive/binary_oarchive.hpp"
-#include "boost/archive/binary_iarchive.hpp"
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
 #include <boost/serialization/export.hpp>
 #include "boost/foreach.hpp"
 #include "boost/any.hpp"
@@ -57,13 +57,13 @@ public:
 
     void ExecutePutOpOnKVDB(Op op);
 
-    void Get(const GetArgs *args, GetReply *reply);   //将 GetArgs 改为rpc调用的，因为是远程客户端，即服务器宕机对客户端来说是无感的
+    void Get(const mprrpc::GetArgs *args, mprrpc::GetReply *reply);   //将 GetArgs 改为rpc调用的，因为是远程客户端，即服务器宕机对客户端来说是无感的
 
     void GetCommandFromRaft(ApplyMsg message);
 
     bool ifRequestDuplicate(string ClientId, int RequestId);
     // clerk 使用RPC远程调用
-    void PutAppend(const PutAppendArgs *args, PutAppendReply *reply);
+    void PutAppend(const mprrpc::PutAppendArgs *args, mprrpc::PutAppendReply *reply);
 
 ////一直等待raft传来的applyCh
     void ReadRaftApplyCommandLoop();
@@ -80,12 +80,12 @@ public:
     string MakeSnapShot();
 
 public:   //for rpc
-    virtual void PutAppend(google::protobuf::RpcController *controller,
+     void PutAppend(google::protobuf::RpcController *controller,
                            const ::mprrpc::PutAppendArgs *request,
                            ::mprrpc::PutAppendReply *response,
                            ::google::protobuf::Closure *done) override;
 
-    virtual void Get(google::protobuf::RpcController *controller,
+     void Get(google::protobuf::RpcController *controller,
                      const ::mprrpc::GetArgs *request,
                      ::mprrpc::GetReply *response,
                      ::google::protobuf::Closure *done) override;

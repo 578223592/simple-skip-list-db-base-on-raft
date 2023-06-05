@@ -398,4 +398,10 @@ ProcessorCount_cmd_nproc-ADVANCED:INTERNAL=1
 ProcessorCount_cmd_sysctl-ADVANCED:INTERNAL=1
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
+//Description of the variable
+raftsource:INTERNAL=/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/Persister.cpp;/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/clerk.cpp;/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/kvServer.cpp;/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/raft.cpp;/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/raftrpc.cpp;/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/raftserverRpc.cpp;/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/util.cpp
+//Description of the variable
+rpc_example:INTERNAL=/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/kvServerRPC.pb.cc;/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/raftRPC.pb.cc
+//Description of the variable
+rpc_frame_src:INTERNAL=/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/logger.cc;/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/mprpcapplication.cc;/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/mprpcchannel.cc;/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/mprpcconfig.cc;/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/mprpccontroller.cc;/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/rpcheader.pb.cc;/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/rpcprovider.cc
 

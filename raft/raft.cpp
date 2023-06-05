@@ -1,7 +1,7 @@
 #include "./include/raft.h"  //todo  ： 这里为什么只能用相对路径
 #include "util.h"
 
-void Raft::AppendEntries1(const  AppendEntriesArgs *args,  AppendEntriesReply *reply) {
+void Raft::AppendEntries1(const mprrpc:: AppendEntriesArgs *args,  mprrpc::AppendEntriesReply *reply) {
     std::lock_guard<std::mutex> locker(m_mtx);
     reply->set_appstate(AppNormal);// 能接收到代表网络是正常的
     // Your code here (2A, 2B).
@@ -196,12 +196,12 @@ void Raft::doElection() {
             int lastLogIndex = -1, lastLogTerm = -1;
             getLastLogIndexAndTerm(&lastLogIndex, &lastLogTerm);//获取最后一个log的term和下标
 
-            std::shared_ptr<RequestVoteArgs> requestVoteArgs = std::make_shared<RequestVoteArgs>();
+            std::shared_ptr<mprrpc::RequestVoteArgs> requestVoteArgs = std::make_shared<mprrpc::RequestVoteArgs>();
             requestVoteArgs->set_term(m_currentTerm);
             requestVoteArgs->set_candidateid(m_me);
             requestVoteArgs->set_lastlogindex(lastLogIndex);
             requestVoteArgs->set_lastlogterm(lastLogTerm);
-            std::shared_ptr<RequestVoteReply> requestVoteReply = std::make_shared<RequestVoteReply>();
+            std::shared_ptr<mprrpc::RequestVoteReply> requestVoteReply = std::make_shared<mprrpc::RequestVoteReply>();
 
             //使用匿名函数执行避免其拿到锁
 
@@ -238,7 +238,7 @@ void Raft::doHeartBeat() {
             int preLogIndex = -1;
             int PrevLogTerm = -1;
             getPrevLogInfo(i, &preLogIndex, &PrevLogTerm);
-            std::shared_ptr<AppendEntriesArgs> appendEntriesArgs = std::make_shared<AppendEntriesArgs>();
+            std::shared_ptr<mprrpc::AppendEntriesArgs> appendEntriesArgs = std::make_shared<mprrpc::AppendEntriesArgs>();
             appendEntriesArgs->set_term(m_currentTerm);
             appendEntriesArgs->set_leaderid(m_me);
             appendEntriesArgs->set_prevlogindex(preLogIndex);
@@ -247,12 +247,12 @@ void Raft::doHeartBeat() {
             appendEntriesArgs->set_leadercommit(m_commitIndex);
             if (preLogIndex != m_lastSnapshotIncludeIndex) {
                 for (int j = getSlicesIndexFromLogIndex(preLogIndex) + 1; j < m_logs.size(); ++j) {
-                    LogEntry *sendEntryPtr = appendEntriesArgs->add_entries();
+                    mprrpc::LogEntry *sendEntryPtr = appendEntriesArgs->add_entries();
                     *sendEntryPtr = m_logs[j];  //=是可以点进去的，可以点进去看下protobuf如何重写这个的
                 }
             } else {
                 for (auto &item: m_logs) {
-                    LogEntry *sendEntryPtr = appendEntriesArgs->add_entries();
+                    mprrpc::LogEntry *sendEntryPtr = appendEntriesArgs->add_entries();
                     *sendEntryPtr = item;  //=是可以点进去的，可以点进去看下protobuf如何重写这个的
                 }
             }
@@ -262,7 +262,7 @@ void Raft::doHeartBeat() {
                      format("appendEntriesArgs.PrevLogIndex{%d}+len(appendEntriesArgs.Entries){%d} != lastLogIndex{%d}",
                             appendEntriesArgs->prevlogindex(), appendEntriesArgs->entries_size(), lastLogIndex));
             //构造返回值
-            const std::shared_ptr<AppendEntriesReply> appendEntriesReply = std::make_shared<AppendEntriesReply>();
+            const std::shared_ptr<mprrpc::AppendEntriesReply> appendEntriesReply = std::make_shared<mprrpc::AppendEntriesReply>();
             appendEntriesReply->set_appstate(Disconnected);
 
             std::thread t(&Raft::sendAppendEntries, this, i, appendEntriesArgs, appendEntriesReply,
@@ -353,7 +353,7 @@ void Raft::GetState(int *term, bool *isLeader) {
 
 }
 
-void Raft::InstallSnapshot(const InstallSnapshotRequest *args, InstallSnapshotResponse *reply) {
+void Raft::InstallSnapshot(const mprrpc::InstallSnapshotRequest *args, mprrpc::InstallSnapshotResponse *reply) {
     m_mtx.lock();
     Defer ec1([this]() -> void {
         m_mtx.unlock();
@@ -442,14 +442,14 @@ void Raft::leaderHearBeatTicker() {
 void Raft::leaderSendSnapShot(int server) {
 
     m_mtx.lock();
-    InstallSnapshotRequest args;
+    mprrpc::InstallSnapshotRequest args;
     args.set_leaderid(m_me);
     args.set_term(m_currentTerm);
     args.set_lastsnapshotincludeindex(m_lastSnapshotIncludeIndex);
     args.set_lastsnapshotincludeterm(m_lastSnapshotIncludeTerm);
     args.set_data(m_persister->ReadSnapshot());
 
-    InstallSnapshotResponse reply;
+    mprrpc::InstallSnapshotResponse reply;
     m_mtx.unlock();
     bool ok = m_peers[server]->InstallSnapshot(&args, &reply);
     m_mtx.lock();
@@ -522,7 +522,7 @@ void Raft::persist() {
     //fmt.Printf("%v\n", string(data))
 }
 
-void Raft::RequestVote( const RequestVoteArgs *args, RequestVoteReply *reply) {
+void Raft::RequestVote( const mprrpc::RequestVoteArgs *args, mprrpc::RequestVoteReply *reply) {
 
 
     // Your code here (2A, 2B).
@@ -724,7 +724,7 @@ bool Raft::sendRequestVote(int server, std::shared_ptr<mprrpc::RequestVoteArgs> 
 }
 
 bool
-Raft::sendAppendEntries(int server, std::shared_ptr<AppendEntriesArgs> args, std::shared_ptr<AppendEntriesReply> reply,
+Raft::sendAppendEntries(int server, std::shared_ptr<mprrpc::AppendEntriesArgs> args, std::shared_ptr<mprrpc::AppendEntriesReply> reply,
                         std::shared_ptr<int> appendNums) {
 
     //这个ok是网络是否正常通信的ok，而不是requestVote rpc是否投票的rpc
@@ -831,7 +831,7 @@ void Raft::Start(Op command, int *newLogIndex, int *newLogTerm, bool *isLeader) 
         return ;
     }
 
-    LogEntry newLogEntry;
+    mprrpc::LogEntry newLogEntry;
     newLogEntry.set_command(command.asString());
     newLogEntry.set_logterm(m_currentTerm);
     newLogEntry.set_logindex(getNewCommandIndex());

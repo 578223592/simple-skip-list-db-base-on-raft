@@ -1,41 +1,38 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.22)
 project(skip_list_on_raft)
 
 set(CMAKE_CXX_STANDARD 14)
 # 生成debug版本，可以进行gdb调试
 set(CMAKE_BUILD_TYPE "Debug")
 
+# src包含了mprpc框架所有的相关代码
+add_subdirectory(raft)
 
+add_subdirectory(rpc)
+# example包含了mprpc框架使用的示例代码
+add_subdirectory(example)
 
 # 设置项目可执行文件输出的路径
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/out_bin)
 # 设置项目库文件输出的路径
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/out_lib)
 
-
 # 设置项目编译头文件搜索路径 -I
-include_directories(rpc/example)
-include_directories(rpc/experiment/lock_free_queue)
-include_directories(rpc/experiment/zkutils)
-include_directories(rpc/lib)
-include_directories(rpc/lib/include)
-include_directories(rpc/src/include)
-include_directories(rpc/test/protobuf)
+include_directories(rpc/example/include)
 include_directories(raft/include)
-
+include_directories(rpc/frame_src/include)
 # 设置项目库文件搜索路径 -L
 link_directories(${PROJECT_SOURCE_DIR}/out_lib)
 
 
+add_library(skip_list_on_raft STATIC  ${rpc_frame_src} ${rpc_example} ${raftsource})
 
-# src包含了mprpc框架所有的相关代码
-add_subdirectory(raft)
-# example包含了mprpc框架使用的示例代码
-add_subdirectory(example)
-add_subdirectory(rpc)
-
-
-target_link_libraries(skip_list_on_raft muduo_net muduo_base pthread raft rpc)
+target_link_libraries(skip_list_on_raft muduo_net muduo_base pthread )
+#target_include_directories(skip_list_on_raft PUBLIC
+#        ${PROJECT_SOURCE_DIR}/rpc/example/include
+#        ${PROJECT_SOURCE_DIR}/raft/include
+#        ${PROJECT_SOURCE_DIR}/rpc/frame_src/include
+#        )
 
 #
 #add_executable(skip_list_on_raft
@@ -63,7 +60,6 @@ target_link_libraries(skip_list_on_raft muduo_net muduo_base pthread raft rpc)
 #        rpc/mprpc/src/include/mprpccontroller.h
 #        rpc/mprpc/src/include/rpcheader.pb.h
 #        rpc/mprpc/src/include/rpcprovider.h
-#        rpc/mprpc/src/include/zookeeperutil.h
 #        rpc/mprpc/src/logger.cc
 #        rpc/mprpc/src/mprpcapplication.cc
 #        rpc/mprpc/src/mprpcchannel.cc
@@ -71,7 +67,6 @@ target_link_libraries(skip_list_on_raft muduo_net muduo_base pthread raft rpc)
 #        rpc/mprpc/src/mprpccontroller.cc
 #        rpc/mprpc/src/rpcheader.pb.cc
 #        rpc/mprpc/src/rpcprovider.cc
-#        rpc/mprpc/src/zookeeperutil.cc
 #        rpc/mprpc/test/protobuf/main.cc
 #        rpc/mprpc/test/protobuf/test.pb.cc
 #        rpc/mprpc/test/protobuf/test.pb.h

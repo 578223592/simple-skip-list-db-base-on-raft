@@ -72,7 +72,7 @@ void KvServer::ExecutePutOpOnKVDB(Op op) {
 }
 
 // 处理来自clerk的Get RPC
-void KvServer::Get(const GetArgs *args, GetReply *reply) {
+void KvServer::Get(const mprrpc::GetArgs *args, mprrpc::GetReply *reply) {
     Op op;
     op.Operation = "Get";
     op.Key = args->key();
@@ -208,7 +208,7 @@ bool KvServer::ifRequestDuplicate(string ClientId, int RequestId) {
     return RequestId <= m_lastRequestId[ClientId];
 }
 
-void KvServer::PutAppend(const PutAppendArgs *args, PutAppendReply *reply) {
+void KvServer::PutAppend(const mprrpc::PutAppendArgs *args, mprrpc::PutAppendReply *reply) {
     Op op;
     op.Operation = args->op();
     op.Key = args->key();
@@ -357,13 +357,13 @@ string KvServer::MakeSnapShot() {
 
 void KvServer::PutAppend(google::protobuf::RpcController *controller, const ::mprrpc::PutAppendArgs *request,
                          ::mprrpc::PutAppendReply *response, ::google::protobuf::Closure *done) {
-    PutAppend(request,response);
+    KvServer::PutAppend(request,response);
     done->Run();
 }
 
 void KvServer::Get(google::protobuf::RpcController *controller, const ::mprrpc::GetArgs *request,
                    ::mprrpc::GetReply *response, ::google::protobuf::Closure *done) {
-    Get(request,response);
+    KvServer::Get(request,response);
     done->Run();
 }
 

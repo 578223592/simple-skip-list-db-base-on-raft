@@ -1,4 +1,10 @@
-#pragma once
+
+#ifndef UTIL_H
+#define UTIL_H
+
+
+
+
 #include <functional>
 #include <iostream>
 #include <queue>
@@ -19,14 +25,7 @@ private:
     std::function<void()> m_funCall;
 };
 
-void myAssert(bool condition, std::string message = "Assertion failed!")
-{
-    if (!condition)
-    {
-        std::cerr << "Error: " << message << std::endl;
-        std::exit(EXIT_FAILURE);
-    }
-}
+void myAssert(bool condition, std::string message = "Assertion failed!");
 
 template <typename... Args>
 std::string format(const char *format_str, Args... args)
@@ -38,20 +37,10 @@ std::string format(const char *format_str, Args... args)
 
 }
 
-std::chrono::_V2::system_clock::time_point now(){
-    return std::chrono::high_resolution_clock::now();
-}
+std::chrono::_V2::system_clock::time_point now();
 
-std::chrono::milliseconds getRandomizedElectionTimeout(){
-    std::random_device rd;
-    std::mt19937 rng(rd());
-    std::uniform_int_distribution<int> dist(minRandomizedElectionTime, maxRandomizedElectionTime);
-
-    return std::chrono::milliseconds(dist(rng));
-}
-void sleepNMilliseconds(int N){
-    std::this_thread::sleep_for(std::chrono::milliseconds(N));
-};
+std::chrono::milliseconds getRandomizedElectionTimeout();
+void sleepNMilliseconds(int N);
 
 
 // ////////////////////////异步写日志的日志队列
@@ -194,3 +183,4 @@ const std::string ErrNoKey = "ErrNoKey";
 const std::string ErrWrongLeader = "ErrWrongLeader";
 
 
+#endif //  UTIL_H

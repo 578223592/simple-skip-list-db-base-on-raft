@@ -1,3 +1,15 @@
 /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles/skip_list_on_raft.dir
 /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/raft/CMakeFiles/edit_cache.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/raft/CMakeFiles/rebuild_cache.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/rpc/CMakeFiles/edit_cache.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/rpc/CMakeFiles/rebuild_cache.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/rpc/frame_src/CMakeFiles/edit_cache.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/rpc/frame_src/CMakeFiles/rebuild_cache.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/rpc/example/CMakeFiles/edit_cache.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/rpc/example/CMakeFiles/rebuild_cache.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/example/CMakeFiles/callerMain.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/example/CMakeFiles/raftKvDb.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/example/CMakeFiles/edit_cache.dir
+/home/swx/2023_project/simple-skip-list-db-base-on-raft/cmake-build-debug/example/CMakeFiles/rebuild_cache.dir
