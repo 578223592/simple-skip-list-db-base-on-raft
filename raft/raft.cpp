@@ -1,4 +1,6 @@
-#include "./include/raft.h"  //todo  ： 这里为什么只能用相对路径
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include "raft.h"
 #include "util.h"
 
 void Raft::AppendEntries1(const mprrpc:: AppendEntriesArgs *args,  mprrpc::AppendEntriesReply *reply) {
@@ -414,10 +416,7 @@ void Raft::pushMsgToKvServer(ApplyMsg msg) {
     applyChan->Push(msg);
 }
 
-//todo : 等待实现，因为序列化稍微比较复杂.
-std::string Raft::persistData() {
-    return std::string();
-}
+
 
 void Raft::leaderHearBeatTicker() {
     while (true) {
@@ -858,8 +857,8 @@ void Raft::Start(Op command, int *newLogIndex, int *newLogTerm, bool *isLeader) 
 // tester or service expects Raft to send ApplyMsg messages.
 // Make() must return quickly, so it should start goroutines
 // for any long-running work.
-void Raft::init(std::vector<shared_ptr<RaftRpc>> peers, int me, std::shared_ptr<Persister> persister,
-                shared_ptr<LockQueue<ApplyMsg>> applyCh) {
+void Raft::init(std::vector<std::shared_ptr<RaftRpc>> peers, int me, std::shared_ptr<Persister> persister,
+                std::shared_ptr<LockQueue<ApplyMsg>> applyCh) {
     m_peers = peers;
     m_persister = persister;
     m_me = me;
@@ -905,6 +904,81 @@ void Raft::init(std::vector<shared_ptr<RaftRpc>> peers, int me, std::shared_ptr<
 
     std::thread t3(&Raft::applierTicker, this); //马上向其他节点宣告自己就是leader
     t3.detach();
+
+}
+
+std::string Raft::persistData() {
+    BoostPersistRaftNode boostPersistRaftNode;
+    boostPersistRaftNode.m_currentTerm = m_currentTerm;
+    boostPersistRaftNode.m_votedFor = m_votedFor;
+    boostPersistRaftNode.m_lastSnapshotIncludeIndex = m_lastSnapshotIncludeIndex;
+    boostPersistRaftNode.m_lastSnapshotIncludeTerm = m_lastSnapshotIncludeTerm;
+    for (auto &item: m_logs) {
+        boostPersistRaftNode.m_logs.push_back(item.SerializeAsString());
+    }
+
+    std::stringstream ss;
+    boost::archive::text_oarchive oa(ss);
+    oa<<boostPersistRaftNode;
+    return ss.str();
+}
+
+void Raft::readPersist(std::string data) {
+    if(data.empty()){return ;}
+    std::stringstream iss(data);
+    boost::archive::text_iarchive ia(iss);
+    // read class state from archive
+    BoostPersistRaftNode boostPersistRaftNode;
+    ia >> boostPersistRaftNode;
+
+    m_currentTerm = boostPersistRaftNode.m_currentTerm;
+    m_votedFor = boostPersistRaftNode.m_votedFor;
+    m_lastSnapshotIncludeIndex = boostPersistRaftNode.m_lastSnapshotIncludeIndex;
+    m_lastSnapshotIncludeTerm = boostPersistRaftNode.m_lastSnapshotIncludeTerm;
+    m_logs.clear();
+    for(auto  &item:boostPersistRaftNode.m_logs){
+        mprrpc::LogEntry logEntry;
+        logEntry.ParseFromString(item);
+        m_logs.emplace_back(logEntry);
+    }
+}
+
+void Raft::Snapshot(int index, std::string snapshot) {
+    m_mtx.lock();
+    Defer ec1([this] (){
+       m_mtx.unlock();
+    });
+
+    if (m_lastSnapshotIncludeIndex >= index || index > m_commitIndex) {
+//        DPrintf("[func-Snapshot-rf{%v}] rejects replacing log with snapshotIndex %v as current snapshotIndex %v is larger or smaller ", rf.me, index, rf.lastSnapshotIncludeIndex)
+        return;
+    }
+    auto lastLogIndex = getLastLogIndex() ;//为了检查snapshot前后日志是否一样，防止多截取或者少截取日志
+
+    //制造完此快照后剩余的所有日志
+    int newLastSnapshotIncludeIndex = index;
+    int newLastSnapshotIncludeTerm = m_logs[getSlicesIndexFromLogIndex(index)].logterm();
+    vector<mprrpc::LogEntry> trunckedLogs;
+    //todo :这种写法有点笨，待改进，而且有内存泄漏的风险
+    for (int i = index + 1; i <= getLastLogIndex(); i++) { //注意有=，因为要拿到最后一个日志
+        trunckedLogs.push_back(m_logs[getSlicesIndexFromLogIndex(i)]);
+
+    }
+    m_lastSnapshotIncludeIndex = newLastSnapshotIncludeIndex;
+    m_lastSnapshotIncludeTerm = newLastSnapshotIncludeTerm;
+    m_logs = trunckedLogs;
+    m_commitIndex = max(m_commitIndex,index);
+    m_lastApplied = max(m_lastApplied,index);
+
+
+    //rf.lastApplied = index //lastApplied 和 commit应不应该改变呢？？？ 为什么  不应该改变吧
+    m_persister->Save(persistData(),snapshot);
+
+
+//    DPrintf("[SnapShot]Server %d snapshot snapshot index {%d}, term {%d}, loglen {%d}", rf.me, index, rf.lastSnapshotIncludeTerm, len(rf.logs))
+
+    myAssert(m_logs.size()+m_lastSnapshotIncludeIndex == lastLogIndex,
+             format("len(rf.logs){%d} + rf.lastSnapshotIncludeIndex{%d} != lastLogjInde{%d}", m_logs.size(), m_lastSnapshotIncludeIndex, lastLogIndex));
 
 }
 

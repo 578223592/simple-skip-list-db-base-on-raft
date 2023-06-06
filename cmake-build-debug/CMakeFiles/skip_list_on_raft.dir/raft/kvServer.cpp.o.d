@@ -156,25 +156,13 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpcapplication.h \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpcconfig.h \
- /usr/include/c++/11/unordered_map \
- /usr/include/c++/11/ext/aligned_buffer.h \
- /usr/include/c++/11/bits/hashtable.h \
- /usr/include/c++/11/bits/hashtable_policy.h \
- /usr/include/c++/11/bits/enable_special_members.h \
- /usr/include/c++/11/bits/unordered_map.h \
- /usr/include/c++/11/bits/erase_if.h \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpcchannel.h \
- /usr/include/google/protobuf/service.h \
- /usr/include/google/protobuf/stubs/callback.h \
- /usr/include/google/protobuf/stubs/macros.h \
- /usr/include/google/protobuf/stubs/port.h /usr/include/assert.h \
- /usr/include/c++/11/stdlib.h /usr/include/c++/11/cstddef \
- /usr/include/string.h /usr/include/strings.h \
- /usr/include/google/protobuf/stubs/platform_macros.h \
+ /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/include/raftRPC.pb.h \
  /usr/include/google/protobuf/port_def.inc \
- /usr/include/x86_64-linux-gnu/sys/param.h \
+ /usr/include/google/protobuf/port_undef.inc \
+ /usr/include/google/protobuf/io/coded_stream.h /usr/include/assert.h \
+ /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/climits \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
@@ -182,7 +170,9 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/signal.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/11/cstddef \
+ /usr/include/c++/11/cstring /usr/include/string.h /usr/include/strings.h \
+ /usr/include/x86_64-linux-gnu/sys/param.h /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
  /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
@@ -213,16 +203,18 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
  /usr/include/x86_64-linux-gnu/bits/param.h /usr/include/linux/param.h \
  /usr/include/x86_64-linux-gnu/asm/param.h \
- /usr/include/asm-generic/param.h /usr/include/byteswap.h \
- /usr/include/google/protobuf/port_undef.inc \
+ /usr/include/asm-generic/param.h \
  /usr/include/google/protobuf/stubs/common.h \
  /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
  /usr/include/c++/11/bits/algorithmfwd.h \
  /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/uniform_int_dist.h /usr/include/c++/11/map \
- /usr/include/c++/11/bits/stl_tree.h /usr/include/c++/11/bits/stl_map.h \
- /usr/include/c++/11/bits/stl_multimap.h /usr/include/c++/11/memory \
+ /usr/include/c++/11/bits/stl_tree.h \
+ /usr/include/c++/11/ext/aligned_buffer.h \
+ /usr/include/c++/11/bits/stl_map.h \
+ /usr/include/c++/11/bits/stl_multimap.h \
+ /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -232,72 +224,60 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/bits/refwrap.h /usr/include/c++/11/ext/concurrence.h \
  /usr/include/c++/11/bits/shared_ptr_atomic.h \
- /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h /usr/include/c++/11/set \
  /usr/include/c++/11/bits/stl_set.h \
  /usr/include/c++/11/bits/stl_multiset.h /usr/include/c++/11/vector \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /usr/include/google/protobuf/descriptor.h \
- /usr/include/google/protobuf/stubs/mutex.h \
- /usr/include/google/protobuf/stubs/once.h \
- /usr/include/google/protobuf/message.h \
- /usr/include/google/protobuf/stubs/casts.h \
- /usr/include/google/protobuf/arena.h \
- /usr/include/google/protobuf/arena_impl.h /usr/include/c++/11/atomic \
+ /usr/include/google/protobuf/stubs/port.h /usr/include/c++/11/stdlib.h \
+ /usr/include/google/protobuf/stubs/platform_macros.h \
+ /usr/include/byteswap.h /usr/include/google/protobuf/stubs/macros.h \
  /usr/include/google/protobuf/stubs/logging.h \
- /usr/include/google/protobuf/port.h \
- /usr/include/google/protobuf/generated_message_reflection.h \
- /usr/include/google/protobuf/generated_enum_reflection.h \
- /usr/include/google/protobuf/generated_enum_util.h \
- /usr/include/google/protobuf/message_lite.h /usr/include/c++/11/climits \
- /usr/include/google/protobuf/io/coded_stream.h \
- /usr/include/c++/11/cstring /usr/include/google/protobuf/stubs/strutil.h \
+ /usr/include/google/protobuf/stubs/strutil.h \
  /usr/include/google/protobuf/stubs/stringpiece.h \
  /usr/include/google/protobuf/stubs/hash.h \
+ /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/bits/hashtable_policy.h \
+ /usr/include/c++/11/bits/enable_special_members.h \
+ /usr/include/c++/11/bits/unordered_map.h \
  /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h \
- /usr/include/google/protobuf/metadata_lite.h \
- /usr/include/google/protobuf/unknown_field_set.h \
- /usr/include/google/protobuf/parse_context.h \
- /usr/include/google/protobuf/io/zero_copy_stream.h \
+ /usr/include/google/protobuf/port.h /usr/include/google/protobuf/arena.h \
+ /usr/include/google/protobuf/arena_impl.h \
  /usr/include/google/protobuf/arenastring.h \
  /usr/include/google/protobuf/stubs/fastmem.h \
+ /usr/include/google/protobuf/generated_message_table_driven.h \
+ /usr/include/google/protobuf/map.h /usr/include/c++/11/iterator \
+ /usr/include/c++/11/bits/stream_iterator.h \
+ /usr/include/google/protobuf/generated_enum_util.h \
+ /usr/include/google/protobuf/message_lite.h \
+ /usr/include/google/protobuf/metadata_lite.h \
+ /usr/include/google/protobuf/stubs/once.h \
+ /usr/include/google/protobuf/map_type_handler.h \
+ /usr/include/google/protobuf/parse_context.h \
+ /usr/include/google/protobuf/io/zero_copy_stream.h \
  /usr/include/google/protobuf/implicit_weak_message.h \
  /usr/include/google/protobuf/repeated_field.h \
- /usr/include/c++/11/iterator /usr/include/c++/11/bits/stream_iterator.h \
+ /usr/include/google/protobuf/stubs/casts.h \
  /usr/include/google/protobuf/wire_format_lite.h \
- /usr/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
- /usr/include/google/protobuf/stubs/stl_util.h \
- /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
- /usr/include/c++/11/random /usr/include/c++/11/cmath /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/math-vector.h \
- /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
- /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
- /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
- /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
- /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/11/bits/random.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
- /usr/include/c++/11/bits/random.tcc /usr/include/c++/11/numeric \
- /usr/include/c++/11/bits/stl_numeric.h \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpccontroller.h \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/include/raftRPC.pb.h \
- /usr/include/google/protobuf/generated_message_table_driven.h \
- /usr/include/google/protobuf/map.h \
- /usr/include/google/protobuf/map_type_handler.h \
  /usr/include/google/protobuf/map_entry_lite.h \
  /usr/include/google/protobuf/generated_message_util.h \
  /usr/include/google/protobuf/any.h \
  /usr/include/google/protobuf/has_bits.h \
  /usr/include/google/protobuf/map_field_lite.h \
  /usr/include/google/protobuf/inlined_string_field.h \
+ /usr/include/google/protobuf/generated_message_reflection.h \
+ /usr/include/google/protobuf/descriptor.h \
+ /usr/include/google/protobuf/stubs/mutex.h \
+ /usr/include/google/protobuf/generated_enum_reflection.h \
+ /usr/include/google/protobuf/unknown_field_set.h \
+ /usr/include/google/protobuf/io/zero_copy_stream_impl_lite.h \
+ /usr/include/google/protobuf/stubs/callback.h \
+ /usr/include/google/protobuf/stubs/stl_util.h \
+ /usr/include/google/protobuf/message.h \
  /usr/include/google/protobuf/extension_set.h /usr/include/c++/11/cassert \
+ /usr/include/google/protobuf/service.h \
  /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/rpcprovider.h \
  /usr/include/muduo/net/TcpServer.h /usr/include/muduo/base/Atomic.h \
  /usr/include/muduo/base/noncopyable.h /usr/include/muduo/base/Types.h \
@@ -318,7 +298,8 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/boost/config/helper_macros.hpp \
  /usr/include/boost/detail/workaround.hpp \
  /usr/include/boost/config/workaround.hpp \
- /usr/include/boost/core/addressof.hpp /usr/include/muduo/net/Buffer.h \
+ /usr/include/boost/core/addressof.hpp /usr/include/c++/11/functional \
+ /usr/include/c++/11/bits/std_function.h /usr/include/muduo/net/Buffer.h \
  /usr/include/muduo/net/Endian.h /usr/include/muduo/net/InetAddress.h \
  /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
@@ -372,7 +353,23 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/boost/type_traits/is_same.hpp \
  /usr/include/muduo/net/EventLoop.h /usr/include/muduo/base/Mutex.h \
  /usr/include/muduo/base/CurrentThread.h /usr/include/muduo/net/TimerId.h \
- /usr/include/c++/11/thread /usr/include/c++/11/bits/std_thread.h \
+ /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpccontroller.h \
+ /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpcchannel.h \
+ /usr/include/c++/11/random /usr/include/c++/11/cmath /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+ /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+ /usr/include/c++/11/bits/random.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
+ /usr/include/c++/11/bits/random.tcc /usr/include/c++/11/numeric \
+ /usr/include/c++/11/bits/stl_numeric.h /usr/include/c++/11/thread \
+ /usr/include/c++/11/bits/std_thread.h \
  /usr/include/c++/11/bits/this_thread_sleep.h \
  /home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/./include/ApplyMsg.h \
  /home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/./include/util.h \
@@ -382,12 +379,7 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/c++/11/condition_variable /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
  /home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/./include/config.h \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/./include/Persister.h \
- /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
- /usr/include/c++/11/bits/fstream.tcc \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/include/kvServerRPC.pb.h \
+ /usr/include/arpa/inet.h \
  /usr/include/boost/serialization/serialization.hpp \
  /usr/include/boost/serialization/strong_typedef.hpp \
  /usr/include/boost/type_traits/has_nothrow_assign.hpp \
@@ -405,71 +397,36 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/boost/type_traits/is_constructible.hpp \
  /usr/include/boost/type_traits/is_destructible.hpp \
  /usr/include/boost/serialization/access.hpp \
- /usr/include/boost/archive/text_oarchive.hpp \
- /usr/include/boost/archive/detail/auto_link_archive.hpp \
- /usr/include/boost/archive/detail/decl.hpp \
- /usr/include/boost/config/auto_link.hpp \
- /usr/include/boost/archive/basic_text_oprimitive.hpp \
- /usr/include/c++/11/iomanip /usr/include/c++/11/locale \
- /usr/include/c++/11/bits/locale_facets_nonio.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/11/bits/locale_facets_nonio.tcc \
- /usr/include/c++/11/bits/locale_conv.h \
- /usr/include/c++/11/bits/quoted_string.h \
- /usr/include/boost/io/ios_state.hpp /usr/include/boost/io_fwd.hpp \
- /usr/include/boost/type_traits/is_floating_point.hpp \
- /usr/include/boost/mpl/bool.hpp /usr/include/boost/mpl/bool_fwd.hpp \
- /usr/include/boost/mpl/aux_/adl_barrier.hpp \
- /usr/include/boost/mpl/aux_/config/adl.hpp \
- /usr/include/boost/mpl/aux_/config/msvc.hpp \
- /usr/include/boost/mpl/aux_/config/intel.hpp \
- /usr/include/boost/mpl/aux_/config/gcc.hpp \
- /usr/include/boost/mpl/aux_/config/workaround.hpp \
- /usr/include/boost/mpl/integral_c_tag.hpp \
- /usr/include/boost/mpl/aux_/config/static_constant.hpp \
- /usr/include/boost/limits.hpp /usr/include/boost/integer.hpp \
- /usr/include/boost/integer_fwd.hpp /usr/include/boost/integer_traits.hpp \
- /usr/include/boost/serialization/throw_exception.hpp \
- /usr/include/boost/archive/basic_streambuf_locale_saver.hpp \
- /usr/include/boost/noncopyable.hpp \
- /usr/include/boost/core/noncopyable.hpp \
- /usr/include/boost/archive/codecvt_null.hpp \
- /usr/include/boost/serialization/force_include.hpp \
- /usr/include/boost/archive/archive_exception.hpp \
- /usr/include/boost/assert.hpp \
- /usr/include/boost/archive/detail/abi_prefix.hpp \
- /usr/include/boost/config/abi_prefix.hpp \
- /usr/include/boost/archive/detail/abi_suffix.hpp \
- /usr/include/boost/config/abi_suffix.hpp \
- /usr/include/boost/archive/basic_text_oarchive.hpp \
- /usr/include/boost/archive/detail/common_oarchive.hpp \
- /usr/include/boost/archive/detail/basic_oarchive.hpp \
- /usr/include/boost/scoped_ptr.hpp \
- /usr/include/boost/smart_ptr/scoped_ptr.hpp \
- /usr/include/boost/checked_delete.hpp \
- /usr/include/boost/core/checked_delete.hpp \
- /usr/include/boost/smart_ptr/detail/sp_nullptr_t.hpp \
- /usr/include/boost/smart_ptr/detail/sp_disable_deprecated.hpp \
- /usr/include/boost/smart_ptr/detail/sp_noexcept.hpp \
- /usr/include/boost/smart_ptr/detail/operator_bool.hpp \
- /usr/include/boost/archive/basic_archive.hpp \
- /usr/include/boost/serialization/library_version_type.hpp \
+ /usr/include/boost/serialization/vector.hpp \
+ /usr/include/boost/serialization/nvp.hpp /usr/include/boost/core/nvp.hpp \
+ /usr/include/boost/preprocessor/stringize.hpp \
+ /usr/include/boost/preprocessor/config/config.hpp \
  /usr/include/boost/serialization/level.hpp \
  /usr/include/boost/type_traits/is_fundamental.hpp \
  /usr/include/boost/type_traits/is_arithmetic.hpp \
  /usr/include/boost/type_traits/is_integral.hpp \
+ /usr/include/boost/type_traits/is_floating_point.hpp \
  /usr/include/boost/type_traits/is_enum.hpp \
  /usr/include/boost/type_traits/is_class.hpp \
  /usr/include/boost/type_traits/is_base_and_derived.hpp \
  /usr/include/boost/mpl/eval_if.hpp /usr/include/boost/mpl/if.hpp \
  /usr/include/boost/mpl/aux_/value_wknd.hpp \
  /usr/include/boost/mpl/aux_/static_cast.hpp \
+ /usr/include/boost/mpl/aux_/config/workaround.hpp \
  /usr/include/boost/mpl/aux_/config/integral.hpp \
+ /usr/include/boost/mpl/aux_/config/msvc.hpp \
  /usr/include/boost/mpl/aux_/config/eti.hpp \
  /usr/include/boost/mpl/aux_/na_spec.hpp \
  /usr/include/boost/mpl/lambda_fwd.hpp \
- /usr/include/boost/mpl/void_fwd.hpp /usr/include/boost/mpl/aux_/na.hpp \
+ /usr/include/boost/mpl/void_fwd.hpp \
+ /usr/include/boost/mpl/aux_/adl_barrier.hpp \
+ /usr/include/boost/mpl/aux_/config/adl.hpp \
+ /usr/include/boost/mpl/aux_/config/intel.hpp \
+ /usr/include/boost/mpl/aux_/config/gcc.hpp \
+ /usr/include/boost/mpl/aux_/na.hpp /usr/include/boost/mpl/bool.hpp \
+ /usr/include/boost/mpl/bool_fwd.hpp \
+ /usr/include/boost/mpl/integral_c_tag.hpp \
+ /usr/include/boost/mpl/aux_/config/static_constant.hpp \
  /usr/include/boost/mpl/aux_/na_fwd.hpp \
  /usr/include/boost/mpl/aux_/config/ctps.hpp \
  /usr/include/boost/mpl/aux_/config/lambda.hpp \
@@ -479,7 +436,6 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/boost/mpl/aux_/config/nttp.hpp \
  /usr/include/boost/mpl/aux_/integral_wrapper.hpp \
  /usr/include/boost/preprocessor/cat.hpp \
- /usr/include/boost/preprocessor/config/config.hpp \
  /usr/include/boost/mpl/aux_/lambda_arity_param.hpp \
  /usr/include/boost/mpl/aux_/template_arity_fwd.hpp \
  /usr/include/boost/mpl/aux_/arity.hpp \
@@ -535,61 +491,8 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/boost/mpl/integral_c.hpp \
  /usr/include/boost/mpl/integral_c_fwd.hpp \
  /usr/include/boost/serialization/level_enum.hpp \
- /usr/include/boost/serialization/is_bitwise_serializable.hpp \
- /usr/include/boost/serialization/tracking_enum.hpp \
- /usr/include/boost/archive/detail/helper_collection.hpp \
- /usr/include/boost/smart_ptr/shared_ptr.hpp \
- /usr/include/boost/smart_ptr/detail/shared_count.hpp \
- /usr/include/boost/smart_ptr/bad_weak_ptr.hpp \
- /usr/include/boost/smart_ptr/detail/sp_counted_base.hpp \
- /usr/include/boost/smart_ptr/detail/sp_has_gcc_intrinsics.hpp \
- /usr/include/boost/smart_ptr/detail/sp_has_sync_intrinsics.hpp \
- /usr/include/boost/smart_ptr/detail/sp_counted_base_gcc_atomic.hpp \
- /usr/include/boost/smart_ptr/detail/sp_typeinfo_.hpp \
- /usr/include/boost/smart_ptr/detail/sp_counted_impl.hpp \
- /usr/include/boost/smart_ptr/detail/sp_convertible.hpp \
- /usr/include/boost/smart_ptr/detail/spinlock_pool.hpp \
- /usr/include/boost/smart_ptr/detail/spinlock.hpp \
- /usr/include/boost/smart_ptr/detail/spinlock_gcc_atomic.hpp \
- /usr/include/boost/smart_ptr/detail/yield_k.hpp \
- /usr/include/boost/smart_ptr/detail/sp_thread_pause.hpp \
- /usr/include/boost/smart_ptr/detail/sp_thread_sleep.hpp \
- /usr/include/boost/config/pragma_message.hpp \
- /usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp \
- /usr/include/boost/smart_ptr/detail/local_counted_base.hpp \
- /usr/include/boost/smart_ptr/make_shared.hpp \
- /usr/include/boost/smart_ptr/make_shared_object.hpp \
- /usr/include/boost/move/core.hpp \
- /usr/include/boost/move/detail/config_begin.hpp \
- /usr/include/boost/move/detail/workaround.hpp \
- /usr/include/boost/move/detail/config_end.hpp \
- /usr/include/boost/move/utility_core.hpp \
- /usr/include/boost/move/detail/meta_utils.hpp \
- /usr/include/boost/move/detail/meta_utils_core.hpp \
- /usr/include/boost/smart_ptr/detail/sp_forward.hpp \
- /usr/include/boost/type_traits/type_with_alignment.hpp \
- /usr/include/boost/type_traits/alignment_of.hpp \
- /usr/include/boost/type_traits/is_pod.hpp \
- /usr/include/boost/type_traits/is_scalar.hpp \
- /usr/include/boost/type_traits/is_pointer.hpp \
- /usr/include/boost/type_traits/is_member_pointer.hpp \
- /usr/include/boost/type_traits/is_member_function_pointer.hpp \
- /usr/include/boost/type_traits/detail/is_member_function_pointer_cxx_11.hpp \
- /usr/include/boost/smart_ptr/make_shared_array.hpp \
- /usr/include/boost/core/default_allocator.hpp \
- /usr/include/boost/smart_ptr/allocate_shared_array.hpp \
- /usr/include/boost/core/allocator_access.hpp \
- /usr/include/boost/core/pointer_traits.hpp \
- /usr/include/boost/core/alloc_construct.hpp \
- /usr/include/boost/core/noinit_adaptor.hpp \
- /usr/include/boost/core/first_scalar.hpp \
- /usr/include/boost/type_traits/enable_if.hpp \
- /usr/include/boost/type_traits/extent.hpp \
- /usr/include/boost/type_traits/is_bounded_array.hpp \
- /usr/include/boost/type_traits/is_unbounded_array.hpp \
- /usr/include/boost/archive/detail/interface_oarchive.hpp \
- /usr/include/boost/archive/detail/oserializer.hpp \
- /usr/include/boost/mpl/equal_to.hpp \
+ /usr/include/boost/serialization/tracking.hpp \
+ /usr/include/boost/mpl/identity.hpp /usr/include/boost/mpl/equal_to.hpp \
  /usr/include/boost/mpl/aux_/comparison_op.hpp \
  /usr/include/boost/mpl/aux_/numeric_op.hpp \
  /usr/include/boost/mpl/numeric_cast.hpp \
@@ -611,7 +514,6 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/boost/mpl/aux_/config/use_preprocessed.hpp \
  /usr/include/boost/mpl/aux_/include_preprocessed.hpp \
  /usr/include/boost/mpl/aux_/config/compiler.hpp \
- /usr/include/boost/preprocessor/stringize.hpp \
  /usr/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp \
  /usr/include/boost/mpl/tag.hpp /usr/include/boost/mpl/void.hpp \
  /usr/include/boost/mpl/aux_/has_tag.hpp \
@@ -620,36 +522,28 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/boost/mpl/aux_/msvc_eti_base.hpp \
  /usr/include/boost/mpl/aux_/is_msvc_eti_arg.hpp \
  /usr/include/boost/mpl/aux_/preprocessed/gcc/equal_to.hpp \
- /usr/include/boost/mpl/greater_equal.hpp \
- /usr/include/boost/mpl/aux_/preprocessed/gcc/greater_equal.hpp \
- /usr/include/boost/mpl/identity.hpp \
- /usr/include/boost/serialization/extended_type_info_typeid.hpp \
- /usr/include/c++/11/cstdarg \
- /usr/include/boost/serialization/static_warning.hpp \
- /usr/include/boost/mpl/print.hpp \
+ /usr/include/boost/mpl/greater.hpp \
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/greater.hpp \
+ /usr/include/boost/type_traits/is_pointer.hpp \
+ /usr/include/boost/serialization/tracking_enum.hpp \
+ /usr/include/boost/serialization/type_info_implementation.hpp \
+ /usr/include/boost/serialization/traits.hpp \
+ /usr/include/boost/serialization/split_free.hpp \
+ /usr/include/boost/serialization/wrapper.hpp \
+ /usr/include/boost/serialization/base_object.hpp \
  /usr/include/boost/type_traits/is_polymorphic.hpp \
- /usr/include/boost/type_traits/remove_const.hpp \
- /usr/include/boost/serialization/config.hpp \
- /usr/include/boost/serialization/singleton.hpp \
- /usr/include/boost/serialization/extended_type_info.hpp \
- /usr/include/boost/serialization/factory.hpp \
- /usr/include/boost/preprocessor/comparison/greater.hpp \
- /usr/include/boost/preprocessor/comparison/less.hpp \
- /usr/include/boost/preprocessor/comparison/less_equal.hpp \
- /usr/include/boost/preprocessor/logical/not.hpp \
- /usr/include/boost/preprocessor/comparison/not_equal.hpp \
- /usr/include/boost/serialization/smart_cast.hpp \
- /usr/include/boost/type_traits/remove_pointer.hpp \
- /usr/include/boost/mpl/or.hpp \
- /usr/include/boost/mpl/aux_/nested_type_wknd.hpp \
- /usr/include/boost/mpl/aux_/preprocessed/gcc/or.hpp \
- /usr/include/boost/mpl/and.hpp \
- /usr/include/boost/mpl/aux_/preprocessed/gcc/and.hpp \
- /usr/include/boost/mpl/not.hpp \
- /usr/include/boost/serialization/assume_abstract.hpp \
- /usr/include/boost/type_traits/is_abstract.hpp \
+ /usr/include/boost/serialization/force_include.hpp \
+ /usr/include/boost/serialization/void_cast_fwd.hpp \
+ /usr/include/boost/serialization/collection_size_type.hpp \
+ /usr/include/boost/serialization/is_bitwise_serializable.hpp \
+ /usr/include/boost/serialization/library_version_type.hpp \
+ /usr/include/boost/assert.hpp /usr/include/boost/integer_traits.hpp \
+ /usr/include/boost/limits.hpp \
+ /usr/include/boost/serialization/item_version_type.hpp \
+ /usr/include/boost/serialization/collections_save_imp.hpp \
  /usr/include/boost/serialization/version.hpp \
- /usr/include/boost/mpl/assert.hpp \
+ /usr/include/boost/mpl/assert.hpp /usr/include/boost/mpl/not.hpp \
+ /usr/include/boost/mpl/aux_/nested_type_wknd.hpp \
  /usr/include/boost/mpl/aux_/config/gpu.hpp \
  /usr/include/boost/mpl/aux_/config/pp_counter.hpp \
  /usr/include/boost/mpl/less.hpp \
@@ -657,24 +551,29 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/boost/mpl/comparison.hpp \
  /usr/include/boost/mpl/not_equal_to.hpp \
  /usr/include/boost/mpl/aux_/preprocessed/gcc/not_equal_to.hpp \
- /usr/include/boost/mpl/greater.hpp \
- /usr/include/boost/mpl/aux_/preprocessed/gcc/greater.hpp \
  /usr/include/boost/mpl/less_equal.hpp \
  /usr/include/boost/mpl/aux_/preprocessed/gcc/less_equal.hpp \
- /usr/include/boost/serialization/tracking.hpp \
- /usr/include/boost/serialization/type_info_implementation.hpp \
- /usr/include/boost/serialization/traits.hpp \
- /usr/include/boost/serialization/nvp.hpp /usr/include/boost/core/nvp.hpp \
- /usr/include/boost/serialization/split_free.hpp \
- /usr/include/boost/serialization/wrapper.hpp \
- /usr/include/boost/serialization/base_object.hpp \
- /usr/include/boost/serialization/void_cast_fwd.hpp \
- /usr/include/boost/serialization/void_cast.hpp \
- /usr/include/boost/type_traits/is_virtual_base_of.hpp \
- /usr/include/boost/type_traits/is_base_of.hpp \
- /usr/include/boost/type_traits/make_void.hpp \
+ /usr/include/boost/mpl/greater_equal.hpp \
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/greater_equal.hpp \
+ /usr/include/boost/serialization/collections_load_imp.hpp \
+ /usr/include/boost/serialization/detail/stack_constructor.hpp \
+ /usr/include/boost/aligned_storage.hpp \
  /usr/include/boost/type_traits/aligned_storage.hpp \
- /usr/include/boost/serialization/collection_size_type.hpp \
+ /usr/include/boost/type_traits/alignment_of.hpp \
+ /usr/include/boost/type_traits/type_with_alignment.hpp \
+ /usr/include/boost/type_traits/is_pod.hpp \
+ /usr/include/boost/type_traits/is_scalar.hpp \
+ /usr/include/boost/type_traits/is_member_pointer.hpp \
+ /usr/include/boost/type_traits/is_member_function_pointer.hpp \
+ /usr/include/boost/type_traits/detail/is_member_function_pointer_cxx_11.hpp \
+ /usr/include/boost/serialization/detail/is_default_constructible.hpp \
+ /usr/include/boost/move/utility_core.hpp \
+ /usr/include/boost/move/detail/config_begin.hpp \
+ /usr/include/boost/move/detail/workaround.hpp \
+ /usr/include/boost/move/core.hpp \
+ /usr/include/boost/move/detail/config_end.hpp \
+ /usr/include/boost/move/detail/meta_utils.hpp \
+ /usr/include/boost/move/detail/meta_utils_core.hpp \
  /usr/include/boost/serialization/array_wrapper.hpp \
  /usr/include/boost/serialization/split_member.hpp \
  /usr/include/boost/serialization/array_optimization.hpp \
@@ -706,14 +605,119 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/boost/mpl/aux_/preprocessed/gcc/template_arity.hpp \
  /usr/include/boost/mpl/aux_/preprocessed/gcc/full_lambda.hpp \
  /usr/include/boost/mpl/aux_/preprocessed/gcc/apply.hpp \
+ /usr/include/boost/type_traits/remove_const.hpp \
+ /usr/include/boost/serialization/collection_traits.hpp \
+ /home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/./include/Persister.h \
+ /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc \
+ /usr/include/boost/serialization/string.hpp \
+ /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/include/kvServerRPC.pb.h \
+ /usr/include/boost/archive/text_oarchive.hpp \
+ /usr/include/boost/archive/detail/auto_link_archive.hpp \
+ /usr/include/boost/archive/detail/decl.hpp \
+ /usr/include/boost/config/auto_link.hpp \
+ /usr/include/boost/archive/basic_text_oprimitive.hpp \
+ /usr/include/c++/11/iomanip /usr/include/c++/11/locale \
+ /usr/include/c++/11/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/11/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/11/bits/locale_conv.h \
+ /usr/include/c++/11/bits/quoted_string.h \
+ /usr/include/boost/io/ios_state.hpp /usr/include/boost/io_fwd.hpp \
+ /usr/include/boost/integer.hpp /usr/include/boost/integer_fwd.hpp \
+ /usr/include/boost/serialization/throw_exception.hpp \
+ /usr/include/boost/archive/basic_streambuf_locale_saver.hpp \
+ /usr/include/boost/noncopyable.hpp \
+ /usr/include/boost/core/noncopyable.hpp \
+ /usr/include/boost/archive/codecvt_null.hpp \
+ /usr/include/boost/archive/archive_exception.hpp \
+ /usr/include/boost/archive/detail/abi_prefix.hpp \
+ /usr/include/boost/config/abi_prefix.hpp \
+ /usr/include/boost/archive/detail/abi_suffix.hpp \
+ /usr/include/boost/config/abi_suffix.hpp \
+ /usr/include/boost/archive/basic_text_oarchive.hpp \
+ /usr/include/boost/archive/detail/common_oarchive.hpp \
+ /usr/include/boost/archive/detail/basic_oarchive.hpp \
+ /usr/include/boost/scoped_ptr.hpp \
+ /usr/include/boost/smart_ptr/scoped_ptr.hpp \
+ /usr/include/boost/checked_delete.hpp \
+ /usr/include/boost/core/checked_delete.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_nullptr_t.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_disable_deprecated.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_noexcept.hpp \
+ /usr/include/boost/smart_ptr/detail/operator_bool.hpp \
+ /usr/include/boost/archive/basic_archive.hpp \
+ /usr/include/boost/archive/detail/helper_collection.hpp \
+ /usr/include/boost/smart_ptr/shared_ptr.hpp \
+ /usr/include/boost/smart_ptr/detail/shared_count.hpp \
+ /usr/include/boost/smart_ptr/bad_weak_ptr.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_counted_base.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_has_gcc_intrinsics.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_has_sync_intrinsics.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_counted_base_gcc_atomic.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_typeinfo_.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_counted_impl.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_convertible.hpp \
+ /usr/include/boost/smart_ptr/detail/spinlock_pool.hpp \
+ /usr/include/boost/smart_ptr/detail/spinlock.hpp \
+ /usr/include/boost/smart_ptr/detail/spinlock_gcc_atomic.hpp \
+ /usr/include/boost/smart_ptr/detail/yield_k.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_thread_pause.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_thread_sleep.hpp \
+ /usr/include/boost/config/pragma_message.hpp \
+ /usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp \
+ /usr/include/boost/smart_ptr/detail/local_counted_base.hpp \
+ /usr/include/boost/smart_ptr/make_shared.hpp \
+ /usr/include/boost/smart_ptr/make_shared_object.hpp \
+ /usr/include/boost/smart_ptr/detail/sp_forward.hpp \
+ /usr/include/boost/smart_ptr/make_shared_array.hpp \
+ /usr/include/boost/core/default_allocator.hpp \
+ /usr/include/boost/smart_ptr/allocate_shared_array.hpp \
+ /usr/include/boost/core/allocator_access.hpp \
+ /usr/include/boost/core/pointer_traits.hpp \
+ /usr/include/boost/core/alloc_construct.hpp \
+ /usr/include/boost/core/noinit_adaptor.hpp \
+ /usr/include/boost/core/first_scalar.hpp \
+ /usr/include/boost/type_traits/enable_if.hpp \
+ /usr/include/boost/type_traits/extent.hpp \
+ /usr/include/boost/type_traits/is_bounded_array.hpp \
+ /usr/include/boost/type_traits/is_unbounded_array.hpp \
+ /usr/include/boost/archive/detail/interface_oarchive.hpp \
+ /usr/include/boost/archive/detail/oserializer.hpp \
+ /usr/include/boost/serialization/extended_type_info_typeid.hpp \
+ /usr/include/c++/11/cstdarg \
+ /usr/include/boost/serialization/static_warning.hpp \
+ /usr/include/boost/mpl/print.hpp \
+ /usr/include/boost/serialization/config.hpp \
+ /usr/include/boost/serialization/singleton.hpp \
+ /usr/include/boost/serialization/extended_type_info.hpp \
+ /usr/include/boost/serialization/factory.hpp \
+ /usr/include/boost/preprocessor/comparison/greater.hpp \
+ /usr/include/boost/preprocessor/comparison/less.hpp \
+ /usr/include/boost/preprocessor/comparison/less_equal.hpp \
+ /usr/include/boost/preprocessor/logical/not.hpp \
+ /usr/include/boost/preprocessor/comparison/not_equal.hpp \
+ /usr/include/boost/serialization/smart_cast.hpp \
+ /usr/include/boost/type_traits/remove_pointer.hpp \
+ /usr/include/boost/mpl/or.hpp \
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/or.hpp \
+ /usr/include/boost/mpl/and.hpp \
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/and.hpp \
+ /usr/include/boost/serialization/assume_abstract.hpp \
+ /usr/include/boost/type_traits/is_abstract.hpp \
+ /usr/include/boost/serialization/void_cast.hpp \
+ /usr/include/boost/type_traits/is_virtual_base_of.hpp \
+ /usr/include/boost/type_traits/is_base_of.hpp \
+ /usr/include/boost/type_traits/make_void.hpp \
  /usr/include/boost/archive/detail/basic_oserializer.hpp \
  /usr/include/boost/archive/detail/basic_serializer.hpp \
  /usr/include/boost/archive/detail/basic_pointer_oserializer.hpp \
  /usr/include/boost/archive/detail/archive_serializer_map.hpp \
  /usr/include/boost/archive/detail/check.hpp \
- /usr/include/boost/serialization/string.hpp \
  /usr/include/boost/archive/detail/register_archive.hpp \
- /usr/include/boost/serialization/item_version_type.hpp \
  /usr/include/boost/archive/text_iarchive.hpp \
  /usr/include/boost/archive/basic_text_iprimitive.hpp \
  /usr/include/boost/archive/basic_text_iarchive.hpp \
@@ -766,15 +770,9 @@ CMakeFiles/skip_list_on_raft.dir/raft/kvServer.cpp.o: \
  /usr/include/boost/range/rbegin.hpp \
  /usr/include/boost/utility/addressof.hpp \
  /usr/include/boost/foreach_fwd.hpp \
- /usr/include/boost/serialization/vector.hpp \
- /usr/include/boost/serialization/collections_save_imp.hpp \
- /usr/include/boost/serialization/collections_load_imp.hpp \
- /usr/include/boost/serialization/detail/stack_constructor.hpp \
- /usr/include/boost/aligned_storage.hpp \
- /usr/include/boost/serialization/detail/is_default_constructible.hpp \
- /usr/include/boost/serialization/collection_traits.hpp \
  /usr/include/boost/serialization/unordered_map.hpp \
  /usr/include/boost/serialization/utility.hpp \
  /usr/include/boost/serialization/unordered_collections_save_imp.hpp \
  /usr/include/boost/serialization/unordered_collections_load_imp.hpp \
- /usr/include/boost/serialization/archive_input_unordered_map.hpp
+ /usr/include/boost/serialization/archive_input_unordered_map.hpp \
+ /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpcconfig.h

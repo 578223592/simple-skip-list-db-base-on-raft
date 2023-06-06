@@ -17,13 +17,12 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/util.cpp" "CMakeFiles/skip_list_on_raft.dir/raft/util.cpp.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/raft/util.cpp.o.d"
   "/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/kvServerRPC.pb.cc" "CMakeFiles/skip_list_on_raft.dir/rpc/example/kvServerRPC.pb.cc.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/rpc/example/kvServerRPC.pb.cc.o.d"
   "/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/raftRPC.pb.cc" "CMakeFiles/skip_list_on_raft.dir/rpc/example/raftRPC.pb.cc.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/rpc/example/raftRPC.pb.cc.o.d"
-  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/logger.cc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/logger.cc.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/logger.cc.o.d"
-  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/mprpcapplication.cc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcapplication.cc.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcapplication.cc.o.d"
   "/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/mprpcchannel.cc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcchannel.cc.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcchannel.cc.o.d"
   "/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/mprpcconfig.cc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcconfig.cc.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcconfig.cc.o.d"
   "/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/mprpccontroller.cc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpccontroller.cc.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpccontroller.cc.o.d"
   "/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/rpcheader.pb.cc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcheader.pb.cc.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcheader.pb.cc.o.d"
   "/home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/rpcprovider.cc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcprovider.cc.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcprovider.cc.o.d"
+  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/test/ip_port.cpp" "CMakeFiles/skip_list_on_raft.dir/test/ip_port.cpp.o" "gcc" "CMakeFiles/skip_list_on_raft.dir/test/ip_port.cpp.o.d"
   )
 
 # Targets to which this target links.

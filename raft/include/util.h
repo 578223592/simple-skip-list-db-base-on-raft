@@ -14,7 +14,10 @@
 #include <sstream>
 #include "config.h"
 #include <random>
-
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <iostream>
 class Defer final
 {
 public:
@@ -181,6 +184,27 @@ public:
 const std::string OK = "OK";
 const std::string ErrNoKey = "ErrNoKey";
 const std::string ErrWrongLeader = "ErrWrongLeader";
+
+////////////////////////////////////获取可用端口
+
+
+bool isReleasePort(unsigned short usPort);
+
+bool getReleasePort(short& port);
+
+//int main(int argc, char** argv)
+//{
+//    short port = 9060;
+//    if(getReleasePort(port)) //在port的基础上获取一个可用的port
+//    {
+//        std::cout << "可用的端口号为：" << port << std::endl;
+//    }
+//    else
+//    {
+//        std::cout << "获取可用端口号失败！" << std::endl;
+//    }
+//    return 0;
+//}
 
 
 #endif //  UTIL_H

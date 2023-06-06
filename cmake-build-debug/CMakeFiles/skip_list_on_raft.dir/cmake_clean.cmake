@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/out_lib/libskip_list_on_raft.a"
-  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/out_lib/libskip_list_on_raft.pdb"
+  "../out_lib/libskip_list_on_raft.a"
+  "../out_lib/libskip_list_on_raft.pdb"
   "CMakeFiles/skip_list_on_raft.dir/raft/Persister.cpp.o"
   "CMakeFiles/skip_list_on_raft.dir/raft/Persister.cpp.o.d"
   "CMakeFiles/skip_list_on_raft.dir/raft/clerk.cpp.o"
@@ -19,10 +19,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/skip_list_on_raft.dir/rpc/example/kvServerRPC.pb.cc.o.d"
   "CMakeFiles/skip_list_on_raft.dir/rpc/example/raftRPC.pb.cc.o"
   "CMakeFiles/skip_list_on_raft.dir/rpc/example/raftRPC.pb.cc.o.d"
-  "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/logger.cc.o"
-  "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/logger.cc.o.d"
-  "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcapplication.cc.o"
-  "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcapplication.cc.o.d"
   "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcchannel.cc.o"
   "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcchannel.cc.o.d"
   "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/mprpcconfig.cc.o"
@@ -33,6 +29,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcheader.pb.cc.o.d"
   "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcprovider.cc.o"
   "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcprovider.cc.o.d"
+  "CMakeFiles/skip_list_on_raft.dir/test/ip_port.cpp.o"
+  "CMakeFiles/skip_list_on_raft.dir/test/ip_port.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

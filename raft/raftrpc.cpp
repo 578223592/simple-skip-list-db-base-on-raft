@@ -1,21 +1,23 @@
 #include "raftrpc.h"
 
 
-inline bool RaftRpc::AppendEntries(mprrpc::AppendEntriesArgs *args, mprrpc::AppendEntriesReply *response)
+
+ bool RaftRpc::AppendEntries(mprrpc::AppendEntriesArgs *args, mprrpc::AppendEntriesReply *response)
 {
+
     MprpcController controller;
     stub->AppendEntries(&controller, args, response, nullptr);
     return !controller.Failed();
 }
 
-inline bool RaftRpc::InstallSnapshot(mprrpc::InstallSnapshotRequest *args, mprrpc::InstallSnapshotResponse *response)
+ bool RaftRpc::InstallSnapshot(mprrpc::InstallSnapshotRequest *args, mprrpc::InstallSnapshotResponse *response)
 {
     MprpcController controller;
     stub->InstallSnapshot(&controller, args, response, nullptr);
     return !controller.Failed();
 }
 
-inline bool RaftRpc::RequestVote(mprrpc::RequestVoteArgs *args, mprrpc::RequestVoteReply *response)
+ bool RaftRpc::RequestVote(mprrpc::RequestVoteArgs *args, mprrpc::RequestVoteReply *response)
 {
     MprpcController controller;
     stub->RequestVote(&controller, args, response, nullptr);

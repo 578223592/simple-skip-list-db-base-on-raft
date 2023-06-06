@@ -33,16 +33,16 @@ int main(int argc, char **argv){
         }
     }
 
-    for(int i = 0;i<nodeNum;i++){
-        std::cout<<"start to create raftkv" <<i<<std::endl;
+    for (int i = 0; i < nodeNum; i++) {
+        std::cout << "start to create raftkv" << i << std::endl;
         pid_t pid = fork(); // 创建新进程
         if (pid == 0) { // 如果是子进程
             // 子进程的代码
-            auto  kvServer = new KvServer(i,500,"\"test.conf\"");
+            auto kvServer = new KvServer(i, 500, configFileName);
             pause(); // 子进程进入等待状态，不会执行 return 语句
         } else if (pid > 0) { // 如果是父进程
             // 父进程的代码
-            sleep(5); // 等待5秒钟
+            sleep(5); // 等待5秒钟,让服务器启动
         } else { // 如果创建进程失败
             std::cerr << "Failed to create child process." << std::endl;
             exit(EXIT_FAILURE);

@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
+  "../../out_bin/callerMain"
+  "../../out_bin/callerMain.pdb"
   "CMakeFiles/callerMain.dir/callerMain.cpp.o"
   "CMakeFiles/callerMain.dir/callerMain.cpp.o.d"
-  "callerMain"
-  "callerMain.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

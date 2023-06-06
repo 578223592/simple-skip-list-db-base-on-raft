@@ -9,12 +9,12 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <unistd.h>
-#include <errno.h>
+#include <cerrno>
 #include <string>
 #include <vector>
-#include "../../rpc/example/include/kvServerRPC.pb.h"
+#include "kvServerRPC.pb.h"
 #include "raftserverRpc.h"
-
+#include "mprpcconfig.h"
 class Clerk{
     private:
 

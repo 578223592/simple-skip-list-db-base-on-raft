@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
+  "../../out_bin/raftKvDb"
+  "../../out_bin/raftKvDb.pdb"
   "CMakeFiles/raftKvDb.dir/raftKvDb.cpp.o"
   "CMakeFiles/raftKvDb.dir/raftKvDb.cpp.o.d"
-  "raftKvDb"
-  "raftKvDb.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

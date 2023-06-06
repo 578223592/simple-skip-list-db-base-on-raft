@@ -1,8 +1,12 @@
 #include "rpcprovider.h"
-#include "mprpcapplication.h"
 #include "rpcheader.pb.h"
-#include "logger.h"
-
+#include "util.h"
+#include <unistd.h>
+#include <cstring>
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <fstream>
+#include <string>
 /*
 service_name =>  service描述
                         =》 service* 记录服务对象
@@ -24,7 +28,6 @@ void RpcProvider::NotifyService(google::protobuf::Service *service)
     int methodCnt = pserviceDesc->method_count();
 
     // std::cout << "service_name:" << service_name << std::endl;
-    LOG_INFO("service_name:%s", service_name.c_str());
 
     for (int i = 0; i < methodCnt; ++i)
     {
@@ -33,18 +36,49 @@ void RpcProvider::NotifyService(google::protobuf::Service *service)
         std::string method_name = pmethodDesc->name();
         service_info.m_methodMap.insert({method_name, pmethodDesc});
 
-        LOG_INFO("method_name:%s", method_name.c_str());
     }
     service_info.m_service = service;
     m_serviceMap.insert({service_name, service_info});
 }
 
 // 启动rpc服务节点，开始提供rpc远程网络调用服务
-void RpcProvider::Run()
+void RpcProvider::Run(int nodeIndex)
 {
-    // 读取配置文件rpcserver的信息
-    std::string ip = MprpcApplication::GetInstance().GetConfig().Load("rpcserverip");
-    uint16_t port = atoi(MprpcApplication::GetInstance().GetConfig().Load("rpcserverport").c_str());
+    //获取可用ip
+    char* ipC;
+    char hname[128];
+    struct hostent* hent;
+    gethostname(hname, sizeof(hname));
+    hent = gethostbyname(hname);
+    for (int i = 0; hent->h_addr_list[i]; i++)
+    {
+        ipC = inet_ntoa(*(struct in_addr*)(hent->h_addr_list[i]));//IP地址
+    }
+    std::string ip = std::string (ipC);
+    // 获取端口
+     short port = 9060;
+    if(getReleasePort(port)) //在port的基础上获取一个可用的port
+    {
+        std::cout << "可用的端口号为：" << port << std::endl;
+    }
+    else
+    {
+        std::cout << "获取可用端口号失败！" << std::endl;
+    }
+    //写入文件 "test.conf"
+    std::string node = "node" + std::to_string(nodeIndex);
+    std::ofstream outfile;
+    outfile.open("test.conf", std::ios::app); //打开文件并追加写入
+    if (!outfile.is_open())
+    {
+        std::cout << "打开文件失败！" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+    outfile << node+"ip="+ip << std::endl;
+    outfile << node+"port="+std::to_string(port)<< std::endl;
+    outfile.close();
+
+    //创建服务器
     muduo::net::InetAddress address(ip, port);
 
     // 创建TcpServer对象
@@ -212,5 +246,5 @@ void RpcProvider::SendRpcResponse(const muduo::net::TcpConnectionPtr &conn, goog
     {
         std::cout << "serialize response_str error!" << std::endl;
     }
-    conn->shutdown(); // 模拟http的短链接服务，由rpcprovider主动断开连接
+//    conn->shutdown(); // 模拟http的短链接服务，由rpcprovider主动断开连接  //改为长连接，不主动断开
 }

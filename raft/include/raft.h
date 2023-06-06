@@ -1,4 +1,6 @@
-#pragma once
+#ifndef RAFT_H
+#define  RAFT_H
+
 #include "raftrpc.h"
 #include <mutex>
 #include <iostream>
@@ -11,7 +13,11 @@
 #include <string>
 #include <memory>
 #include <cmath>
+#include "boost/serialization/serialization.hpp"
+#include "boost/any.hpp"
+#include <boost/serialization/vector.hpp>
 #include "Persister.h"
+#include <boost/serialization/string.hpp>
 /// @brief //////////// 网络状态表示  todo：可以在rpc中删除该字段，实际生产中是用不到的.
 const int Disconnected = 0; // 方便网络分区的时候debug，网络异常的时候为disconnected，只要网络正常就为AppNormal，防止matchIndex[]数组异常减小
 const int AppNormal = 1;
@@ -28,7 +34,7 @@ class Raft : public mprrpc::raftRpc
 
 private:
     std::mutex m_mtx;
-    std::vector<shared_ptr< RaftRpc >> m_peers;
+    std::vector<std::shared_ptr< RaftRpc >> m_peers;
     std::shared_ptr<Persister> m_persister;
     int m_me;
     int m_currentTerm;
@@ -50,7 +56,7 @@ private:
     // 身份
     Status m_status;
 
-    shared_ptr<LockQueue<ApplyMsg>> applyChan  ;     // client从这里取日志（2B），client与raft通信的接口
+    std::shared_ptr<LockQueue<ApplyMsg>> applyChan  ;     // client从这里取日志（2B），client与raft通信的接口
     // ApplyMsgQueue chan ApplyMsg // raft内部使用的chan，applyChan是用于和服务层交互，最后好像没用上
 
     // 选举超时
@@ -104,7 +110,13 @@ public:
 
     void Start(Op command,int* newLogIndex,int* newLogTerm,bool* isLeader ) ;
 
-
+// Snapshot the service says it has created a snapshot that has
+// all info up to and including index. this means the
+// service no longer needs the log through (and including)
+// that index. Raft should now trim its log as much as possible.
+// index代表是快照apply应用的index,而snapshot代表的是上层service传来的快照字节流，包括了Index之前的数据
+// 这个函数的目的是把安装到快照里的日志抛弃，并安装快照数据，同时更新快照下标，属于peers自身主动更新，与leader发送快照不冲突
+// 即服务层主动发起请求raft保存snapshot里面的数据，index是用来表示snapshot快照执行到了哪条命令
     void Snapshot(int index , std::string snapshot );
 public:
     // 重写基类方法,因为rpc远程调用真正调用的是这个方法
@@ -124,5 +136,44 @@ public:
 
 
 public:
-    void init(std::vector<shared_ptr< RaftRpc >> peers,int me,std::shared_ptr<Persister> persister,shared_ptr<LockQueue<ApplyMsg>> applyCh);
+    void init(std::vector<std::shared_ptr< RaftRpc >> peers,int me,std::shared_ptr<Persister> persister,std::shared_ptr<LockQueue<ApplyMsg>> applyCh);
+
+
+
+
+
+
+private:
+    //for persist
+
+    class BoostPersistRaftNode
+    {
+    public:
+        friend class boost::serialization::access;
+        // When the class Archive corresponds to an output archive, the
+        // & operator is defined similar to <<.  Likewise, when the class Archive
+        // is a type of input archive the & operator is defined similar to >>.
+        template<class Archive>
+        void serialize(Archive & ar, const unsigned int version)
+        {
+            ar & m_currentTerm;
+            ar & m_votedFor;
+            ar & m_lastSnapshotIncludeIndex;
+            ar & m_lastSnapshotIncludeTerm;
+            ar & m_logs;
+        }
+        int m_currentTerm;
+        int m_votedFor;
+        int m_lastSnapshotIncludeIndex;
+        int m_lastSnapshotIncludeTerm;
+        std::vector<std::string> m_logs;
+        std::unordered_map<std::string,int> umap;
+    public:
+
+
+
+    };
 };
+
+
+#endif //RAFT_H

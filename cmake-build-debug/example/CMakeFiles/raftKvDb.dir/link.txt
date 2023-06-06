@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/raftKvDb.dir/raftKvDb.cpp.o -o raftKvDb  /home/swx/2023_project/simple-skip-list-db-base-on-raft/out_lib/libskip_list_on_raft.a -lprotobuf -lboost -lmuduo_net -lmuduo_base -lpthread 
+/usr/bin/c++ -g CMakeFiles/raftKvDb.dir/raftKvDb.cpp.o -o ../../out_bin/raftKvDb   -L/home/swx/2023_project/simple-skip-list-db-base-on-raft/out_lib  -Wl,-rpath,/home/swx/2023_project/simple-skip-list-db-base-on-raft/out_lib ../../out_lib/libskip_list_on_raft.a -lprotobuf -lboost_serialization -lmuduo_net -lmuduo_base -lpthread 

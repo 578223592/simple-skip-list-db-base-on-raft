@@ -1,4 +1,5 @@
 #include "./include/kvServer.h"   //todo  ： 这里为什么只能用相对路径
+#include "mprpcconfig.h"
 
 void KvServer::DprintfKVDB() {
 
@@ -368,22 +369,22 @@ void KvServer::Get(google::protobuf::RpcController *controller, const ::mprrpc::
 }
 
 KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName) {
-    std::shared_ptr<Persister> persister = make_shared<Persister>();
+    std::shared_ptr<Persister> persister = std::make_shared<Persister>();
 
     m_me  = me;
     m_maxRaftState = maxraftstate;
 
-    applyChan = make_shared<LockQueue<ApplyMsg>>() ;
+    applyChan = std::make_shared<LockQueue<ApplyMsg>>() ;
     Raft * raftNodeTmpPrt = new Raft();
 
     ////////////////开启rpc接受功能
-    std::thread t([raftNodeTmpPrt]()->void{
+    std::thread t([raftNodeTmpPrt, this]()->void{
         // provider是一个rpc网络服务对象。把UserService对象发布到rpc节点上
         RpcProvider provider;
         provider.NotifyService(raftNodeTmpPrt);
 
         // 启动一个rpc服务发布节点   Run以后，进程进入阻塞状态，等待远程的rpc调用请求
-        provider.Run();
+        provider.Run(m_me);
     });
     t.detach();
 
@@ -391,7 +392,7 @@ KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName) {
     ////这里使用睡眠一分钟来保证
     std::cout<<"raftServer node:"<<m_me<<" start to sleep to wait all ohter raftnode start!!!!"<<std::endl;
     sleep(60);
-    std::cout<<"raftServer node:"<<m_me<<" wake up!!!!"<<std::endl;
+    std::cout<<"raftServer node:"<<m_me<<" wake up!!!! start to connect other raftnode"<<std::endl;
     //获取所有raft节点ip、port ，并进行连接  ,要排除自己
     MprpcConfig config;
     config.LoadConfigFile(nodeInforFileName.c_str());
@@ -406,7 +407,7 @@ KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName) {
         }
         ipPortVt.emplace_back(nodeIp, atoi(nodePortStr.c_str()));   //沒有atos方法，可以考慮自己实现
     }
-    std::vector<shared_ptr< RaftRpc >> servers;
+    std::vector<std::shared_ptr< RaftRpc >> servers;
     //进行连接
     for(int i = 0;i<ipPortVt.size();++i){
         if(i == m_me){

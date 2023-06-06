@@ -33,4 +33,34 @@ void sleepNMilliseconds(int N){
 
 
 
+bool getReleasePort(short& port){
+    short num = 0;
+    while (!isReleasePort(port) && num<30)
+    {
+        ++port;
+        ++num;
+    }
+    if (num >= 30)
+    {
+        port = -1;
+        return false;
+    }
+    return true;
+}
 
+bool isReleasePort(unsigned short usPort)
+{
+    int s = socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
+    sockaddr_in addr;
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(usPort);
+    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+    int ret = ::bind(s, (sockaddr*)&addr, sizeof(addr));
+    if (ret != 0)
+    {
+        close(s);
+        return false;
+    }
+    close(s);
+    return true;
+}

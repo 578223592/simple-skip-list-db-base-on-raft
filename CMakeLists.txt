@@ -5,12 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 # 生成debug版本，可以进行gdb调试
 set(CMAKE_BUILD_TYPE "Debug")
 
-# src包含了mprpc框架所有的相关代码
-add_subdirectory(raft)
 
-add_subdirectory(rpc)
-# example包含了mprpc框架使用的示例代码
-add_subdirectory(example)
 
 # 设置项目可执行文件输出的路径
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/out_bin)
@@ -25,7 +20,14 @@ include_directories(rpc/frame_src/include)
 link_directories(${PROJECT_SOURCE_DIR}/out_lib)
 
 
-add_library(skip_list_on_raft STATIC  ${rpc_frame_src} ${rpc_example} ${raftsource})
+# src包含了mprpc框架所有的相关代码
+add_subdirectory(raft)
+
+add_subdirectory(rpc)
+# example包含了mprpc框架使用的示例代码
+add_subdirectory(example)
+
+add_library(skip_list_on_raft STATIC  ${rpc_frame_src} ${rpc_example} ${raftsource} test/ip_port.cpp)
 
 target_link_libraries(skip_list_on_raft muduo_net muduo_base pthread )
 #target_include_directories(skip_list_on_raft PUBLIC

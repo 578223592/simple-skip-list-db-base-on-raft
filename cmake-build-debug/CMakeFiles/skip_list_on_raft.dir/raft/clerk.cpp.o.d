@@ -60,16 +60,15 @@ CMakeFiles/skip_list_on_raft.dir/raft/clerk.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
- /usr/include/linux/close_range.h /usr/include/errno.h \
- /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
- /usr/include/x86_64-linux-gnu/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
- /usr/include/c++/11/string \
+ /usr/include/linux/close_range.h /usr/include/c++/11/cerrno \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
- /usr/include/c++/11/bits/stringfwd.h \
+ /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h \
+ /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
+ /usr/include/c++/11/string /usr/include/c++/11/bits/stringfwd.h \
  /usr/include/c++/11/bits/memoryfwd.h \
  /usr/include/c++/11/bits/char_traits.h \
  /usr/include/c++/11/bits/stl_algobase.h \
@@ -148,7 +147,7 @@ CMakeFiles/skip_list_on_raft.dir/raft/clerk.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
- /usr/include/c++/11/cerrno /usr/include/c++/11/bits/charconv.h \
+ /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/functional_hash.h \
  /usr/include/c++/11/bits/hash_bytes.h \
  /usr/include/c++/11/bits/basic_string.tcc /usr/include/c++/11/vector \
@@ -156,7 +155,7 @@ CMakeFiles/skip_list_on_raft.dir/raft/clerk.cpp.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/../../rpc/example/include/kvServerRPC.pb.h \
+ /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/include/kvServerRPC.pb.h \
  /usr/include/c++/11/limits /usr/include/google/protobuf/port_def.inc \
  /usr/include/google/protobuf/port_undef.inc \
  /usr/include/google/protobuf/io/coded_stream.h /usr/include/assert.h \
@@ -296,8 +295,6 @@ CMakeFiles/skip_list_on_raft.dir/raft/clerk.cpp.o: \
  /usr/include/google/protobuf/extension_set.h /usr/include/c++/11/cassert \
  /usr/include/google/protobuf/service.h \
  /home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/raftserverRpc.h \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpcapplication.h \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpcconfig.h \
  /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpcchannel.h \
  /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
  /usr/include/c++/11/random /usr/include/c++/11/cmath /usr/include/math.h \
@@ -314,8 +311,6 @@ CMakeFiles/skip_list_on_raft.dir/raft/clerk.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
  /usr/include/c++/11/bits/random.tcc /usr/include/c++/11/numeric \
  /usr/include/c++/11/bits/stl_numeric.h \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpccontroller.h \
- /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/example/include/kvServerRPC.pb.h \
  /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/rpcprovider.h \
  /usr/include/muduo/net/TcpServer.h /usr/include/muduo/base/Atomic.h \
  /usr/include/muduo/base/noncopyable.h /usr/include/muduo/base/Types.h \
@@ -373,6 +368,8 @@ CMakeFiles/skip_list_on_raft.dir/raft/clerk.cpp.o: \
  /usr/include/boost/type_traits/is_same.hpp \
  /usr/include/muduo/net/EventLoop.h /usr/include/muduo/base/Mutex.h \
  /usr/include/muduo/base/CurrentThread.h /usr/include/muduo/net/TimerId.h \
+ /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpccontroller.h \
+ /home/swx/2023_project/simple-skip-list-db-base-on-raft/rpc/frame_src/include/mprpcconfig.h \
  /home/swx/2023_project/simple-skip-list-db-base-on-raft/raft/include/util.h \
  /usr/include/c++/11/queue /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
