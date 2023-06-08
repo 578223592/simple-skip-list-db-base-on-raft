@@ -368,7 +368,7 @@ void KvServer::Get(google::protobuf::RpcController *controller, const ::mprrpc::
     done->Run();
 }
 
-KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName) {
+KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName,short port) {
     std::shared_ptr<Persister> persister = std::make_shared<Persister>();
 
     m_me  = me;
@@ -377,21 +377,22 @@ KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName) {
     applyChan = std::make_shared<LockQueue<ApplyMsg>>() ;
     Raft * raftNodeTmpPrt = new Raft();
 
-    ////////////////开启rpc接受功能
-    std::thread t([raftNodeTmpPrt, this]()->void{
+    ////////////////clerk层面 kvserver开启rpc接受功能
+//    同时raft与raft节点之间也要开启rpc功能，因此有两个注册
+    std::thread t([ this, port, raftNodeTmpPrt]()->void{
         // provider是一个rpc网络服务对象。把UserService对象发布到rpc节点上
         RpcProvider provider;
+        provider.NotifyService(this);
         provider.NotifyService(raftNodeTmpPrt);
-
         // 启动一个rpc服务发布节点   Run以后，进程进入阻塞状态，等待远程的rpc调用请求
-        provider.Run(m_me);
+        provider.Run(m_me,port);
     });
     t.detach();
 
     ////开启rpc远程调用能力，需要注意必须要保证所有节点都开启rpc接受功能之后才能开启rpc远程调用能力
     ////这里使用睡眠一分钟来保证
     std::cout<<"raftServer node:"<<m_me<<" start to sleep to wait all ohter raftnode start!!!!"<<std::endl;
-    sleep(60);
+    sleep(5);
     std::cout<<"raftServer node:"<<m_me<<" wake up!!!! start to connect other raftnode"<<std::endl;
     //获取所有raft节点ip、port ，并进行连接  ,要排除自己
     MprpcConfig config;
@@ -417,6 +418,8 @@ KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName) {
         std::string ip = ipPortVt[i].first; short port = ipPortVt[i].second;
         auto* rpc = new RaftRpc(ip,port);
         servers.push_back(std::shared_ptr<RaftRpc>(rpc));
+
+        std::cout<<"node"<<m_me<<" 连接node"<<i<<"success!"<<std::endl;
     }
 
     raftNodeTmpPrt->init(servers,m_me,persister,applyChan);//kv的server直接与raft通信，但kv不直接与raft通信，所以需要把ApplyMsg的chan传递下去用于通信，两者的persist也是共用的

@@ -47,7 +47,7 @@ private:
 
 public:
     KvServer() = delete;
-    KvServer(int me,int maxraftstate,std::string nodeInforFileName);
+    KvServer(int me,int maxraftstate,std::string nodeInforFileName,short port);
     void StartKVServer();
     void DprintfKVDB();
 

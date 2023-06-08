@@ -45,10 +45,11 @@ void Clerk::PutAppend(std::string key, std::string value, std::string op) {
         mprrpc::PutAppendReply reply;
         bool ok = m_servers[server]->PutAppend(&args,&reply);
         if(!ok || reply.err()==ErrWrongLeader){
+            DPrintf("【Clerk::PutAppend】原以为的leader：{%d}请求失败，向新leader{%d}重试  ，操作：{%s}\n",server,server+1,op.c_str());
             server = (server+1)%m_servers.size();  // try the next server
             continue;
         }
-        if(reply.err()==OK){
+        if(reply.err()==OK){  //什么时候reply errno为ok呢？？？
             m_recentLeaderId = server;
             return ;
         }
@@ -78,13 +79,15 @@ void Clerk::Init(std::string configFileName) {
         }
         ipPortVt.emplace_back(nodeIp, atoi(nodePortStr.c_str()));   //沒有atos方法，可以考慮自己实现
     }
-
     //进行连接
-
     for (auto item:ipPortVt){
         std::string ip = item.first; short port = item.second;
         auto* rpc = new kvServerRpc(ip,port);
         m_servers.push_back(std::shared_ptr<kvServerRpc>(rpc));
     }
+}
+
+Clerk::Clerk() :m_clientId(Uuid()),m_requestId(0),m_recentLeaderId(0){
+
 }
 

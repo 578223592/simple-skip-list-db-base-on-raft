@@ -9,7 +9,6 @@ int main(){
     client.Init("test.conf");
     client.Put("x","1");
     std::string get1 = client.Get("x");
-    std::cout<<get1<<std::endl;
-
+    std::printf("get return :{%s}",get1.c_str());
     return 0;
 }

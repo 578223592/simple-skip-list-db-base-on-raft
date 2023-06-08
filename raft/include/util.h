@@ -27,6 +27,7 @@ public:
 private:
     std::function<void()> m_funCall;
 };
+void DPrintf(const char* format, ...);
 
 void myAssert(bool condition, std::string message = "Assertion failed!");
 

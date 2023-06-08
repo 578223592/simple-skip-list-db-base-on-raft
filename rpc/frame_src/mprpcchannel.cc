@@ -6,9 +6,9 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <unistd.h>
-#include <errno.h>
+#include <cerrno>
 #include "mprpccontroller.h"
-
+#include "util.h"
 /*
 header_size + service_name method_name args_size + args
 */
@@ -21,6 +21,16 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor *method,
                               google::protobuf::Message *response,
                               google::protobuf::Closure *done)
 {
+    if(m_clientFd == -1){
+        std::string errMsg;
+        bool rt = newConnect(m_ip.c_str(), m_port, &errMsg);
+        if(!rt){
+            DPrintf("[func-MprpcChannel::CallMethod]重连接ip：{%s} port{%d}失败",m_ip.c_str(),m_port);
+            controller->SetFailed(errMsg);
+            return ;
+        }
+    }
+    
     const google::protobuf::ServiceDescriptor *sd = method->service();
     std::string service_name = sd->name();    // service_name
     std::string method_name = method->name(); // method_name
@@ -73,13 +83,19 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor *method,
 
 
     // 发送rpc请求
-    if (-1 == send(m_clientFd, send_rpc_str.c_str(), send_rpc_str.size(), 0))
+    //失败会重试连接再发送，重试连接失败会直接return
+    while (-1 == send(m_clientFd, send_rpc_str.c_str(), send_rpc_str.size(), 0))
     {
-        close(m_clientFd); m_clientFd = -1;
         char errtxt[512] = {0};
         sprintf(errtxt, "send error! errno:%d", errno);
-        controller->SetFailed(errtxt);
-        return;
+        std::cout<<"尝试重新连接，对方ip："<<m_ip<<" 对方端口"<<m_port<<std::endl;
+        close(m_clientFd); m_clientFd = -1;
+        std::string errMsg;
+        bool rt = newConnect(m_ip.c_str(), m_port, &errMsg);
+        if(!rt){
+            controller->SetFailed(errMsg);
+            return ;
+        }
     }
     /*
     从时间节点来说，这里将请求发送过去之后rpc服务的提供者就会开始处理，返回的时候就代表着已经返回响应了
@@ -142,7 +158,7 @@ bool MprpcChannel::newConnect(const char *ip, uint16_t port,string* errMsg)
     return true;
 }
 
-MprpcChannel::MprpcChannel(string ip, short port):m_ip(ip),m_port(port) {
+MprpcChannel::MprpcChannel(string ip, short port,bool connectNow):m_ip(ip),m_port(port) ,m_clientFd(-1){
     // 使用tcp编程，完成rpc方法的远程调用，使用的是短连接，因此每次都要重新连接上去，待改成长连接。
     // 没有连接或者连接已经断开，那么就要重新连接呢,会一直不断地重试
     // 读取配置文件rpcserver的信息
@@ -150,13 +166,15 @@ MprpcChannel::MprpcChannel(string ip, short port):m_ip(ip),m_port(port) {
     // uint16_t port = atoi(MprpcApplication::GetInstance().GetConfig().Load("rpcserverport").c_str());
     // rpc调用方想调用service_name的method_name服务，需要查询zk上该服务所在的host信息
     //  /UserServiceRpc/Login
-
+    if(!connectNow){return ;}  //可以允许延迟连接
     std::string errMsg;
     auto rt = newConnect(ip.c_str(), port,&errMsg);
-    if (!rt)
+    int tryCount = 3;
+    while (!rt && tryCount--)
     {
         std::cout<<errMsg<<std::endl;
-        exit(EXIT_FAILURE);
+        sleep(2);
+        rt = newConnect(ip.c_str(),port,&errMsg);
     }
 
 }

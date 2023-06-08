@@ -36,6 +36,8 @@ public:
 
     void Put(std::string key , std::string value );
     void Append(std::string key , std::string value );
+public:
+    Clerk();
 };
 
 

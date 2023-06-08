@@ -10,7 +10,7 @@ kvServerRpc::kvServerRpc(std::string ip,short port)
     // 接收rpc设置
     //*********************************************  */
     //发送rpc设置
-    stub = new mprrpc::kvServerRpc_Stub(new MprpcChannel(ip, port));
+    stub = new mprrpc::kvServerRpc_Stub(new MprpcChannel(ip, port,false));
 }
 
 kvServerRpc::~kvServerRpc() {
@@ -26,5 +26,8 @@ bool kvServerRpc::Get(mprrpc::GetArgs *GetArgs, mprrpc::GetReply *reply) {
 bool kvServerRpc::PutAppend(mprrpc::PutAppendArgs *args, mprrpc::PutAppendReply *reply) {
     MprpcController controller;
     stub->PutAppend(&controller, args, reply, nullptr);
+    if(controller.Failed()){
+       std::cout<<controller.ErrorText()<<endl;
+    }
     return !controller.Failed();
 }

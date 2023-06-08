@@ -893,7 +893,8 @@ void Raft::init(std::vector<std::shared_ptr<RaftRpc>> peers, int me, std::shared
     }
 
 
-//    DPrintf("[Init&ReInit] Sever %d, term %d, lastSnapshotIncludeIndex {%d} , lastSnapshotIncludeTerm {%d}", rf.me, rf.currentTerm, rf.lastSnapshotIncludeIndex, rf.lastSnapshotIncludeTerm)
+   DPrintf("[Init&ReInit] Sever %d, term %d, lastSnapshotIncludeIndex {%d} , lastSnapshotIncludeTerm {%d}", m_me, m_currentTerm, m_lastSnapshotIncludeIndex, m_lastSnapshotIncludeTerm);
+
     m_mtx.unlock();
     // start ticker goroutine to start elections
     std::thread t(&Raft::leaderHearBeatTicker, this); //马上向其他节点宣告自己就是leader
@@ -950,7 +951,7 @@ void Raft::Snapshot(int index, std::string snapshot) {
     });
 
     if (m_lastSnapshotIncludeIndex >= index || index > m_commitIndex) {
-//        DPrintf("[func-Snapshot-rf{%v}] rejects replacing log with snapshotIndex %v as current snapshotIndex %v is larger or smaller ", rf.me, index, rf.lastSnapshotIncludeIndex)
+        DPrintf("[func-Snapshot-rf{%d}] rejects replacing log with snapshotIndex %d as current snapshotIndex %d is larger or smaller ", m_me, index, m_lastSnapshotIncludeIndex);
         return;
     }
     auto lastLogIndex = getLastLogIndex() ;//为了检查snapshot前后日志是否一样，防止多截取或者少截取日志

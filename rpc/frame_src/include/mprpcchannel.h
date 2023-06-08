@@ -1,4 +1,5 @@
-#pragma once
+#ifndef  MPRPCCHANNEL_H
+#define MPRPCCHANNEL_H
 
 #include <google/protobuf/service.h>
 #include <google/protobuf/descriptor.h>
@@ -24,17 +25,20 @@ public:
     void CallMethod(const google::protobuf::MethodDescriptor *method,
                     google::protobuf::RpcController *controller,
                     const google::protobuf::Message *request,
-                    google::protobuf::Message *response,
-                    google::protobuf::Closure *done);
-    MprpcChannel(string ip, short port);
+                       google::protobuf::Message *response,
+                    google::protobuf::Closure *done) override;
+    MprpcChannel(string ip, short port,bool connectNow);
 
 private:
     int m_clientFd;
     const std::string m_ip;  //保存ip和端口，如果断了可以尝试重连
-    const short m_port;
+    const uint16_t m_port;
     /// @brief 连接ip和端口,并设置m_clientFd
     /// @param ip ip地址，本机字节序
     /// @param port 端口，本机字节序
     /// @return 成功返回空字符串，否则返回失败信息
     bool newConnect(const char *ip, uint16_t port, string *errMsg);
 };
+
+
+#endif //MPRPCCHANNEL_H

@@ -28,7 +28,7 @@ RaftRpc::RaftRpc(std::string ip,short port)
 {
     //*********************************************  */
     //发送rpc设置
-    stub = new mprrpc::raftRpc_Stub(new MprpcChannel(ip, port));
+    stub = new mprrpc::raftRpc_Stub(new MprpcChannel(ip, port,true));
 }
 
 RaftRpc::~RaftRpc()

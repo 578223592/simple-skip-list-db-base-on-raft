@@ -27,7 +27,7 @@ void RpcProvider::NotifyService(google::protobuf::Service *service)
     // 获取服务对象service的方法的数量
     int methodCnt = pserviceDesc->method_count();
 
-    // std::cout << "service_name:" << service_name << std::endl;
+     std::cout << "service_name:" << service_name << std::endl;
 
     for (int i = 0; i < methodCnt; ++i)
     {
@@ -42,7 +42,7 @@ void RpcProvider::NotifyService(google::protobuf::Service *service)
 }
 
 // 启动rpc服务节点，开始提供rpc远程网络调用服务
-void RpcProvider::Run(int nodeIndex)
+void RpcProvider::Run(int nodeIndex,short port)
 {
     //获取可用ip
     char* ipC;
@@ -55,16 +55,15 @@ void RpcProvider::Run(int nodeIndex)
         ipC = inet_ntoa(*(struct in_addr*)(hent->h_addr_list[i]));//IP地址
     }
     std::string ip = std::string (ipC);
-    // 获取端口
-     short port = 9060;
-    if(getReleasePort(port)) //在port的基础上获取一个可用的port
-    {
-        std::cout << "可用的端口号为：" << port << std::endl;
-    }
-    else
-    {
-        std::cout << "获取可用端口号失败！" << std::endl;
-    }
+//    // 获取端口
+//    if(getReleasePort(port)) //在port的基础上获取一个可用的port，不知道为何没有效果
+//    {
+//        std::cout << "可用的端口号为：" << port << std::endl;
+//    }
+//    else
+//    {
+//        std::cout << "获取可用端口号失败！" << std::endl;
+//    }
     //写入文件 "test.conf"
     std::string node = "node" + std::to_string(nodeIndex);
     std::ofstream outfile;
@@ -186,7 +185,11 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr &conn,
     auto it = m_serviceMap.find(service_name);
     if (it == m_serviceMap.end())
     {
-        std::cout << service_name << " is not exist!" << std::endl;
+        std::cout << "服务："<<service_name << " is not exist!" << std::endl;
+        std::cout<<"当前已经有的服务列表为:";
+        for(auto item:m_serviceMap){
+            std::cout<<item.first<<" ";
+        }std::cout <<std::endl;
         return;
     }
 
@@ -239,6 +242,7 @@ void RpcProvider::SendRpcResponse(const muduo::net::TcpConnectionPtr &conn, goog
     std::string response_str;
     if (response->SerializeToString(&response_str)) // response进行序列化
     {
+        std::cout<<"rpc provider 返回相應"<<std::endl;
         // 序列化成功后，通过网络把rpc方法执行的结果发送会rpc的调用方
         conn->send(response_str);
     }

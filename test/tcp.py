@@ -1,0 +1,15 @@
+import socket
+
+# 创建 TCP 客户端套接字
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# 连接服务器
+server_address = ('127.0.1.1', 13005)
+client_socket.connect(server_address)
+
+# 发送数据
+message = 'hello world'
+client_socket.sendall(message.encode())
+
+# 关闭套接字
+client_socket.close()
