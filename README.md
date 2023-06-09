@@ -28,7 +28,7 @@
 - [x] kvserver迁移，预计半天   2023年06月01日开始  实际完成：2023年06月04日
 - [x] 配置整个项目的cmake，cmake需要学习  cmake学习参考：https://www.bilibili.com/video/BV18R4y127UV/?spm_id_from=333.337.search-card.all.click&vd_source=b39a7d56e3c8769f8d478b0c4cac403e 和同门哈哈哈   
  开始日期：2023年06月04日       完成日期：2023年06月07日
-- [x] 測試發現出現一些奇怪的問題，全都是運行的指令，後臺沒有正常結束，如下图这种，发现出现的问题太多，需要好好梳理才行，因此单独开一栏
+- [x] 测试发现出現一些奇怪的問題，全都是運行的指令，後臺沒有正常結束，如下图这种，发现出现的问题太多，需要好好梳理才行，因此单独开一栏
 ![img.png](md.img/img.png)
 - [ ] goruntime更加优雅的实现，使用线程池
 - [ ] 添加跳表，预计两天
@@ -43,7 +43,16 @@
 如题，在重新连接的时候，集群是有反应的，但是客户端又会显示连接失败，具体来说应该是有些能成功连接上，有些不能成功连接
 
 ![img.png](img.png)
+#### 死锁
+2023-06-09：通过追踪（`netstate -napt`）发现连接不上的原因是服务器的tcp服务器关闭了。
+而且raft节点之间竟然没有rpc通信的交流，非常奇怪。
+![img_1.png](img_1.png)
+多线程调试之后发现`doHearBeat`一直拿不到锁，即死锁了，需要检查。
+经过检查发现是某一个ticker里面拿到锁缺没有释放导致了死锁，死锁已经解决，但是rpc仍然会失败
+> 程序比较简单，没有学到多线程死锁如何调试
+> 以及一些特殊的机制防止死锁，比如拿锁不能超过多久等等，这样来避免死锁。
 
+![img_2.png](img_2.png)
 
 ## 一些依赖的安装方法
 > 只在本机测试过
@@ -63,3 +72,9 @@ Codename:	jammy
 sudo apt-get install libboost-all-dev
 ```
 boost库更多安装方法参考： https://blog.csdn.net/qq_41854911/article/details/119454212
+
+
+## 学习技能
+
+### Clion调试多进程
+https://blog.csdn.net/weixin_45626515/article/details/105903280

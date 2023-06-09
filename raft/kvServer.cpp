@@ -375,15 +375,15 @@ KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName,short 
     m_maxRaftState = maxraftstate;
 
     applyChan = std::make_shared<LockQueue<ApplyMsg>>() ;
-    Raft * raftNodeTmpPrt = new Raft();
 
+    m_raftNode = std::make_shared<Raft>();
     ////////////////clerk层面 kvserver开启rpc接受功能
 //    同时raft与raft节点之间也要开启rpc功能，因此有两个注册
-    std::thread t([ this, port, raftNodeTmpPrt]()->void{
+    std::thread t([ this, port]()->void{
         // provider是一个rpc网络服务对象。把UserService对象发布到rpc节点上
         RpcProvider provider;
         provider.NotifyService(this);
-        provider.NotifyService(raftNodeTmpPrt);
+        provider.NotifyService(this->m_raftNode.get());  //todo：这里获取了原始指针，后面检查一下有没有泄露的问题 或者 shareptr释放的问题
         // 启动一个rpc服务发布节点   Run以后，进程进入阻塞状态，等待远程的rpc调用请求
         provider.Run(m_me,port);
     });
@@ -421,8 +421,7 @@ KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName,short 
 
         std::cout<<"node"<<m_me<<" 连接node"<<i<<"success!"<<std::endl;
     }
-
-    raftNodeTmpPrt->init(servers,m_me,persister,applyChan);//kv的server直接与raft通信，但kv不直接与raft通信，所以需要把ApplyMsg的chan传递下去用于通信，两者的persist也是共用的
+    m_raftNode->init(servers,m_me,persister,applyChan);//kv的server直接与raft通信，但kv不直接与raft通信，所以需要把ApplyMsg的chan传递下去用于通信，两者的persist也是共用的
 
     //////////////////////////////////
 
@@ -436,7 +435,6 @@ KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName,short 
     }
     std::thread t2(&KvServer::ReadRaftApplyCommandLoop, this); //马上向其他节点宣告自己就是leader
     t2.detach();
-
 }
 
 

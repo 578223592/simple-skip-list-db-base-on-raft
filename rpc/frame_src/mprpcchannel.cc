@@ -1,7 +1,6 @@
 #include "mprpcchannel.h"
 #include <string>
 #include "rpcheader.pb.h"
-#include <sys/types.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
@@ -28,6 +27,8 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor *method,
             DPrintf("[func-MprpcChannel::CallMethod]重连接ip：{%s} port{%d}失败",m_ip.c_str(),m_port);
             controller->SetFailed(errMsg);
             return ;
+        }else{
+            DPrintf("[func-MprpcChannel::CallMethod]重连接ip：{%s} port{%d}成功",m_ip.c_str(),m_port);
         }
     }
     
@@ -80,7 +81,6 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor *method,
     std::cout << "method_name: " << method_name << std::endl;
     std::cout << "args_str: " << args_str << std::endl;
     std::cout << "============================================" << std::endl;
-
 
     // 发送rpc请求
     //失败会重试连接再发送，重试连接失败会直接return

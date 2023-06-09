@@ -171,7 +171,7 @@ bool Raft::CondInstallSnapshot(int lastIncludedTerm, int lastIncludedIndex, std:
 }
 
 void Raft::doElection() {
-    m_mtx.lock();
+    lock_guard<mutex> g(m_mtx);
 
     if (m_status == Leader) {
         //fmt.Printf("[       ticker-func-rf(%v)              ] is a Leader,wait the  lock\n", rf.me)
@@ -179,7 +179,7 @@ void Raft::doElection() {
     //fmt.Printf("[       ticker-func-rf(%v)              ] get the  lock\n", rf.me)
 
     if (m_status != Leader) {
-//                DPrintf("[       ticker-func-rf(%v)              ]  选举定时器到期且不是leader，开始选举 \n", rf.me)
+        DPrintf("[       ticker-func-rf(%d)              ]  选举定时器到期且不是leader，开始选举 \n", m_me);
         //当选举的时候定时器超时就必须重新选举，不然没有选票就会一直卡主
         //重竞选超时，term也会增加的
         m_status = Candidate;
@@ -213,15 +213,14 @@ void Raft::doElection() {
 
         }
     }
-    m_mtx.unlock();
 
 }
 
 void Raft::doHeartBeat() {
-    m_mtx.lock();
+    std::lock_guard<mutex> g(m_mtx);
 
     if (m_status == Leader) {
-//                DPrintf("Leader: {%v} 的心跳定时器触发了\n", rf.me)
+        DPrintf("Leader: {%d} 的心跳定时器触发了\n", m_me);
         auto appendNums = std::make_shared<int>(1); //正确返回的节点的数量
 
         //对Follower（除了自己外的所有节点发送AE）
@@ -274,7 +273,6 @@ void Raft::doHeartBeat() {
         }
         m_lastResetHearBeatTime = now(); //leader发送心跳，就不是随机时间了
     }
-    m_mtx.unlock();
 }
 
 void Raft::electionTimeOutTicker() {
@@ -284,6 +282,7 @@ void Raft::electionTimeOutTicker() {
         m_mtx.lock();
         auto nowTime = now();
         auto suitableSleepTime = getRandomizedElectionTimeout() + m_lastResetElectionTime - nowTime;
+        m_mtx.unlock();
         if (suitableSleepTime.count() < 1) {
             suitableSleepTime = std::chrono::milliseconds(1);
         }
@@ -897,13 +896,13 @@ void Raft::init(std::vector<std::shared_ptr<RaftRpc>> peers, int me, std::shared
 
     m_mtx.unlock();
     // start ticker goroutine to start elections
-    std::thread t(&Raft::leaderHearBeatTicker, this); //马上向其他节点宣告自己就是leader
+    std::thread t(&Raft::leaderHearBeatTicker, this);
     t.detach();
 
-    std::thread t2(&Raft::electionTimeOutTicker, this); //马上向其他节点宣告自己就是leader
+    std::thread t2(&Raft::electionTimeOutTicker, this);
     t2.detach();
 
-    std::thread t3(&Raft::applierTicker, this); //马上向其他节点宣告自己就是leader
+    std::thread t3(&Raft::applierTicker, this);
     t3.detach();
 
 }

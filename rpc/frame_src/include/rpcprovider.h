@@ -24,6 +24,7 @@ public:
 private:
     // 组合EventLoop
     muduo::net::EventLoop m_eventLoop;
+    std::shared_ptr<muduo::net::TcpServer>  m_muduo_server;
 
     // service服务类型信息
     struct ServiceInfo
@@ -40,4 +41,7 @@ private:
     void OnMessage(const muduo::net::TcpConnectionPtr&, muduo::net::Buffer*, muduo::Timestamp);
     // Closure的回调操作，用于序列化rpc的响应和网络发送
     void SendRpcResponse(const muduo::net::TcpConnectionPtr&, google::protobuf::Message*);
+
+public:
+    ~RpcProvider();
 };

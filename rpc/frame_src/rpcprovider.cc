@@ -81,7 +81,7 @@ void RpcProvider::Run(int nodeIndex,short port)
     muduo::net::InetAddress address(ip, port);
 
     // 创建TcpServer对象
-    muduo::net::TcpServer server(&m_eventLoop, address, "RpcProvider");
+    m_muduo_server =  std::make_shared<muduo::net::TcpServer>(&m_eventLoop, address, "RpcProvider");
 
     // 绑定连接回调和消息读写回调方法  分离了网络代码和业务代码
     /*
@@ -89,18 +89,18 @@ void RpcProvider::Run(int nodeIndex,short port)
     如果不使用std::bind将回调函数和TcpConnection对象绑定起来，那么在回调函数中就无法直接访问和修改TcpConnection对象的状态。因为回调函数是作为一个独立的函数被调用的，它没有当前对象的上下文信息（即this指针），也就无法直接访问当前对象的状态。
     如果要在回调函数中访问和修改TcpConnection对象的状态，需要通过参数的形式将当前对象的指针传递进去，并且保证回调函数在当前对象的上下文环境中被调用。这种方式比较复杂，容易出错，也不便于代码的编写和维护。因此，使用std::bind将回调函数和TcpConnection对象绑定起来，可以更加方便、直观地访问和修改对象的状态，同时也可以避免一些常见的错误。
     */
-    server.setConnectionCallback(std::bind(&RpcProvider::OnConnection, this, std::placeholders::_1));
-    server.setMessageCallback(std::bind(&RpcProvider::OnMessage, this, std::placeholders::_1,
+    m_muduo_server->setConnectionCallback(std::bind(&RpcProvider::OnConnection, this, std::placeholders::_1));
+    m_muduo_server->setMessageCallback(std::bind(&RpcProvider::OnMessage, this, std::placeholders::_1,
                                         std::placeholders::_2, std::placeholders::_3));
 
     // 设置muduo库的线程数量
-    server.setThreadNum(4);
+    m_muduo_server->setThreadNum(4);
 
     // rpc服务端准备启动，打印信息
     std::cout << "RpcProvider start service at ip:" << ip << " port:" << port << std::endl;
 
     // 启动网络服务
-    server.start();
+    m_muduo_server->start();
     m_eventLoop.loop();
     /*
     这段代码是在启动网络服务和事件循环，其中server是一个TcpServer对象，m_eventLoop是一个EventLoop对象。
@@ -116,6 +116,7 @@ void RpcProvider::Run(int nodeIndex,short port)
 // 新的socket连接回调
 void RpcProvider::OnConnection(const muduo::net::TcpConnectionPtr &conn)
 {
+
     // 如果是新连接就什么都不干，即正常的接收连接即可
     if (!conn->connected())
     {
@@ -251,4 +252,14 @@ void RpcProvider::SendRpcResponse(const muduo::net::TcpConnectionPtr &conn, goog
         std::cout << "serialize response_str error!" << std::endl;
     }
 //    conn->shutdown(); // 模拟http的短链接服务，由rpcprovider主动断开连接  //改为长连接，不主动断开
+}
+
+RpcProvider::~RpcProvider() {
+    std::cout<<"[func - RpcProvider::~RpcProvider()]: ip和port信息："<< m_muduo_server->ipPort()<<std::endl;
+    m_eventLoop.quit();
+//    m_muduo_server.   怎么没有stop函数，奇奇怪怪，看csdn上面的教程也没有要停止，甚至上面那个都没有
+
+
+
+
 }

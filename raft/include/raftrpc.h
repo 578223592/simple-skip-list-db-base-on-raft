@@ -19,7 +19,11 @@ public:
     bool InstallSnapshot(mprrpc::InstallSnapshotRequest *args, mprrpc::InstallSnapshotResponse *response);
     bool RequestVote(mprrpc::RequestVoteArgs *args, mprrpc::RequestVoteReply * response);
     //响应其他节点的方法
-
+    /**
+     *
+     * @param ip  远端ip
+     * @param port  远端端口
+     */
     RaftRpc(std::string ip, short port);
     ~RaftRpc();
 };
