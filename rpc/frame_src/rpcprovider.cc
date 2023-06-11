@@ -174,13 +174,13 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr &conn,
     std::string args_str = recv_buf.substr(4 + header_size, args_size);
 
     // 打印调试信息
-    std::cout << "============================================" << std::endl;
-    std::cout << "header_size: " << header_size << std::endl;
-    std::cout << "rpc_header_str: " << rpc_header_str << std::endl;
-    std::cout << "service_name: " << service_name << std::endl;
-    std::cout << "method_name: " << method_name << std::endl;
-    std::cout << "args_str: " << args_str << std::endl;
-    std::cout << "============================================" << std::endl;
+//    std::cout << "============================================" << std::endl;
+//    std::cout << "header_size: " << header_size << std::endl;
+//    std::cout << "rpc_header_str: " << rpc_header_str << std::endl;
+//    std::cout << "service_name: " << service_name << std::endl;
+//    std::cout << "method_name: " << method_name << std::endl;
+//    std::cout << "args_str: " << args_str << std::endl;
+//    std::cout << "============================================" << std::endl;
 
     // 获取service对象和method对象
     auto it = m_serviceMap.find(service_name);
@@ -243,7 +243,6 @@ void RpcProvider::SendRpcResponse(const muduo::net::TcpConnectionPtr &conn, goog
     std::string response_str;
     if (response->SerializeToString(&response_str)) // response进行序列化
     {
-        std::cout<<"rpc provider 返回相應"<<std::endl;
         // 序列化成功后，通过网络把rpc方法执行的结果发送会rpc的调用方
         conn->send(response_str);
     }

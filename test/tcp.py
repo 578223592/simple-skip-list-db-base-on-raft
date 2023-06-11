@@ -4,7 +4,7 @@ import socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # 连接服务器
-server_address = ('127.0.1.1', 12938)
+server_address = ('127.0.1.1', 14402)
 
 
 client_socket.connect(server_address)

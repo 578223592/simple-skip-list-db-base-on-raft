@@ -28,7 +28,7 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor *method,
             controller->SetFailed(errMsg);
             return ;
         }else{
-            DPrintf("[func-MprpcChannel::CallMethod]重连接ip：{%s} port{%d}成功",m_ip.c_str(),m_port);
+            DPrintf("[func-MprpcChannel::CallMethod]连接ip：{%s} port{%d}成功",m_ip.c_str(),m_port);
         }
     }
     
@@ -74,13 +74,13 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor *method,
     send_rpc_str += args_str;                                     // args
 
     // 打印调试信息
-    std::cout << "============================================" << std::endl;
-    std::cout << "header_size: " << header_size << std::endl;
-    std::cout << "rpc_header_str: " << rpc_header_str << std::endl;
-    std::cout << "service_name: " << service_name << std::endl;
-    std::cout << "method_name: " << method_name << std::endl;
-    std::cout << "args_str: " << args_str << std::endl;
-    std::cout << "============================================" << std::endl;
+//    std::cout << "============================================" << std::endl;
+//    std::cout << "header_size: " << header_size << std::endl;
+//    std::cout << "rpc_header_str: " << rpc_header_str << std::endl;
+//    std::cout << "service_name: " << service_name << std::endl;
+//    std::cout << "method_name: " << method_name << std::endl;
+//    std::cout << "args_str: " << args_str << std::endl;
+//    std::cout << "============================================" << std::endl;
 
     // 发送rpc请求
     //失败会重试连接再发送，重试连接失败会直接return
@@ -173,7 +173,6 @@ MprpcChannel::MprpcChannel(string ip, short port,bool connectNow):m_ip(ip),m_por
     while (!rt && tryCount--)
     {
         std::cout<<errMsg<<std::endl;
-        sleep(2);
         rt = newConnect(ip.c_str(),port,&errMsg);
     }
 

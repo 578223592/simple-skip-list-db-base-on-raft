@@ -8,6 +8,7 @@ int main(){
     Clerk client;
     client.Init("test.conf");
     client.Put("x","1");
+    sleep(1);
     std::string get1 = client.Get("x");
     std::printf("get return :{%s}",get1.c_str());
     return 0;

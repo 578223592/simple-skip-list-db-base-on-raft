@@ -21,10 +21,7 @@ void Persister::Save(const std::string raftstate, const std::string snapshot) {
 }
 
 std::string Persister::ReadSnapshot() {
-    mtx.lock();
-    Defer ec1([this]()->void {
-        mtx.unlock();
-    });
+    std::lock_guard<std::mutex> lg(mtx);
 
     std::fstream ifs(snapshotFile,std::ios_base::in);
     if(!ifs.good()){
@@ -81,3 +78,18 @@ std::string Persister::ReadRaftState() {
     ifs.close();
     return snapshot;
 }
+
+Persister::Persister(int me) :raftStateFile("raftstatePersist"+ std::to_string(me)+".txt"),snapshotFile("snapshotPersist"+ std::to_string(me)+".txt") {
+
+    std::fstream file(raftStateFile, std::ios::out | std::ios::trunc);
+    if (file.is_open()) {
+        file.close();
+    }
+    file = std::fstream (snapshotFile, std::ios::out | std::ios::trunc);
+    if (file.is_open()) {
+        file.close();
+    }
+}
+
+
+

@@ -58,7 +58,10 @@ public:
     void ExecutePutOpOnKVDB(Op op);
 
     void Get(const mprrpc::GetArgs *args, mprrpc::GetReply *reply);   //将 GetArgs 改为rpc调用的，因为是远程客户端，即服务器宕机对客户端来说是无感的
-
+    /**
+     * 從raft節點中獲取消息  （不要誤以爲是執行【GET】命令）
+     * @param message
+     */
     void GetCommandFromRaft(ApplyMsg message);
 
     bool ifRequestDuplicate(string ClientId, int RequestId);

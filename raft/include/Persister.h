@@ -19,9 +19,7 @@ public:
     void SaveRaftState(std::string data);
     int RaftStateSize();
     std::string ReadRaftState();
-    Persister():raftStateFile("raftstatePersist.txt"),snapshotFile("snapshotPersist.txt") {
-
-    }
+    explicit Persister(int me);
 };
 
 

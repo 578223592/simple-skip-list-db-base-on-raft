@@ -18,6 +18,10 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <iostream>
+#include <boost/serialization/access.hpp>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+
 class Defer final
 {
 public:
@@ -89,7 +93,7 @@ public:
             if (m_condvariable.wait_until(lock, timeout_time) == std::cv_status::timeout) {
                 return false;
             }else{
-                break;
+                continue;
             }
         }
 
@@ -127,56 +131,42 @@ public:
     //为了协调raftRPC中的command只设置成了string,这个的限制就是正常字符中不能包含|
     //当然后期可以换成更高级的序列化方法，比如protobuf
     std::string asString() const {
-        std::ostringstream ss;
-        ss << Operation << '|' << Key << '|' << Value << '|' << ClientId << '|' << RequestId;
+        std::stringstream ss;
+        boost::archive::text_oarchive oa(ss);
+
+
+        // write class instance to archive
+        oa << *this;
+        // close archive
+
         return ss.str();
     }
 
     bool parseFromString(std::string str) {
-        std::string sop,skey,svalue,sclienid,srequestid;
-        int i = 0;
-        for (; i < str.size(); ++i) {
-            if(str[i] != '|'){
-                sop.push_back(str[i]);
-            }else{
-                break;
-            }
-        }
-        for(;i<str.size();++i){
-            if(str[i] != '|'){
-                skey.push_back(str[i]);
-            }else{
-                break;
-            }
-        }
-        for(;i<str.size();++i){
-            if(str[i] != '|'){
-                svalue.push_back(str[i]);
-            }else{
-                break;
-            }
-        }
-        for(;i<str.size();++i){
-            if(str[i] != '|'){
-                sclienid.push_back(str[i]);
-            }else{
-                break;
-            }
-        }
-        for(;i<str.size();++i){
-            if(str[i] != '|'){
-                srequestid.push_back(str[i]);
-            }else{
-                break;
-            }
-        }
-        if(srequestid.empty()){return false;} //至少有一个没有解析到；
-        Operation = sop;
-        Key = skey;
-        Value = svalue;
-        ClientId = sclienid;
-        RequestId = atoi(srequestid.c_str());
-        return true;
+        std::stringstream iss(str);
+        boost::archive::text_iarchive ia(iss);
+        // read class state from archive
+        ia >> *this;
+        return true; //todo : 解析失敗如何處理，要看一下boost庫了
+    }
+
+public:
+    friend std::ostream& operator<<(std::ostream& os, const Op& obj) {
+        os << "[MyClass:Operation{"+obj.Operation+"},Key{"+obj.Key+"},Value{"+obj.Value +"},ClientId{"+obj.ClientId+"},RequestId{"+std::to_string( obj.RequestId)+"}"; // 在这里实现自定义的输出格式
+        return os;
+    }
+
+
+private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & Operation;
+        ar & Key;
+        ar & Value;
+        ar & ClientId;
+        ar & RequestId;
     }
 };
 

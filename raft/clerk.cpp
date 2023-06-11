@@ -45,7 +45,14 @@ void Clerk::PutAppend(std::string key, std::string value, std::string op) {
         mprrpc::PutAppendReply reply;
         bool ok = m_servers[server]->PutAppend(&args,&reply);
         if(!ok || reply.err()==ErrWrongLeader){
-            DPrintf("【Clerk::PutAppend】原以为的leader：{%d}请求失败，向新leader{%d}重试  ，操作：{%s}\n",server,server+1,op.c_str());
+
+            DPrintf("【Clerk::PutAppend】原以为的leader：{%d}请求失败，向新leader{%d}重试  ，操作：{%s}",server,server+1,op.c_str());
+            if(!ok){
+                DPrintf("重试原因 ，rpc失敗 ，");
+            }
+            if(reply.err()==ErrWrongLeader){
+                DPrintf("重試原因：非leader");
+            }
             server = (server+1)%m_servers.size();  // try the next server
             continue;
         }

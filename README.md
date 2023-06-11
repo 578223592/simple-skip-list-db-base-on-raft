@@ -28,7 +28,7 @@
 - [x] kvserver迁移，预计半天   2023年06月01日开始  实际完成：2023年06月04日
 - [x] 配置整个项目的cmake，cmake需要学习  cmake学习参考：https://www.bilibili.com/video/BV18R4y127UV/?spm_id_from=333.337.search-card.all.click&vd_source=b39a7d56e3c8769f8d478b0c4cac403e 和同门哈哈哈   
  开始日期：2023年06月04日       完成日期：2023年06月07日
-- [x] 测试发现出現一些奇怪的問題，全都是運行的指令，後臺沒有正常結束，如下图这种，发现出现的问题太多，需要好好梳理才行，因此单独开一栏
+- [x] 测试发现出現一些奇怪的问题，全都是運行的指令，後臺沒有正常結束，如下图这种，发现出现的问题太多，需要好好梳理才行，因此单独开一栏
 ![img.png](md.img/img.png)
 - [ ] goruntime更加优雅的实现，使用线程池
 - [ ] 添加跳表，预计两天
@@ -54,6 +54,9 @@
 
 ![img_2.png](img_2.png)
 
+
+### persist保存的文件名都是一样的
+解决
 ## 一些依赖的安装方法
 > 只在本机测试过
 
@@ -77,4 +80,40 @@ boost库更多安装方法参考： https://blog.csdn.net/qq_41854911/article/de
 ## 学习技能
 
 ### Clion调试多进程
+```c
+set follow-fork-mode child
+set detach-on-fork off
+```
 https://blog.csdn.net/weixin_45626515/article/details/105903280
+
+
+下面都是零散的东西，待后面来整理
+---
+
+
+发现运行到后面只有一个服务会打印输出，且显示连接失败。
+用另一个Python程序来连接，也发现三个服务器中只有一直在打印的那个能连接上，剩下的两个并不能连接上
+如下图
+![img_3.png](img_3.png)
+因此可能是其他节点意外终止了，开始排查。
+重新运行，发现了
+18904正好是node0的端口，代表着**leader节点一发出leader的rpc，收到回复之后就会直接死掉**
+![img_4.png](img_4.png)
+![img_5.png](img_5.png)
+發現了原因，因爲kvDb對於index==m_me採取的措施是不創建raftrpc（自己連接自己沒有任何意義），但是在raft.cpp中忘記跳過自己了。對空指針調用自然就會錯誤，那麼就會掛掉
+raft節點中的錯誤代碼如下：![img_6.png](img_6.png)
+
+> 新的疑問，那爲什麼沒有向命令行打印這個錯誤呢，而是直接結束了？
+
+
+----
+使用boost來持久化，而不是使用自定義的（自定義的對字符不安全）
+![img_7.png](img_7.png)
+已經完成
+---
+中間出現新的問題（忘記截圖了），raft向leader發送請求之後遲遲沒有相應
+
+最終解決方案，lassnapshotIndex值沒有初始化，導致了校驗通不過
+![初始化](img_8.png)
+
+![校驗](img_9.png)
