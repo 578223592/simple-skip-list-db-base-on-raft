@@ -59,9 +59,9 @@ void Raft::AppendEntries1(const mprrpc:: AppendEntriesArgs *args,  mprrpc::Appen
 
         for (int i = 0; i < args->entries_size(); i++) {
             auto log = args->entries(i);
-            if (log.logindex() > getLastLogIndex()) {
+            if (log.logindex() > getLastLogIndex()) { //超过就直接添加日志
                 m_logs.push_back(log);
-            } else {
+            } else {  //没超过就比较是否匹配，不匹配再更新，而不是直接截断
                 // todo ： 这里可以改进为比较对应logIndex位置的term是否相等，term相等就代表匹配
                 //  todo：这个地方放出来会出问题,按理说index相同，term相同，log也应该相同才对
                 // rf.logs[entry.Index-firstIndex].Term ?= entry.Term
@@ -75,7 +75,7 @@ void Raft::AppendEntries1(const mprrpc:: AppendEntriesArgs *args,  mprrpc::Appen
                                     m_logs[getSlicesIndexFromLogIndex(log.logindex())].command(), args->leaderid(),
                                     log.command()));
                 }
-                if (m_logs[getSlicesIndexFromLogIndex(log.logindex())].logterm() != log.logterm()) {
+                if (m_logs[getSlicesIndexFromLogIndex(log.logindex())].logterm() != log.logterm()) { //不匹配就更新
                     m_logs[getSlicesIndexFromLogIndex(log.logindex())] = log;
                 }
             }
@@ -92,7 +92,7 @@ void Raft::AppendEntries1(const mprrpc:: AppendEntriesArgs *args,  mprrpc::Appen
         //	fmt.Printf("[func-AppendEntries  rf:{%v}] ] : args.term:%v, rf.term:%v  ,rf.logs的长度：%v\n", rf.me, args.Term, rf.currentTerm, len(rf.logs))
         // }
         if (args->leadercommit() > m_commitIndex) {
-            m_commitIndex = std::min(args->leadercommit(), getLastLogIndex());// 这个地方不能无脑跟上
+            m_commitIndex = std::min(args->leadercommit(), getLastLogIndex());// 这个地方不能无脑跟上getLastLogIndex()，因为可能存在args->leadercommit()落后于 getLastLogIndex()的情况
         }
 
 
