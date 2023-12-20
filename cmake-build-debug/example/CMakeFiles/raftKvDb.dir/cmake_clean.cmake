@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../../out_bin/raftKvDb"
-  "../../out_bin/raftKvDb.pdb"
+  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/out_bin/raftKvDb"
+  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/out_bin/raftKvDb.pdb"
   "CMakeFiles/raftKvDb.dir/raftKvDb.cpp.o"
   "CMakeFiles/raftKvDb.dir/raftKvDb.cpp.o.d"
 )

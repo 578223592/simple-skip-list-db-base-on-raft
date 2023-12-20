@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../../out_bin/callerMain"
-  "../../out_bin/callerMain.pdb"
+  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/out_bin/callerMain"
+  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/out_bin/callerMain.pdb"
   "CMakeFiles/callerMain.dir/callerMain.cpp.o"
   "CMakeFiles/callerMain.dir/callerMain.cpp.o.d"
 )

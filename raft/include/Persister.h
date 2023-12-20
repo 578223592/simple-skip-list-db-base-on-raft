@@ -13,13 +13,17 @@ private:
     std::string m_snapshot;
     const std::string raftStateFile;
     const std::string snapshotFile;
+    std::ofstream m_raftStateOutStream;
+    std::ofstream m_snapshotOutStream;
+    long long m_raftStateSize; //避免每次都读取文件的具体大小
 public:
     void Save(std::string raftstate , std::string snapshot );
     std::string ReadSnapshot();
-    void SaveRaftState(std::string data);
-    int RaftStateSize();
+    void SaveRaftState(const std::string& data);
+    long long RaftStateSize();
     std::string ReadRaftState();
     explicit Persister(int me);
+    ~Persister();
 };
 
 

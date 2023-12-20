@@ -411,7 +411,7 @@ KvServer::KvServer(int me, int maxraftstate,std::string nodeInforFileName,short 
 
         std::cout<<"node"<<m_me<<" 连接node"<<i<<"success!"<<std::endl;
     }
-    sleep(ipPortVt.size()>>1);  //等待所有节点相互连接成功，再启动raft
+    sleep(ipPortVt.size()-me);  //等待所有节点相互连接成功，再启动raft
     m_raftNode->init(servers,m_me,persister,applyChan);//kv的server直接与raft通信，但kv不直接与raft通信，所以需要把ApplyMsg的chan传递下去用于通信，两者的persist也是共用的
 
     //////////////////////////////////

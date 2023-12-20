@@ -138,7 +138,7 @@ void Raft::applierTicker() {
     while (true) {
         m_mtx.lock();
         if (m_status == Leader) {
-            DPrintf("-----------------tmp------------m_lastApplied{%d}   m_commitIndex{%d}", m_lastApplied,
+            DPrintf("[Raft::applierTicker() - raft{%d}]  m_lastApplied{%d}   m_commitIndex{%d}",m_me, m_lastApplied,
                     m_commitIndex);
         }
         auto applyMsgs = getApplyLogs();
@@ -296,10 +296,10 @@ void Raft::electionTimeOutTicker() {
         auto nowTime = now();
         auto suitableSleepTime = getRandomizedElectionTimeout() + m_lastResetElectionTime - nowTime;
         m_mtx.unlock();
-        if (suitableSleepTime.count() < 1) {
-            suitableSleepTime = std::chrono::milliseconds(1);
+        if (suitableSleepTime.count() > 1) {
+            std::this_thread::sleep_for(suitableSleepTime);
         }
-        std::this_thread::sleep_for(suitableSleepTime);
+
         if ((m_lastResetElectionTime - nowTime).count() > 0) {  //说明睡眠的这段时间有重置定时器，那么就没有超时，再次睡眠
             continue;
         }
@@ -534,13 +534,9 @@ void Raft::persist() {
 }
 
 void Raft::RequestVote( const mprrpc::RequestVoteArgs *args, mprrpc::RequestVoteReply *reply) {
-
+    lock_guard<mutex> lg(m_mtx);
 
     // Your code here (2A, 2B).
-    m_mtx.lock();
-    Defer ec2([this]() -> void {
-        m_mtx.unlock();
-    });
     Defer ec1([this]() -> void { //应该先持久化，再撤销lock
         this->persist();
     });
@@ -568,7 +564,7 @@ void Raft::RequestVote( const mprrpc::RequestVoteArgs *args, mprrpc::RequestVote
     //	，要检查log的term和index是不是匹配的了
     int lastLogTerm = getLastLogIndex();
     //只有没投票，且candidate的日志的新的程度 ≥ 接受者的日志新的程度 才会授票
-    if (UpToDate(args->lastlogindex(), args->lastlogterm()) == false) {
+    if (!UpToDate(args->lastlogindex(), args->lastlogterm())) {
         //args.LastLogTerm < lastLogTerm || (args.LastLogTerm == lastLogTerm && args.LastLogIndex < lastLogIndex) {
         //日志太旧了
         if (args->lastlogterm() < lastLogTerm) {
@@ -607,7 +603,6 @@ void Raft::RequestVote( const mprrpc::RequestVoteArgs *args, mprrpc::RequestVote
 
 bool Raft::UpToDate(int index, int term) {
     //lastEntry := rf.log[len(rf.log)-1]
-
 
     int lastIndex = -1;int  lastTerm = -1;
     getLastLogIndexAndTerm(&lastIndex,&lastTerm);
@@ -671,7 +666,10 @@ bool Raft::sendRequestVote(int server, std::shared_ptr<mprrpc::RequestVoteArgs> 
     //这个ok是网络是否正常通信的ok，而不是requestVote rpc是否投票的rpc
     //ok := rf.peers[server].Call("Raft.RequestVote", args, reply)
     //todo
+    auto start = now();
+    DPrintf("[func-sendRequestVote rf{%d}] 向server{%d} 發送 RequestVote 開始", m_me, m_currentTerm, getLastLogIndex());
     bool ok = m_peers[server]->RequestVote(args.get(),reply.get());
+    DPrintf("[func-sendRequestVote rf{%d}] 向server{%d} 發送 RequestVote 完畢，耗時:{%d} ms", m_me, m_currentTerm, getLastLogIndex(),now()-start);
 
     if (!ok) {
         return ok;//不知道为什么不加这个的话如果服务器宕机会出现问题的，通不过2B  todo
@@ -684,10 +682,7 @@ bool Raft::sendRequestVote(int server, std::shared_ptr<mprrpc::RequestVoteArgs> 
     //	//}
     //} //这里是发送出去了，但是不能保证他一定到达
     //对回应进行处理，要记得无论什么时候收到回复就要检查term
-    m_mtx.lock();
-    Defer ec1([this]()->void {
-       m_mtx.unlock();
-    });
+    lock_guard<mutex> lg(m_mtx);
     if(reply->term() > m_currentTerm){
         m_status = Follower; //三变：身份，term，和投票
         m_currentTerm = reply->term();
@@ -718,7 +713,7 @@ bool Raft::sendRequestVote(int server, std::shared_ptr<mprrpc::RequestVoteArgs> 
         m_status = Leader;
 
 
-//        DPrintf("[func-sendRequestVote rf{%v}] elect success  ,current term:{%v} ,lastLogIndex:{%v}\n", rf.me, rf.currentTerm, rf.getLastLogIndex())
+        DPrintf("[func-sendRequestVote rf{%d}] elect success  ,current term:{%d} ,lastLogIndex:{%d}\n", m_me, m_currentTerm, getLastLogIndex());
 
 
         int lastLogIndex =   getLastLogIndex();

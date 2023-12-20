@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../out_lib/libskip_list_on_raft.a"
-  "../out_lib/libskip_list_on_raft.pdb"
+  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/lib/libskip_list_on_raft.a"
+  "/home/swx/2023_project/simple-skip-list-db-base-on-raft/lib/libskip_list_on_raft.pdb"
   "CMakeFiles/skip_list_on_raft.dir/raft/Persister.cpp.o"
   "CMakeFiles/skip_list_on_raft.dir/raft/Persister.cpp.o.d"
   "CMakeFiles/skip_list_on_raft.dir/raft/clerk.cpp.o"
@@ -29,8 +29,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcheader.pb.cc.o.d"
   "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcprovider.cc.o"
   "CMakeFiles/skip_list_on_raft.dir/rpc/frame_src/rpcprovider.cc.o.d"
-  "CMakeFiles/skip_list_on_raft.dir/test/ip_port.cpp.o"
-  "CMakeFiles/skip_list_on_raft.dir/test/ip_port.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

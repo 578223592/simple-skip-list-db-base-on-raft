@@ -10,14 +10,14 @@ set(CMAKE_BUILD_TYPE "Debug")
 # 设置项目可执行文件输出的路径
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/out_bin)
 # 设置项目库文件输出的路径
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/out_lib)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 # 设置项目编译头文件搜索路径 -I
 include_directories(rpc/example/include)
 include_directories(raft/include)
 include_directories(rpc/frame_src/include)
 # 设置项目库文件搜索路径 -L
-link_directories(${PROJECT_SOURCE_DIR}/out_lib)
+link_directories(${PROJECT_SOURCE_DIR}/lib)
 
 
 # src包含了mprpc框架所有的相关代码
@@ -27,14 +27,12 @@ add_subdirectory(rpc)
 # example包含了mprpc框架使用的示例代码
 add_subdirectory(example)
 
-add_library(skip_list_on_raft STATIC  ${rpc_frame_src} ${rpc_example} ${raftsource} test/ip_port.cpp)
+add_library(skip_list_on_raft STATIC  ${rpc_frame_src} ${rpc_example} ${raftsource} )
 
 target_link_libraries(skip_list_on_raft muduo_net muduo_base pthread )
-#target_include_directories(skip_list_on_raft PUBLIC
-#        ${PROJECT_SOURCE_DIR}/rpc/example/include
-#        ${PROJECT_SOURCE_DIR}/raft/include
-#        ${PROJECT_SOURCE_DIR}/rpc/frame_src/include
-#        )
+
+# 设置项目库文件搜索路径 -L
+link_directories(${PROJECT_SOURCE_DIR}/lib)
 
 #
 #add_executable(skip_list_on_raft

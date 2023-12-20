@@ -1,0 +1,11 @@
+
+cmake-build-debug
+cmake-build-debug-event-trace
+.vscode
+
+out_bin
+perAna
+
+perf.*
+
+*.a

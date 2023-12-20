@@ -5,6 +5,7 @@
 #include "kvServer.h"
 #include <iostream>
 #include <random>
+#include <unistd.h>
 void ShowArgsHelp();
 
 int main(int argc, char **argv){
@@ -49,10 +50,11 @@ int main(int argc, char **argv){
     }
     for (int i = 0; i < nodeNum; i++) {
         short port = startPort+static_cast<short> (i);
-        std::cout << "start to create raftkv node:" << i <<"    port:"<<port<< std::endl;
+        std::cout << "start to create raftkv node:" << i <<"    port:"<<port <<" pid:"<<getpid()<< std::endl;
         pid_t pid = fork(); // 创建新进程
         if (pid == 0) { // 如果是子进程
             // 子进程的代码
+
             auto kvServer = new KvServer(i, 500, configFileName,port);
             pause(); // 子进程进入等待状态，不会执行 return 语句
         } else if (pid > 0) { // 如果是父进程
