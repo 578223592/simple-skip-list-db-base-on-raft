@@ -25,7 +25,8 @@ message GetReply  {
 message PutAppendArgs  {
   bytes Key = 1;
   bytes  Value = 2 ;
-  bytes  Op = 3; // "Put" or "Append"
+  bytes  Op = 3;
+  // "Put" or "Append"
   // You'll have to add definitions here.
   // Field names must start with capital letters,
   // otherwise RPC will break.

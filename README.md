@@ -1,5 +1,11 @@
 # simple-skip-list-db-base-on-raft
 
+---
+**NOTICE:**
+本项目有了代码组织更清晰的版本，在github上重新提交了，此项目可能将不再维护。
+https://github.com/youngyangyang04/KVstorageBaseRaft-cpp
+---
+
 ## 项目简介
 本项目是一个基于raft分布式协议实现的kv数据库。
 
